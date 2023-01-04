@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,7 +11,7 @@ public class characterMovement : MonoBehaviour
     void Update()
     {
  
-        if(Input.GetKey(KeyCode.LeftShift)){ // 왼
+        if(Input.GetKey(KeyCode.Space)){ // 왼
             run(runSpeed);
         }else{
             walk();
