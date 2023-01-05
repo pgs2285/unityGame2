@@ -4,36 +4,21 @@ using UnityEngine;
 
 public class MainCharacter : MonoBehaviour
 {
-    protected int MaxHP;
-    
-    protected int MaxMP;
-    
-    protected float speed;
-    protected float runSpeed;
-    protected int AttackPoint;
-    protected int Level;
-    protected bool isFullLevel;
-    protected decimal Experience;
-    protected decimal[] fullExperience = {10,20,40,80,160,320,640,1280};
+
     bool isCreated_GameOverPanel = true;
-    [SerializeField]
-    protected int CurrentHP;
-    [SerializeField]
-    protected int CurrentMP;
     [SerializeField]
     GameObject gameoverPanel;
 
-
-    protected int LevelUp(int level){ //추후 PlayerPrefs.HasKey("Level")로 매개변수 넘겨주면 됨
-        if(Experience > fullExperience[level - 1]){ // 만약 경험치가 요구경험치보다 높으면
-            Level+=1;
-            PlayerPrefs.SetInt("Level", Level);
-            Experience = 0; // 경험치는 다시 0으로 초기화
+    decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
+    protected void LevelUp(int level){ //추후 PlayerPrefs.HasKey("Level")로 매개변수 넘겨주면 됨
+        if(CharacterData.Instance.Experience > fullExperience[level - 1]){ // 만약 경험치가 요구경험치보다 높으면
+            CharacterData.Instance.Level +=1;
+            CharacterData.Instance.Experience = 0; // 경험치는 다시 0으로 초기화
         }
-        return Level; 
+
     }
     protected void isDeath(){
-        if(CurrentHP < 0){ //currentHP가  0보다 작으면
+        if(CharacterData.Instance.CurrentHP < 0){ //currentHP가  0보다 작으면
             Debug.Log("GameOver");
             if(isCreated_GameOverPanel) {
                 Instantiate(gameoverPanel);
@@ -41,12 +26,38 @@ public class MainCharacter : MonoBehaviour
             }
         }
     }
-    protected int getDamage(int damage){
-        CurrentHP -= damage; 
+    protected void getDamage(int damage){
+        CharacterData.Instance.CurrentHP -= damage; 
         isDeath(); // 죽었나 확인후 죽었으면 패널띄움
-        return CurrentHP;
+
     }
-    public void Update(){
-        isDeath();
+
+
+    public void walk()
+    {
+        float X = Input.GetAxisRaw("Horizontal");
+        float Y = Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.Speed);
     }
+
+    public void run()
+    {
+        float X = Input.GetAxisRaw("Horizontal");
+        float Y = Input.GetAxisRaw("Vertical");
+        transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.RunSpeed);
+    }
+
+    void Update()
+    {
+
+        if (Input.GetKey(KeyCode.Space))
+        { // 왼
+            run();
+        }
+        else
+        {
+            walk();
+        }
+    }
+
 }

@@ -123,6 +123,50 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &255449316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 255449318}
+  - component: {fileID: 255449317}
+  m_Layer: 0
+  m_Name: DataMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &255449317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255449316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60d57221892d2cc40b0d29fbf909f960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &255449318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 255449316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415202001
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +261,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1018340574}
   - component: {fileID: 1018340573}
-  - component: {fileID: 1018340572}
   - component: {fileID: 1018340575}
   m_Layer: 0
   m_Name: mainCharacter
@@ -226,20 +269,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1018340572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1018340571}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f37317ac6a463437dba1b4ec052bc06f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 3
-  runSpeed: 6
 --- !u!212 &1018340573
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -319,8 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44858366e55e4e8db7e001238206cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHP: 4
-  CurrentMP: 0
   gameoverPanel: {fileID: 1483997143426849110, guid: 2fb143ae34f12409bb3c9b91e154f70b, type: 3}
 --- !u!1 &1369913536
 GameObject:
