@@ -270,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da3bec9f42da4ba28621a5ab91b1f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: 0
   currentType: 0
   startScene:
     m_Handle: 0
@@ -420,6 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da3bec9f42da4ba28621a5ab91b1f20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  a: 0
   currentType: 4
   startScene:
     m_Handle: 0
