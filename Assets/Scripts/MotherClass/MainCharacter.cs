@@ -50,8 +50,9 @@ public class MainCharacter : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && CharacterData.Instance.CurrentMP > 0)
         { // 왼
+            CharacterData.Instance.CurrentMP -= 1;
             run();
         }
         else
