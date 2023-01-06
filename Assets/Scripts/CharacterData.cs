@@ -17,7 +17,7 @@ public class CharacterData : Singleton<CharacterData>
         set { maxMP = value; }
     }
 
-    float speed = 4f;
+    float speed = 3f;
     public float Speed
     {
         get { return speed; }
