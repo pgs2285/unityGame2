@@ -1,13 +1,70 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UIManager : MonoBehaviour
-{
+{   
+    [SerializeField]
+    private GameObject hpBar;
+    [SerializeField]
+    private GameObject mpBar;
+    [SerializeField]
+    private TextMeshProUGUI level;
+    
+    [SerializeField]
+    private TextMeshProUGUI nowEXP;
 
-    private void Update()
-    {
-           
+    [SerializeField]
+    private TextMeshProUGUI fullEXP;
+
+    [SerializeField]
+    private GameObject infoPanel;
+
+    [SerializeField]
+    private TextMeshProUGUI attackPoint;
+
+    [SerializeField]
+    private TextMeshProUGUI speed;
+
+
+
+    private int limitHP=10;
+    private int limitMP=10;
+
+    public void Start(){
+        infoPanel.SetActive(false);
+    }
+    public void Update(){
+        for(int i = 0; i < CharacterData.Instance.CurrentHP; i++){
+            hpBar.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for(int i = CharacterData.Instance.CurrentHP; i < limitHP; i++){
+            hpBar.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        for(int i = 0; i < CharacterData.Instance.CurrentMP; i++){
+            mpBar.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for(int i = CharacterData.Instance.CurrentMP; i < limitMP; i++){
+            mpBar.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        
+        level.text = CharacterData.Instance.Level.ToString();
+        nowEXP.text = CharacterData.Instance.Experience.ToString();
+        fullEXP.text = CharacterData.Instance.fullExperience[CharacterData.Instance.Level - 1].ToString();
+
+        
     }
 
+
+    public void activeExtraInfo(){
+        if(infoPanel.activeSelf == false){
+            infoPanel.SetActive(true);
+            attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
+            speed.text = CharacterData.Instance.Speed.ToString();
+
+        }else{
+            infoPanel.SetActive(false);
+        }
+    }
 }

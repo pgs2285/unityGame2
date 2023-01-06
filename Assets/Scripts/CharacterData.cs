@@ -69,7 +69,7 @@ public class CharacterData : Singleton<CharacterData>
         get { return currentMP; }
         set { currentMP = value; }
     }
-
+    public decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     void Start()
     {
         if (PlayerPrefs.HasKey("MaxHP"))
