@@ -61,6 +61,7 @@ public class UIManager : MonoBehaviour
         if(infoPanel.activeSelf == false){
             infoPanel.SetActive(true);
             attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
+            
             speed.text = CharacterData.Instance.Speed.ToString();
 
         }else{
