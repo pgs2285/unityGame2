@@ -78,7 +78,16 @@ public class UIManager : MonoBehaviour
             isAction = true;
             scanObject = scanObj;
             chatPanel.SetActive(true);
-            chatText.text = "My Name is " + scanObject.name;
+            Debug.Log(scanObj.name);
+            switch (scanObj.name)
+            {
+                case "LifeTree":
+                    chatText.text = scanObj.name + "\n 생기를 잃어버린 세계수이다.";
+                break;
+                case "TMPNPC":
+                    chatText.text = scanObj.name + "\n 이게 뭔일이고...";
+                break;
+            }
         }else{
             chatPanel.SetActive(false);
             isAction = false;
