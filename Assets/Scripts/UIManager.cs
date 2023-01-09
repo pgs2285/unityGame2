@@ -61,10 +61,27 @@ public class UIManager : MonoBehaviour
         if(infoPanel.activeSelf == false){
             infoPanel.SetActive(true);
             attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
+            
             speed.text = CharacterData.Instance.Speed.ToString();
 
         }else{
             infoPanel.SetActive(false);
+        }
+    }
+
+    [SerializeField] TextMeshProUGUI chatText;
+    GameObject scanObject;
+    [SerializeField] GameObject chatPanel;
+    public bool isAction = false;
+    public void Action(GameObject scanObj){
+        if(!isAction){
+            isAction = true;
+            scanObject = scanObj;
+            chatPanel.SetActive(true);
+            chatText.text = "My Name is " + scanObject.name;
+        }else{
+            chatPanel.SetActive(false);
+            isAction = false;
         }
     }
 }
