@@ -9,6 +9,7 @@ public class MainCharacter : MonoBehaviour
     [SerializeField]
     GameObject gameoverPanel;
 
+    public UIManager uiManager;
     decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     protected void LevelUp(int level){ //추후 PlayerPrefs.HasKey("Level")로 매개변수 넘겨주면 됨
         if(CharacterData.Instance.Experience > fullExperience[level - 1]){ // 만약 경험치가 요구경험치보다 높으면
@@ -32,33 +33,43 @@ public class MainCharacter : MonoBehaviour
 
     }
 
-
+    float X;
+    float Y;
     public void walk()
     {
-        float X = Input.GetAxisRaw("Horizontal");
-        float Y = Input.GetAxisRaw("Vertical");
+        X = Input.GetAxisRaw("Horizontal");
+        Y = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.Speed);
     }
 
     public void run()
     {
-        float X = Input.GetAxisRaw("Horizontal");
-        float Y = Input.GetAxisRaw("Vertical");
+        X = Input.GetAxisRaw("Horizontal");
+        Y = Input.GetAxisRaw("Vertical");
         transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.RunSpeed);
     }
-
+    Vector3 dirVec;
+    GameObject scanObject;
     void Update()
-    {
-
-        if (Input.GetKeyDown(KeyCode.Space) && CharacterData.Instance.CurrentMP > 0)
-        { // 왼
-            CharacterData.Instance.CurrentMP -= 1;
-            run();
+    {   
+        if( X == -1) dirVec = Vector3.left;
+        else if(X == 1) dirVec = Vector3.right;
+        else if(Y == -1) dirVec = Vector3.down;
+        else if(Y == 1) dirVec = Vector3.up;
+        //방향을 알려주는 dirVec
+        Debug.DrawRay(transform.position, dirVec * 0.7f, new Color(0,1,0));    
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Object")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
+        if(rayHit.collider != null && Input.GetButtonDown("Jump")){
+            scanObject = rayHit.collider.gameObject;
+            uiManager.Action(scanObject);
+            Debug.Log(scanObject.name);
         }
-        else
-        {
+
+
+        if(!uiManager.isAction){
             walk();
         }
+
     }
 
 }

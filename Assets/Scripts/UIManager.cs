@@ -68,4 +68,20 @@ public class UIManager : MonoBehaviour
             infoPanel.SetActive(false);
         }
     }
+
+    [SerializeField] TextMeshProUGUI chatText;
+    GameObject scanObject;
+    [SerializeField] GameObject chatPanel;
+    public bool isAction = false;
+    public void Action(GameObject scanObj){
+        if(!isAction){
+            isAction = true;
+            scanObject = scanObj;
+            chatPanel.SetActive(true);
+            chatText.text = "My Name is " + scanObject.name;
+        }else{
+            chatPanel.SetActive(false);
+            isAction = false;
+        }
+    }
 }
