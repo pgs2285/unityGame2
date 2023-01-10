@@ -73,15 +73,33 @@ public class UIManager : MonoBehaviour
     GameObject scanObject;
     [SerializeField] GameObject chatPanel;
     public bool isAction = false;
-    public void Action(GameObject scanObj){
-        if(!isAction){
-            isAction = true;
+    public int talkIndex;
+    public void Action(GameObject scanObj){ //대사 띄워줌
+
             scanObject = scanObj;
-            chatPanel.SetActive(true);
-            chatText.text = "My Name is " + scanObject.name;
-        }else{
-            chatPanel.SetActive(false);
+            
+            ObjData objData = scanObject.GetComponent<ObjData>();
+            talk(objData.id, objData.isNPC);
+            chatPanel.SetActive(isAction);
+
+    }
+
+    public TalkManager talkManager;
+    void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
+        string talkData = talkManager.getTalk(id, talkIndex);
+
+        if(talkData == null){
             isAction = false;
+            talkIndex = 0;
+            return;
         }
+        
+        if(isNPC){
+            chatText.text = talkData;
+        }else{
+            chatText.text = talkData;
+        }
+        talkIndex++;
+        isAction = true;
     }
 }
