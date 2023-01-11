@@ -85,12 +85,15 @@ public class UIManager : MonoBehaviour
     }
 
     public TalkManager talkManager;
+    public QuestManager questManager;
     void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
-        string talkData = talkManager.getTalk(id, talkIndex);
+        int questTalkIndex = questManager.getQuestTalkIndex(id);
+        string talkData = talkManager.getTalk(id + questTalkIndex, talkIndex);
 
         if(talkData == null){
             isAction = false;
             talkIndex = 0;
+            questManager.checkQuest(id);
             return;
         }
         
@@ -102,4 +105,7 @@ public class UIManager : MonoBehaviour
         talkIndex++;
         isAction = true;
     }
+
+    
+
 }
