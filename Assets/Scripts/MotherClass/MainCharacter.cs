@@ -63,7 +63,7 @@ public class MainCharacter : MonoBehaviour
         if(rayHit.collider != null && Input.GetButtonDown("Jump")){
             scanObject = rayHit.collider.gameObject;
             uiManager.Action(scanObject);
-            Debug.Log(scanObject.name);
+
         }
 
 
