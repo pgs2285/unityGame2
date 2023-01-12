@@ -58,11 +58,12 @@ public class MainCharacter : MonoBehaviour
         else if(Y == 1) dirVec = Vector3.up;
         //방향을 알려주는 dirVec
         Debug.DrawRay(transform.position, dirVec * 0.7f, new Color(0,1,0));    
+        
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Object")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
         if(rayHit.collider != null && Input.GetButtonDown("Jump")){
             scanObject = rayHit.collider.gameObject;
             uiManager.Action(scanObject);
-            Debug.Log(scanObject.name);
+
         }
 
 

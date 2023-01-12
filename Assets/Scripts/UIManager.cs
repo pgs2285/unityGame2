@@ -104,8 +104,8 @@ public class UIManager : MonoBehaviour
         }
         talkIndex++;
         isAction = true;
+
     }
 
-    
 
 }
