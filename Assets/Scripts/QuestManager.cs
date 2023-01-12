@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class QuestManager : MonoBehaviour
 {
     public int questId;
     public int questActionIndex;
     public Dictionary<int, QuestData> questList;
-
+    
     public void Awake(){
         questList = new Dictionary<int, QuestData>();
         GenerateData();
     }
+    public TextMeshProUGUI QuestName;
 
     void GenerateData(){
         questList.Add(10, new QuestData("이게 무슨일이고", new int[] {200,100}));
@@ -27,7 +29,7 @@ public class QuestManager : MonoBehaviour
 
 
         if (questActionIndex == questList[questId].npcId.Length) NextQuest();
-
+        QuestName.text = questList[questId].questName;
     }
 
     void NextQuest()
