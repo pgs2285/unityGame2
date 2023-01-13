@@ -54,8 +54,8 @@ public class CharacterData : Singleton<CharacterData>
         set { experience = value; }
     }
 
+
     
-  
 
     int currentHP = 4;
     public int CurrentHP
