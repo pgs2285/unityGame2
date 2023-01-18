@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TreeVillage.unity
     guid: bb659336c234740a4a393b1a89433db4
+  - enabled: 1
+    path: Assets/Scenes/StartCutScene.unity
+    guid: 45fb38a60d7c8c944a48cfffbfa103bb
   m_configObjects: {}
