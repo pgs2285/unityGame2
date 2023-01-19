@@ -13,11 +13,11 @@ public class TypingScript : MonoBehaviour
     public Sprite[] sprite;
     void Start()
     {
-        StartCoroutine(_typing());
+        StartCoroutine(cutScene());
     }
     Color color;
     public float time = 0.7f;
-    IEnumerator _typing()
+    IEnumerator cutScene()
     {
         
         for (int j = 0; j < cutSceneScript.Length; j++)
