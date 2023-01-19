@@ -47,7 +47,7 @@ public class TypingScript : MonoBehaviour
             }
 
         }
-        SceneManager.LoadScene("TreeVillage");
+        SceneManager.LoadScene("2.secondCutScene");
         
     }
 }
