@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5290139516257654262}
   - component: {fileID: 4875358848708947712}
   - component: {fileID: 7790024171344540831}
+  - component: {fileID: -4946739187232762711}
   m_Layer: 0
   m_Name: masu
   m_TagString: Untagged
@@ -98,7 +99,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.33932465, y: -0.04045129}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -109,5 +110,17 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.56, y: 2.56}
+  m_Size: {x: 1.5430306, y: 1.4935567}
   m_EdgeRadius: 0
+--- !u!114 &-4946739187232762711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5040117962657990257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd5b0b34e31ef84d838db259ceb6c87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
