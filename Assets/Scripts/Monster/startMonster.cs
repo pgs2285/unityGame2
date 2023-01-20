@@ -13,7 +13,7 @@ public class startMonster : Enemy
      protected int state; // 0 : 정상상태, 1 : 스턴, 2 : 슬로우 등...
 
      ''' */
-
+    
     private void Start()
     {
         MaxHP = 3;
@@ -21,14 +21,17 @@ public class startMonster : Enemy
         moveSpeed = 5f;
         attackPoint = 1;
         state = 0;
-
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            CharacterData.Instance.CurrentHP -= 1;
+            CharacterData.Instance.CurrentHP -= attackPoint;
+        }else if (collision.collider.CompareTag("PlayerAttack"))
+        {
+            currentHP -= CharacterData.Instance.AttackPoint;
         }
     }
 
