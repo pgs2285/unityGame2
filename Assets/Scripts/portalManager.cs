@@ -11,5 +11,13 @@ public class portalManager : MonoBehaviour
         {
             SceneManager.LoadScene("4.Mob");
         }
+        if(this.gameObject.name.ToString() == "1-1portal")
+        {
+            if (collision.collider.CompareTag("Player"))
+            {
+                SceneManager.LoadScene("3.TreeVillage");
+        
+            }
+        }
     }
 }
