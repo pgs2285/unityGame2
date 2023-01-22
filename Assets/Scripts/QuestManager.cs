@@ -18,10 +18,10 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI QuestName;
 
     void GenerateData(){
-        questList.Add(10, new QuestData("마을 둘러보기", new int[] {200,100}));
-        questList.Add(20, new QuestData("나무가 없어졌다고?", new int[] { 200 }));
-        questList.Add(30, new QuestData("나무가 다시돌아왔다고?", new int[] { 100, 200 }));
-        questList.Add(40, new QuestData("엔딩", new int[] { 100, 200, 100, 200 }));
+        questList.Add(10, new QuestData("(캣과 대화하기)", new int[] {200}));
+        questList.Add(20, new QuestData("(나무의 상태 확인하기)", new int[] { 100 }));
+        questList.Add(30, new QuestData("(캣과 대화하기)", new int[] { 200 }));
+
     }
     public int getQuestTalkIndex(int id){
         return CharacterData.Instance.QuestID + questActionIndex;

@@ -13,16 +13,14 @@ public class TalkManager : MonoBehaviour
         GenerateData();
     }
     void GenerateData(){ //데이터 등록하기~
-        talkData.Add(100, new string[] {"나무이다."});
+        talkData.Add(100, new string[] {"빛을 잃은 나무이다."});
         talkData.Add(200, new string[] {"이게 무슨일이고...", "...", "뭘 봐?"});
         /////////////////////////////////캐릭터들의 기본대사 (퀘스트와 관련이 없으면 출력)/////////////////////////////////////
-        talkData.Add(200 + 10, new string[] {"이마을은 처음이니?","사실 나도그래","할거 없으면 나무 상태나 좀 살펴봐"});
-        talkData.Add(100 + 11, new string[] {"생기를 잃은 나무이다."});
+        talkData.Add(200 + 10, new string[] {"저 나무는 원래 생기 있었던거 알았니?","갑자기 수많은 재앙이 생기고 있어","휴... 막막하네"});
         ////////////////////////// 1번퀘스트 종료 ////////////////////////////
-        talkData.Add(200 + 20, new string[] { "나무가 빛을 잃었다고??.", "근데 어쩌라고" });
+        talkData.Add(100 + 20, new string[] { "나무는 빛을 잃었다.", "주변을 다시 둘러보자" });
         //////////////////////////2번퀘스트 종료//////////////////////////////
-        talkData.Add(100 + 30, new string[] { "빛이 다시 돌아왔다" });
-        talkData.Add(200 + 31, new string[] { "빛이 다시 돌아왔다고?", "good" });
+        talkData.Add(200 + 30, new string[] { "빛이 다시 돌아왔다" });
         //////////////////////// 3번 퀘스트 종료///////////////////////
         talkData.Add(100 + 40, new string[] { "123" });
         talkData.Add(200 + 41, new string[] { "321" });
