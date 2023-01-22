@@ -13,6 +13,7 @@ public class QuestManager : MonoBehaviour
 
         questList = new Dictionary<int, QuestData>();
         GenerateData();
+        QuestName.text = questList[CharacterData.Instance.QuestID].questName;
     }
     public TextMeshProUGUI QuestName;
 

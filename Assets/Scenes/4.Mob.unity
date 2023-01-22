@@ -786,6 +786,17 @@ PrefabInstance:
       objectReference: {fileID: 1977759625}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c0bb26075a2331940a2134315aeebff9, type: 3}
+--- !u!114 &1669628931 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7697138507909469587, guid: c0bb26075a2331940a2134315aeebff9, type: 3}
+  m_PrefabInstance: {fileID: 1669628930}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1858978138
 GameObject:
   m_ObjectHideFlags: 0
@@ -817,7 +828,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   questId: 10
   questActionIndex: 0
-  QuestName: {fileID: 0}
+  QuestName: {fileID: 1669628931}
 --- !u!4 &1858978140
 Transform:
   m_ObjectHideFlags: 0
