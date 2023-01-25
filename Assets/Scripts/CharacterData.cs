@@ -55,7 +55,7 @@ public class CharacterData : Singleton<CharacterData>
     }
 
 
-    
+
 
     int currentHP = 4;
     public int CurrentHP
@@ -69,6 +69,15 @@ public class CharacterData : Singleton<CharacterData>
         get { return currentMP; }
         set { currentMP = value; }
     }
+
+    int questID = 10;
+    public int QuestID
+    {
+        get { return questID; }
+        set { questID = value; }
+    } 
+
+
     public decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     void Start()
     {
