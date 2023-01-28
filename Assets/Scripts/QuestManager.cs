@@ -21,23 +21,34 @@ public class QuestManager : MonoBehaviour
         questList.Add(10, new QuestData("(캣과 대화하기)", new int[] {200}));
         questList.Add(20, new QuestData("(나무의 상태 확인하기)", new int[] { 100 }));
         questList.Add(30, new QuestData("(캣과 대화하기)", new int[] { 200 }));
+        questList.Add(40, new QuestData("(마수 10마리 처치하기)", new int[] {0}));
 
     }
     public int getQuestTalkIndex(int id){
         return CharacterData.Instance.QuestID + questActionIndex;
     }
-    public void checkQuest(int id){
+    public void checkQuest(int id) {
+
         if (!questList.ContainsKey(CharacterData.Instance.QuestID)) return; //quest가 없으면 null
-        if(id == questList[CharacterData.Instance.QuestID].npcId[questActionIndex]) questActionIndex++;
+
+        if (id == questList[CharacterData.Instance.QuestID].npcId[questActionIndex]) questActionIndex++;
 
 
-        if (questActionIndex == questList[CharacterData.Instance.QuestID].npcId.Length) NextQuest();
+        NextQuest();
         QuestName.text = questList[CharacterData.Instance.QuestID].questName;
     }
 
     void NextQuest()
     {
-        CharacterData.Instance.QuestID += 10;
+        if (questActionIndex == questList[CharacterData.Instance.QuestID].npcId.Length) CharacterData.Instance.QuestID += 10;
+        if (questList[CharacterData.Instance.QuestID].npcId[0] == 0)
+        {
+
+            Debug.Log("몬스터 처치용 퀘스트 입니다.");
+            Debug.Log(CharacterData.Instance.QuestID); // 여기에 몹 잡는거 카운트해주는 함수 호출해서 일정이상 잡으면 넘어감 될듯?
+        }
+        
+   
         questActionIndex = 0;
     }
 
