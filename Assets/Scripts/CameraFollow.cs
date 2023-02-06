@@ -17,5 +17,7 @@ public class CameraFollow : MonoBehaviour
         targetPos.y = Mathf.Clamp(targetPos.y, minCameraBoundary.y, maxCameraBoundary.y);
         Vector3 velo = Vector3.zero;
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref velo, smoothing);
+
+
     }
 }
