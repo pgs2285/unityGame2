@@ -23,6 +23,6 @@ public class PressToStart : MonoBehaviour
     {
         EyeBlinkEffect.SetActive(true);
         yield return new WaitForSeconds(2.0f);
-        SceneManager.LoadScene("1.MainMenu");
+        SceneManager.LoadScene("0.MainMenu");
     }
 }
