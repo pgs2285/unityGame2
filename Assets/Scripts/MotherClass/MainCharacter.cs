@@ -46,7 +46,8 @@ public class MainCharacter : MonoBehaviour
         X = Input.GetAxisRaw("Horizontal");
         Y = Input.GetAxisRaw("Vertical");
         if(X == -1) transform.Translate(new Vector2(-X, Y) * Time.deltaTime * CharacterData.Instance.Speed);
-        else if(X == 1) transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.Speed);
+        else transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.Speed);
+       
     }
 
     public void run()
