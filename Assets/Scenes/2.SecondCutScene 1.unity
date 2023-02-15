@@ -183,7 +183,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 300b7e5ed44c4b54a9db552f0b1b3c8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  light: {fileID: 1142568508}
+  mvInfo:
+  - isMove: 1
+    npcID: {fileID: 1142568508}
+    direction: UP
+    figure: 5
+    speed: 0.01
+    Delay: 3
+    context: []
+  - isMove: 1
+    npcID: {fileID: 1460607954}
+    direction: LEFT
+    figure: 5
+    speed: 0.01
+    Delay: 3
+    context: []
 --- !u!4 &285184322
 Transform:
   m_ObjectHideFlags: 0
@@ -576,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624706292279967092, guid: dde361a3a2f2741c5ab87c1e00b90ae1, type: 3}
       propertyPath: m_Name
-      value: Particle System
+      value: Object0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dde361a3a2f2741c5ab87c1e00b90ae1, type: 3}
@@ -753,6 +767,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1460607954 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 173694346958265932, guid: be60cf386df903646ab58716b0290f77, type: 3}
+  m_PrefabInstance: {fileID: 916380290}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &2034573943 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: -7813588250177028419, guid: be60cf386df903646ab58716b0290f77, type: 3}
