@@ -223,6 +223,15 @@ MonoBehaviour:
     context:
     - "\uD734... \uB2E4\uD589\uC774 \uAFC8\uC774\uC5C8\uAD6C\uB098"
     - "\uC800\uAC8C \uBB50"
+  - isMove: 0
+    npcID: {fileID: 1460607954}
+    direction: DOWN
+    figure: 5
+    speed: 0.01
+    Delay: 3
+    context:
+    - "\uD754\uD55C \uBE5B\uC774\uC5C8\uC796\uC544?"
+    - "\uC548\uAC08"
   text: {fileID: 1023843533}
   chatPanel: {fileID: 1586470677}
 --- !u!4 &285184322

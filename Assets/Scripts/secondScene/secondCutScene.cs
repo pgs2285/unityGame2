@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+using UnityEditor;
+
 [System.Serializable]
 public struct moveInfo{ 
+
     public bool isMove;
     
     public GameObject npcID;
@@ -13,6 +16,7 @@ public struct moveInfo{
     public float speed;
     public float Delay;
     public string[] context;
+
 }
 
 public class secondCutScene : MonoBehaviour
@@ -52,11 +56,17 @@ public class secondCutScene : MonoBehaviour
             targetVector = mvInfo[index].npcID.transform.position;
             targetVector.x += mvInfo[index].figure;
             break;
+
+            case "STOP":
+            //제자리에서 애니메이션만 실행하고 싶을시
+            //추후 추가
+
+            break;
         }
 
         while(Mathf.Abs(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position)) > 0.001f){ // 근접시
             Debug.Log(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position));
-            mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);
+            mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);     
             yield return new WaitForSeconds(0.00001f); // return을 통해 Scene에 진행과정 보이게함
         
         }
@@ -96,3 +106,61 @@ public class secondCutScene : MonoBehaviour
     }
     
 }
+
+
+/*
+
+
+
+
+
+1.  using UnityEngine;
+2.  using UnityEngine.UI;
+3.  
+4.  #if UNITY_EDITOR
+5.  using UnityEditor;
+6.  #endif
+7.  
+8.  public class RandomScript : MonoBehaviour
+9.  {
+10.      [HideInInspector] // HideInInspector makes sure the default inspector won't show these fields.
+11.      public bool StartTemp;
+12.  
+13.      [HideInInspector]
+14.      public InputField iField;
+15.  
+16.      [HideInInspector]
+17.      public GameObject Template;
+18.  
+19.      // ... Update(), Awake(), etc
+20.  }
+21.  
+22.  #if UNITY_EDITOR
+23.  [CustomEditor(typeof(RandomScript))]
+24.  public class RandomScript_Editor : Editor
+25.  {
+26.      public override void OnInspectorGUI()
+27.      {
+28.          DrawDefaultInspector(); // for other non-HideInInspector fields
+29.  
+30.          RandomScript script = (RandomScript)target;
+31.  
+32.          // draw checkbox for the bool
+33.          script.StartTemp = EditorGUILayout.Toggle("Start Temp", script.StartTemp);
+34.          if (script.StartTemp) // if bool is true, show other fields
+35.          {
+36.              script.iField = EditorGUILayout.ObjectField("I Field", script.iField, typeof(InputField), true) as InputField;
+37.              script.Template = EditorGUILayout.ObjectField("Template", script.Template, typeof(GameObject), true) as GameObject;
+38.          }
+39.      }
+40.  }
+41.  #endif
+
+
+// 커스텀 에디터 example
+
+
+
+
+
+*/
