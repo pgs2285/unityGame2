@@ -24,8 +24,10 @@ public class secondCutScene : MonoBehaviour
     [SerializeField]
     public moveInfo[] mvInfo;
 
+    Animation anim;
 
     private void Start(){
+        
         
         if(mvInfo[0].isMove) StartCoroutine(move(0));
         else StartCoroutine(talk(0));
@@ -35,7 +37,7 @@ public class secondCutScene : MonoBehaviour
     Vector3 targetVector;
     IEnumerator move(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
-        Debug.Log(mvInfo[index].direction);
+        anim = mvInfo[index].npcID.GetComponent<Animation>();
         switch(mvInfo[index].direction){
             case "UP":
             targetVector = mvInfo[index].npcID.transform.position;
@@ -58,19 +60,21 @@ public class secondCutScene : MonoBehaviour
             break;
 
             case "STOP":
+            
             //제자리에서 애니메이션만 실행하고 싶을시
             //추후 추가
 
             break;
         }
-
+        if(anim != null) anim.Play("mainCharacterWalk");
         while(Mathf.Abs(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position)) > 0.001f){ // 근접시
+            
             Debug.Log(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position));
             mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);     
             yield return new WaitForSeconds(0.00001f); // return을 통해 Scene에 진행과정 보이게함
         
         }
-
+        if(anim != null) anim.Stop("mainCharacterWalk");
         index += 1;
         if(index < mvInfo.Length)
         {

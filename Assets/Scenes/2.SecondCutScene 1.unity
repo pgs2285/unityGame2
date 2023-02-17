@@ -188,7 +188,7 @@ MonoBehaviour:
     npcID: {fileID: 1142568508}
     direction: UP
     figure: 5
-    speed: 0.01
+    speed: 0.1
     Delay: 3
     context: []
   - isMove: 1
@@ -373,6 +373,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7813588250177028419, guid: be60cf386df903646ab58716b0290f77, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77, type: 3}
       propertyPath: animator
       value: 
@@ -829,3 +833,19 @@ Animator:
   m_CorrespondingSourceObject: {fileID: -7813588250177028419, guid: be60cf386df903646ab58716b0290f77, type: 3}
   m_PrefabInstance: {fileID: 916380290}
   m_PrefabAsset: {fileID: 0}
+--- !u!111 &2034573944
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460607954}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3bbe60a6928016242a7ed287463098ec, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3bbe60a6928016242a7ed287463098ec, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
