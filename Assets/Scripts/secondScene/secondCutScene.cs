@@ -1,26 +1,170 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
+using UnityEditor;
+
+[System.Serializable]
+public struct moveInfo{ 
+
+    public bool isMove;
+    
+    public GameObject npcID;
+    public string direction;
+    public float figure; 
+    public float speed;
+    public float Delay;
+    public string[] context;
+
+}
 
 public class secondCutScene : MonoBehaviour
 {
+    [SerializeField]
+    public moveInfo[] mvInfo;
 
-    public GameObject light;
+    Animation anim;
 
-    IEnumerator moveLight()
-    {
-        yield return new WaitForSeconds(3.0f);
-        while (true) {
-            light.transform.position = Vector3.MoveTowards(light.transform.position, new Vector3(0, 10, 0), 0.001f);
+    private void Start(){
+        
+        
+        if(mvInfo[0].isMove) StartCoroutine(move(0));
+        else StartCoroutine(talk(0));
+        
+    }
+
+    Vector3 targetVector;
+    IEnumerator move(int index){
+        yield return new WaitForSeconds(mvInfo[index].Delay);
+        anim = mvInfo[index].npcID.GetComponent<Animation>();
+        switch(mvInfo[index].direction){
+            case "UP":
+            targetVector = mvInfo[index].npcID.transform.position;
+            targetVector.y += mvInfo[index].figure;
+            break;
+
+            case "DOWN":
+            targetVector = mvInfo[index].npcID.transform.position;
+            targetVector.y -= mvInfo[index].figure;
+            break;
+            
+            case "LEFT":
+            targetVector = mvInfo[index].npcID.transform.position;
+            targetVector.x -= mvInfo[index].figure;
+            break;
+
+            case "RIGHT":
+            targetVector = mvInfo[index].npcID.transform.position;
+            targetVector.x += mvInfo[index].figure;
+            break;
+
+            case "STOP":
+            
+            //제자리에서 애니메이션만 실행하고 싶을시
+            //추후 추가
+
+            break;
         }
+        if(anim != null) anim.Play("mainCharacterWalk");
+        while(Mathf.Abs(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position)) > 0.001f){ // 근접시
+            
+            Debug.Log(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position));
+            mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);     
+            yield return new WaitForSeconds(0.00001f); // return을 통해 Scene에 진행과정 보이게함
         
+        }
+        if(anim != null) anim.Stop("mainCharacterWalk");
+        index += 1;
+        if(index < mvInfo.Length)
+        {
+            if(mvInfo[index].isMove) StartCoroutine(move(index));
+            else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
+        } 
     }
 
-    // Update is called once per frame
-    void Start()
-    {
-        
-        light.transform.position = Vector3.MoveTowards(light.transform.position, new Vector3(0, 10, 0), 0.001f);
+    [SerializeField]
+    TextMeshProUGUI text;
+    [SerializeField]
+    GameObject chatPanel;
 
+    IEnumerator talk(int index){
+        yield return new WaitForSeconds(mvInfo[index].Delay);
+        int textIndex = 0;
+        while(mvInfo[index].context.Length > textIndex){
+
+            chatPanel.SetActive(true);
+            text.text = mvInfo[index].context[textIndex];
+            if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
+            yield return new WaitForSeconds(0.001f);
+        }
+
+        chatPanel.SetActive(false);
+
+        index += 1;
+        if(index < mvInfo.Length)
+        {
+            if(mvInfo[index].isMove) StartCoroutine(move(index));
+            else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
+        } 
     }
-}s
+    
+}
+
+
+/*
+
+
+
+
+
+1.  using UnityEngine;
+2.  using UnityEngine.UI;
+3.  
+4.  #if UNITY_EDITOR
+5.  using UnityEditor;
+6.  #endif
+7.  
+8.  public class RandomScript : MonoBehaviour
+9.  {
+10.      [HideInInspector] // HideInInspector makes sure the default inspector won't show these fields.
+11.      public bool StartTemp;
+12.  
+13.      [HideInInspector]
+14.      public InputField iField;
+15.  
+16.      [HideInInspector]
+17.      public GameObject Template;
+18.  
+19.      // ... Update(), Awake(), etc
+20.  }
+21.  
+22.  #if UNITY_EDITOR
+23.  [CustomEditor(typeof(RandomScript))]
+24.  public class RandomScript_Editor : Editor
+25.  {
+26.      public override void OnInspectorGUI()
+27.      {
+28.          DrawDefaultInspector(); // for other non-HideInInspector fields
+29.  
+30.          RandomScript script = (RandomScript)target;
+31.  
+32.          // draw checkbox for the bool
+33.          script.StartTemp = EditorGUILayout.Toggle("Start Temp", script.StartTemp);
+34.          if (script.StartTemp) // if bool is true, show other fields
+35.          {
+36.              script.iField = EditorGUILayout.ObjectField("I Field", script.iField, typeof(InputField), true) as InputField;
+37.              script.Template = EditorGUILayout.ObjectField("Template", script.Template, typeof(GameObject), true) as GameObject;
+38.          }
+39.      }
+40.  }
+41.  #endif
+
+
+// 커스텀 에디터 example
+
+
+
+
+
+*/

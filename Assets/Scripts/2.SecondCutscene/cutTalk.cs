@@ -1,35 +1,48 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
 
 public class cutTalk : MonoBehaviour
 {
-    public GameObject chatWindow;
-    public TextMesh text;
+    public GameObject character;
+    public float moveSpeed;
+    public Animation animation;
+    public string animationName;
+    public string dialogue;
 
-    Vector3 destination = new Vector3(0, -5, 0);
+    private bool isPlaying;
 
-
-    // Update is called once per frame
     void Start()
     {
-        StartCoroutine(chatMotion());
+        isPlaying = false;
     }
-    private void Update()
+
+    void OnTriggerEnter(Collider other)
     {
-        transform.position = Vector3.Lerp(transform.position, destination, Time.deltaTime);
+        if (!isPlaying)
+        {
+            isPlaying = true;
+            StartCoroutine(PlayCutscene());
+        }
     }
-    IEnumerator chatMotion()
+
+    IEnumerator PlayCutscene()
     {
+        yield return new WaitForSeconds(1f);
 
-        yield return new WaitForSeconds(3f);
-        chatWindow.SetActive(true);
-        text.text = "조졌네";
-        
-        yield return new WaitForSeconds(3f);
-        SceneManager.LoadScene("3.TreeVillage");
+        // Move character across the screen
+        while (character.transform.position.x < 10f)
+        {
+            character.transform.Translate(moveSpeed * Time.deltaTime, 0, 0);
+            yield return null;
+        }
 
+        // Play animation
+        animation.Play(animationName);
+
+        // Display dialogue
+        Debug.Log(dialogue);
+
+        isPlaying = false;
     }
 }
