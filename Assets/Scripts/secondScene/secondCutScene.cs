@@ -23,4 +23,4 @@ public class secondCutScene : MonoBehaviour
         light.transform.position = Vector3.MoveTowards(light.transform.position, new Vector3(0, 10, 0), 0.001f);
 
     }
-}
+}s
