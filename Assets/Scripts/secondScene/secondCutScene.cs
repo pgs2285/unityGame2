@@ -16,6 +16,7 @@ public struct moveInfo{
     public float speed;
     public float Delay;
     public string[] context;
+    public Animation animation;
 
 }
 
@@ -37,7 +38,8 @@ public class secondCutScene : MonoBehaviour
     Vector3 targetVector;
     IEnumerator move(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
-        anim = mvInfo[index].npcID.GetComponent<Animation>();
+
+        mvInfo[index].npcID.SetActive(true);
         switch(mvInfo[index].direction){
             case "UP":
             targetVector = mvInfo[index].npcID.transform.position;
