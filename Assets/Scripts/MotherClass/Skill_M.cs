@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Skill : MonoBehaviour
+public class Skill_M : MonoBehaviour
 {
     private Ray ray;
     private RaycastHit hit;
-    //Å¬·¡½º ÇÊ¿ä º¯¼ö
+    //Å¬ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½
     protected bool isRecycleTime = true;
     protected bool isMana = true;
     protected string skill_id;
@@ -28,9 +28,9 @@ public class Skill : MonoBehaviour
             //if (Physics.Raycast(transform.position, transform.forward, out hit, skill_range, GameObject<Enermy>))
             //{
             //    if (monster_hp < skill_demage)
-            //        Debug.Log("¸ó½ºÅÍ°¡ Á×¾ú½À´Ï´Ù");
+            //        Debug.Log("ï¿½ï¿½ï¿½Í°ï¿½ ï¿½×¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½");
             //    else
-            //        Debug.Log(skill_demage, "¸¸Å­ µ¥¹ÌÁö¸¦ ÀÔÇû½À´Ï´Ù.");
+            //        Debug.Log(skill_demage, "ï¿½ï¿½Å­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
             //}
         }
         
