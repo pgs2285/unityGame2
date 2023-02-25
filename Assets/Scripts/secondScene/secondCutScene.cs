@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public struct moveInfo{ 
 
     public bool isMove;
+    public bool loadScene;
     
     public GameObject npcID;
     public string direction;
@@ -17,7 +18,8 @@ public struct moveInfo{
     public float Delay;
     public string[] context;
     public Animation animation;
-
+    public string LoadScene;
+    
 }
 
 public class secondCutScene : MonoBehaviour
@@ -80,8 +82,10 @@ public class secondCutScene : MonoBehaviour
         index += 1;
         if(index < mvInfo.Length)
         {
+            if (mvInfo[index].loadScene) SceneManager.LoadScene(mvInfo[index].LoadScene);
             if(mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
+
         } 
     }
 
@@ -106,7 +110,8 @@ public class secondCutScene : MonoBehaviour
         index += 1;
         if(index < mvInfo.Length)
         {
-            if(mvInfo[index].isMove) StartCoroutine(move(index));
+            if (mvInfo[index].loadScene) SceneManager.LoadScene(mvInfo[index].LoadScene);
+            if (mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
         } 
     }

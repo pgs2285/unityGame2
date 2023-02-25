@@ -12,7 +12,7 @@ public class MainBtn : MonoBehaviour
         switch (currentType)
         {   
             case BtnType.New: // 0
-            SceneManager.LoadScene("1.StartCutScene");
+            SceneManager.LoadScene("2.SecondCutScene 1");
             Debug.Log("New Game");
             break;
 
