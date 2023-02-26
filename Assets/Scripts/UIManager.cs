@@ -7,8 +7,7 @@ public class UIManager : MonoBehaviour
 {   
     [SerializeField]
     private GameObject hpBar;
-    [SerializeField]
-    private GameObject mpBar;
+
     [SerializeField]
     private TextMeshProUGUI level;
     
@@ -30,7 +29,7 @@ public class UIManager : MonoBehaviour
 
 
     private int limitHP=10;
-    private int limitMP=10;
+
 
     public void Start(){
         infoPanel.SetActive(false);
@@ -42,13 +41,7 @@ public class UIManager : MonoBehaviour
         for(int i = CharacterData.Instance.CurrentHP; i < limitHP; i++){
             hpBar.transform.GetChild(i).gameObject.SetActive(false);
         }
-        for(int i = 0; i < CharacterData.Instance.CurrentMP; i++){
-            mpBar.transform.GetChild(i).gameObject.SetActive(true);
-        }
-        for(int i = CharacterData.Instance.CurrentMP; i < limitMP; i++){
-            mpBar.transform.GetChild(i).gameObject.SetActive(false);
-        }
-        
+
         level.text = CharacterData.Instance.Level.ToString();
         nowEXP.text = CharacterData.Instance.Experience.ToString();
         fullEXP.text = CharacterData.Instance.fullExperience[CharacterData.Instance.Level - 1].ToString();

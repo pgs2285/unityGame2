@@ -20,6 +20,7 @@ public class QuestManager : MonoBehaviour
     void GenerateData(){
         questList.Add(10, new QuestData("(빛을 따라가보자)", new int[] {200}));
         questList.Add(20, new QuestData("(의문의 존재)", new int[] { 200 }));
+        questList.Add(30, new QuestData("(배가 고파1)", new int[] { 100 }));
 
 
     }
