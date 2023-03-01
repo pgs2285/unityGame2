@@ -15,7 +15,7 @@ public class portalManager : MonoBehaviour
         {
             if (collision.collider.CompareTag("Player"))
             {
-                SceneManager.LoadScene("3.TreeVillage");
+                SceneManager.LoadScene("3.cutTreeVillage");
         
             }
         }
