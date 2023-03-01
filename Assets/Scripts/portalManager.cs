@@ -11,7 +11,7 @@ public class portalManager : MonoBehaviour
         {
             SceneManager.LoadScene("4.Mob");
         }
-        if(this.gameObject.name.ToString() == "1-1portal")
+        if(this.gameObject.name.ToString() == "CavePortal")
         {
             if (collision.collider.CompareTag("Player"))
             {
