@@ -12,15 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/3.TreeVillage.unity
     guid: bb659336c234740a4a393b1a89433db4
   - enabled: 1
-    path: Assets/Scenes/1.StartCutScene.unity
-    guid: 45fb38a60d7c8c944a48cfffbfa103bb
+    path: Assets/Scenes/2.SecondCutScene 1.unity
+    guid: 94a037c42da924bdb86a08cd6d32caae
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/4.Mob.unity
     guid: 1149264f4f2a04ff291c3b0e5732542d
-  - enabled: 1
-    path: Assets/Scenes/1.firstCutScene.unity
-    guid: d173ae2f96ed68a48a1c18be178ab45a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/0.MainMenu.unity
     guid: 7a4368f7789624ce1a58afffb2949f42
+  - enabled: 1
+    path: Assets/Scenes/3.cave.unity
+    guid: 54e5e1a50213cbe4c954aaa8bba75054
   m_configObjects: {}

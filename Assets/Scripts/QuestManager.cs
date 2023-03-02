@@ -18,10 +18,10 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI QuestName;
 
     void GenerateData(){
-        questList.Add(10, new QuestData("(캣과 대화하기)", new int[] {200}));
-        questList.Add(20, new QuestData("(나무의 상태 확인하기)", new int[] { 100 }));
-        questList.Add(30, new QuestData("(캣과 대화하기)", new int[] { 200 }));
-        questList.Add(40, new QuestData("(마수 10마리 처치하기)", new int[] {0}));
+        questList.Add(10, new QuestData("(빛을 따라가보자)", new int[] {200}));
+        questList.Add(20, new QuestData("(의문의 존재)", new int[] { 200 }));
+        questList.Add(30, new QuestData("(배가 고파1)", new int[] { 100 }));
+
 
     }
     public int getQuestTalkIndex(int id){
@@ -41,13 +41,13 @@ public class QuestManager : MonoBehaviour
     void NextQuest()
     {
         if (questActionIndex == questList[CharacterData.Instance.QuestID].npcId.Length) CharacterData.Instance.QuestID += 10;
-        if (questList[CharacterData.Instance.QuestID].npcId[0] == 0)
+/*        if (questList[CharacterData.Instance.QuestID].npcId[0] == 0)
         {
 
             Debug.Log("몬스터 처치용 퀘스트 입니다.");
             Debug.Log(CharacterData.Instance.QuestID); // 여기에 몹 잡는거 카운트해주는 함수 호출해서 일정이상 잡으면 넘어감 될듯?
         }
-        
+  */      
    
         questActionIndex = 0;
     }
