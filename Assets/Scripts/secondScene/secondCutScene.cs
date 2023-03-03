@@ -40,7 +40,7 @@ public class secondCutScene : MonoBehaviour
     Vector3 targetVector;
     IEnumerator move(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
-
+        bool checkMove = true;
         mvInfo[index].npcID.SetActive(true);
         switch(mvInfo[index].direction){
             case "UP":
@@ -63,22 +63,25 @@ public class secondCutScene : MonoBehaviour
             targetVector.x += mvInfo[index].figure;
             break;
 
-            case "STOP":
-            
-            //제자리에서 애니메이션만 실행하고 싶을시
-            //추후 추가
+            case "flipLEFT":
+            mvInfo[index].npcID.transform.eulerAngles = new Vector3(0, 180, 0);
+            checkMove = false;
+            break;
 
+            case "flipRIGHT":            
+            mvInfo[index].npcID.transform.eulerAngles = new Vector3(0, 0, 0);
+            checkMove = false;
             break;
         }
-        if(anim != null) anim.Play("mainCharacterWalk");
-        while(Mathf.Abs(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position)) > 0.001f){ // 근접시
+        
+        while(Mathf.Abs(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position)) > 0.001f && checkMove){ // 근접시
             
             Debug.Log(Vector3.Distance(targetVector, mvInfo[index].npcID.transform.position));
             mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);     
             yield return new WaitForSeconds(0.00001f); // return을 통해 Scene에 진행과정 보이게함
         
         }
-        if(anim != null) anim.Stop("mainCharacterWalk");
+        
         index += 1;
         if(index < mvInfo.Length)
         {
@@ -93,6 +96,14 @@ public class secondCutScene : MonoBehaviour
     TextMeshProUGUI text;
     [SerializeField]
     GameObject chatPanel;
+    IEnumerator flipleft(int index){
+        yield return new WaitForSeconds(mvInfo[index].Delay);
+        transform.eulerAngles = new Vector3(0, 180, 0);
+    }
+    IEnumerator flipright(int index){
+        yield return new WaitForSeconds(mvInfo[index].Delay);
+        transform.eulerAngles = new Vector3(0, 0, 0);
+    }
 
     IEnumerator talk(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
