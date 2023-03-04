@@ -40,6 +40,7 @@ public class secondCutScene : MonoBehaviour
     Vector3 targetVector;
     IEnumerator move(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
+        if (mvInfo[index].animation != null) mvInfo[index].animation.Play();
         bool checkMove = true;
         mvInfo[index].npcID.SetActive(true);
         switch(mvInfo[index].direction){
