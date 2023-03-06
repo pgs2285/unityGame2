@@ -30,9 +30,9 @@ public class secondCutScene : MonoBehaviour
     Animation anim;
 
     private void Start(){
-        
-        
-        if(mvInfo[0].isMove) StartCoroutine(move(0));
+
+        CharacterData.Instance.IsMove = false;
+        if (mvInfo[0].isMove) StartCoroutine(move(0));
         else StartCoroutine(talk(0));
         
     }
@@ -90,7 +90,11 @@ public class secondCutScene : MonoBehaviour
             if(mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
 
-        } 
+        }
+        else
+        {
+            CharacterData.Instance.IsMove = true;
+        }
     }
 
     [SerializeField]
@@ -125,7 +129,11 @@ public class secondCutScene : MonoBehaviour
             if (mvInfo[index].loadScene) SceneManager.LoadScene(mvInfo[index].LoadScene);
             if (mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
-        } 
+        }
+        else
+        {
+            CharacterData.Instance.IsMove = true;
+        }
     }
     
 }

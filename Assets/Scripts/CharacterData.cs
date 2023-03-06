@@ -5,6 +5,14 @@ using UnityEngine;
 public class CharacterData : Singleton<CharacterData>
 {
     int maxHP = 4;
+    bool isMove = true;
+
+    public bool IsMove
+    {
+        get { return isMove; }
+        set { isMove = value; }
+    }
+
     public int MaxHP
     {
         get { return maxHP; }

@@ -61,7 +61,7 @@ public class MainCharacter : MonoBehaviour
 
     void Update()
     {
-        if (!uiManager.isAction)
+        if (!uiManager.isAction && CharacterData.Instance.IsMove)
         {
             walk();
         }
