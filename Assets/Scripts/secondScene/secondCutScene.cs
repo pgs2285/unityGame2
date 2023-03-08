@@ -86,8 +86,8 @@ public class secondCutScene : MonoBehaviour
         index += 1;
         if(index < mvInfo.Length)
         {
-            if (mvInfo[index].loadScene) SceneManager.LoadScene(mvInfo[index].LoadScene);
-            if(mvInfo[index].isMove) StartCoroutine(move(index));
+            if (mvInfo[index].loadScene) { SceneManager.LoadScene(mvInfo[index].LoadScene); CharacterData.Instance.IsMove = true; }
+            if (mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
 
         }
@@ -126,7 +126,7 @@ public class secondCutScene : MonoBehaviour
         index += 1;
         if(index < mvInfo.Length)
         {
-            if (mvInfo[index].loadScene) SceneManager.LoadScene(mvInfo[index].LoadScene);
+            if (mvInfo[index].loadScene) { SceneManager.LoadScene(mvInfo[index].LoadScene); CharacterData.Instance.IsMove = true; }
             if (mvInfo[index].isMove) StartCoroutine(move(index));
             else if(!mvInfo[index].isMove) StartCoroutine(talk(index));
         }
