@@ -23,6 +23,7 @@ public class QuestManager : MonoBehaviour
         questList.Add(30, new QuestData("배가 고파1", new int[] { 100 }));
         questList.Add(40, new QuestData("배가 고파2", new int[]{200}));
         questList.Add(50, new QuestData("나무열매를 찾아보자.", new int[] {300} ));
+        questList.Add(60, new QuestData("할말이 있어", new int[] { 200 }));
       
 
     }
