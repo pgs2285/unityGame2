@@ -7143,5 +7143,9 @@ PrefabInstance:
       propertyPath: mvInfo.Array.data[5].npcID
       value: 
       objectReference: {fileID: 1460607954}
+    - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153, type: 3}
+      propertyPath: mvInfo.Array.data[0].context.Array.data[2]
+      value: "\uC0C8\uC0BC\uC2A4\uB7FD\uAC8C \uC774\uB7F0\uAFC8\uC744..."
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 964a0cc3510c71641ad3494e3250b153, type: 3}
