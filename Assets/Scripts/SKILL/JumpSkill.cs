@@ -3,23 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.LightAnchor;
-
+using TMPro;
+using System;
 public class JumpSkill : MonoBehaviour
 {
 
     public float jumpDistance = 1.0f;
     public float cooldownTime = 2.0f;
-    private float filledTime = 0.0f;
+    public float filledTime = 0.0f;
     private bool usableSkill = true;
-    private WaitForFixedUpdate fixedUpdate = new WaitForFixedUpdate();
+
     public Image icon;
     private Vector3 jumpDirection = Vector3.zero;
+    public TextMeshProUGUI coolTimeIndicator;
 
 
-    private void Start(){
-        StartCoroutine("cooltimeCount");
-    }
-    
     void jumpSkill()
     {
         float X = Input.GetAxisRaw("Horizontal");
@@ -46,26 +44,29 @@ public class JumpSkill : MonoBehaviour
     }
 
 
-    IEnumerator cooltimeCount(){
-        
-        for(;;){
-            if(filledTime < cooldownTime){
+    public void Update()
+    {
+        if (filledTime < cooldownTime)
+        {
+            coolTimeIndicator.gameObject.SetActive(true);
+            icon.color = Color.gray;
+            filledTime += Time.deltaTime;
+            icon.fillAmount = filledTime / cooldownTime;
+            coolTimeIndicator.text = Math.Truncate(((cooldownTime - filledTime )* 100) / 100).ToString();
 
-                yield return fixedUpdate;
-                filledTime += Time.deltaTime;
-                icon.fillAmount = filledTime/cooldownTime;
+        }
+        else
+        {
+            coolTimeIndicator.gameObject.SetActive(false);
+            icon.color = Color.white;
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                
+                jumpSkill();
+                filledTime = 0.0f;
 
-            }else{
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    jumpSkill();
-                    filledTime = 0.0f;
-                    yield break;
-                }
             }
         }
-        
     }
-
 }
 
