@@ -24764,6 +24764,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 2128850716}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 2000670507}
@@ -24815,11 +24819,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 2637987301116214690, guid: be60cf386df903646ab58716b0290f77, type: 3}
+      propertyPath: icon
+      value: 
+      objectReference: {fileID: 268963539}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be60cf386df903646ab58716b0290f77, type: 3}
 --- !u!4 &2128850715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77, type: 3}
+  m_PrefabInstance: {fileID: 2128850714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2128850716 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: -7813588250177028419, guid: be60cf386df903646ab58716b0290f77, type: 3}
   m_PrefabInstance: {fileID: 2128850714}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2130830642
