@@ -6,7 +6,13 @@ public class CharacterData : Singleton<CharacterData>
 {
     int maxHP = 4;
     bool isMove = true;
+    bool isDashAble = false;
 
+    public bool IsDashAble
+    {
+        get { return isDashAble; }
+        set { isDashAble = value; }
+    }
     public bool IsMove
     {
         get { return isMove; }
