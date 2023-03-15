@@ -17,14 +17,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI fullEXP;
 
-    [SerializeField]
-    private GameObject infoPanel;
+    // [SerializeField]
+    // private GameObject infoPanel;
 
-    [SerializeField]
-    private TextMeshProUGUI attackPoint;
+    // [SerializeField]
+    // private TextMeshProUGUI attackPoint;
 
-    [SerializeField]
-    private TextMeshProUGUI speed;
+    // [SerializeField]
+    // private TextMeshProUGUI speed;
 
 
 
@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
 
 
     public void Start(){
-        infoPanel.SetActive(false);
+        // infoPanel.SetActive(false);
     }
     public void Update(){
         for(int i = 0; i < CharacterData.Instance.CurrentHP; i++){
@@ -50,17 +50,17 @@ public class UIManager : MonoBehaviour
     }
 
 
-    public void activeExtraInfo(){
-        if(infoPanel.activeSelf == false){
-            infoPanel.SetActive(true);
-            attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
+    // public void activeExtraInfo(){
+    //     if(infoPanel.activeSelf == false){
+    //         infoPanel.SetActive(true);
+    //         attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
             
-            speed.text = CharacterData.Instance.Speed.ToString();
+    //         speed.text = CharacterData.Instance.Speed.ToString();
 
-        }else{
-            infoPanel.SetActive(false);
-        }
-    }
+    //     }else{
+    //         infoPanel.SetActive(false);
+    //     }
+    // }
 
     [SerializeField] TextMeshProUGUI chatText;
     GameObject scanObject;

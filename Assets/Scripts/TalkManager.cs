@@ -33,18 +33,24 @@ public class TalkManager : MonoBehaviour
 
     }
     public GameObject effect;
+    public GameObject SKill1;
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
         try
         {
             if (talkIndex == talkData[id - id % 10].Length)
             {
-                switch (id) // 특정대사가 끝나고 컷신을 넣어주고 싶으면 여기서
+                switch (id) // 특정대사가 끝나고 컷신 or 스킬을 넣어주고 싶으면 여기서
                 {
 
                     case 210:
                         effect.SetActive(true);
                         StartCoroutine(Effect(0));
+                        break;
+                    case 260:
+                        CharacterData.Instance.IsDashAble = true;
+                        SKill1.SetActive(true);
+                        // ui활성화
                         break;
                     default:
                         break;
