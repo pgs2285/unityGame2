@@ -27,8 +27,9 @@ public class UIManager : MonoBehaviour
     // private TextMeshProUGUI speed;
 
 
+    
 
-    private int limitHP=10;
+    private int limitHP=4;
 
 
     public void Start(){
