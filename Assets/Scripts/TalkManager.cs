@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class TalkManager : MonoBehaviour
@@ -34,6 +35,8 @@ public class TalkManager : MonoBehaviour
     }
     public GameObject effect;
     public GameObject SKill1;
+    public GameObject Tutorial;
+    public TextMeshProUGUI TutorialMessage;
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
         try
@@ -49,9 +52,18 @@ public class TalkManager : MonoBehaviour
                         break;
                     case 260:
                         CharacterData.Instance.IsDashAble = true;
+                        TutorialMessage.text = "이제부터 Space를 누르면 일정거리를 텔레포트 할 수 있습니다";
+                        Tutorial.SetActive(true);
+                        StartCoroutine(Tutorial1Time());
                         SKill1.SetActive(true);
                         // ui활성화
                         break;
+
+                    case 350:
+                        Tutorial.SetActive(true);
+                        StartCoroutine(Tutorial1Time());
+                        break;
+
                     default:
                         break;
                 }
@@ -94,5 +106,10 @@ public class TalkManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2.0f);
         effect.SetActive(false);
+    }
+    IEnumerator Tutorial1Time()
+    {
+        yield return new WaitForSeconds(5.0f);
+        Tutorial.SetActive(false);
     }
 }
