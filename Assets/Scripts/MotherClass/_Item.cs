@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Item
+[System.Serializable]
+public class _Item
 {
  
     public string itemName;

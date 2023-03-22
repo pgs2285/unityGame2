@@ -7,8 +7,13 @@ public class CharacterData : Singleton<CharacterData>
     int maxHP = 4;
     bool isMove = true;
     bool isDashAble = false;
-    public List<string> itemList;
+    int hungry = 10;
 
+    public int Hungry
+    {
+        get { return hungry; }
+        set { hungry = value; }
+    }
 
     public bool IsDashAble
     {
