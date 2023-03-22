@@ -62,6 +62,7 @@ public class TalkManager : MonoBehaviour
                     case 350:
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
+                        CharacterData.Instance.itemList.Add("apple");
                         Destroy(GameObject.Find("TutorialApple"));
                         break;
 

@@ -7,6 +7,8 @@ public class CharacterData : Singleton<CharacterData>
     int maxHP = 4;
     bool isMove = true;
     bool isDashAble = false;
+    public List<string> itemList;
+
 
     public bool IsDashAble
     {
