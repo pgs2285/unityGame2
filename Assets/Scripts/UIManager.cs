@@ -8,14 +8,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject hpBar;
 
-    [SerializeField]
-    private TextMeshProUGUI level;
+    // [SerializeField]
+    // private TextMeshProUGUI level;
     
-    [SerializeField]
-    private TextMeshProUGUI nowEXP;
+    // [SerializeField]
+    // private TextMeshProUGUI nowEXP;
 
-    [SerializeField]
-    private TextMeshProUGUI fullEXP;
+    // [SerializeField]
+    // private TextMeshProUGUI fullEXP;
 
     // [SerializeField]
     // private GameObject infoPanel;
@@ -43,9 +43,9 @@ public class UIManager : MonoBehaviour
             hpBar.transform.GetChild(i).gameObject.SetActive(false);
         }
 
-        level.text = CharacterData.Instance.Level.ToString();
-        nowEXP.text = CharacterData.Instance.Experience.ToString();
-        fullEXP.text = CharacterData.Instance.fullExperience[CharacterData.Instance.Level - 1].ToString();
+        // level.text = CharacterData.Instance.Level.ToString();
+        // nowEXP.text = CharacterData.Instance.Experience.ToString();
+        // fullEXP.text = CharacterData.Instance.fullExperience[CharacterData.Instance.Level - 1].ToString();
 
         
     }
