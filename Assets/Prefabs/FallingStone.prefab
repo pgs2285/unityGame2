@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 8922032094551571976}
   - component: {fileID: 8922032094551571977}
   - component: {fileID: 8922032094551571978}
-  - component: {fileID: 8922032094551571979}
+  - component: {fileID: 3330969855753852291}
+  - component: {fileID: -5880232153690296650}
   m_Layer: 0
   m_Name: FallingStone
   m_TagString: Untagged
@@ -101,13 +102,13 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8922032094551571979
+--- !u!114 &3330969855753852291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,8 +117,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 8922032094551571980}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b52c4279ddc544e90bd36a37929531fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 20985060c74844356a064c723b2e41d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  tumble: 10
+--- !u!58 &-5880232153690296650
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8922032094551571980}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
