@@ -20,6 +20,9 @@ public class TalkManager : MonoBehaviour
         talkData.Add(100, new string[] { "맑은 물이다." });
         talkData.Add(300, new string[] { "나무이다." }); //열매달린 나무
         talkData.Add(400, new string[] { "평범한 나무이다." }); // 일반나무
+
+        // 500 세계수
+        //600 세계수 포탈(맵 전체이동 포탈)
         /////////////////////////////////캐릭터들의 기본대사 (퀘스트와 관련이 없으면 출력)/////////////////////////////////////
         talkData.Add(200 + 10, new string[] {"??? : \n 이 동굴에 생명체는 오랜만이구나...", "??? : \n 그래, 여긴 어쩌다 오게 되었니?", "이브 : \n 나도 몰라", "이브 : \n 일어나 보니 여기였어."});
         talkData.Add(200 + 20, new string[] { "??? : \n 배가 고프나 보구나", " ??? : \n ...", "??? : \n 저기 옆에 웅덩이에서 물이라도 마셔보는게 어때?", "??? : \n 웅덩이는 오른쪽으로 쭉가면 있을꺼아." });
@@ -38,6 +41,7 @@ public class TalkManager : MonoBehaviour
     public GameObject Tutorial;
     public Item TutorialFruit;
     public TextMeshProUGUI TutorialMessage;
+   
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
         try
@@ -57,7 +61,11 @@ public class TalkManager : MonoBehaviour
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
                         SKill1.SetActive(true);
+
                         // ui활성화
+                        StartCoroutine(walkingToLifeTree());
+                        lifeTreePortal.SetActive(true);
+                        /// 이후는 여우가 앞으로 걸어가되 주인공이 추월하지 못하는 식으로 y 55까지
                         break;
 
                     case 350:
@@ -65,8 +73,10 @@ public class TalkManager : MonoBehaviour
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);
                         Destroy(GameObject.Find("TutorialApple"));
-                        
+
                         break;
+
+
 
                     default:
                         break;
@@ -115,5 +125,29 @@ public class TalkManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5.0f);
         Tutorial.SetActive(false);
+    }
+
+
+    public GameObject fox;
+    public GameObject cat;
+    public GameObject lifeTreePortal;
+    IEnumerator walkingToLifeTree()
+    {
+        Vector3 targetVector = fox.transform.position;
+        targetVector.y += 60;
+        while (Mathf.Abs(Vector3.Distance(targetVector, fox.transform.position)) > 0.001f)
+        {
+            fox.transform.position = Vector3.MoveTowards(fox.transform.position, targetVector, 0.03f);
+            if(fox.transform.position.y < cat.transform.position.y)
+            {
+                Vector3 temp = cat.transform.position;
+                temp.y -= 1;
+                cat.transform.position = temp;
+            }
+            
+            yield return new WaitForFixedUpdate();
+
+        }
+        yield return new WaitForFixedUpdate();
     }
 }
