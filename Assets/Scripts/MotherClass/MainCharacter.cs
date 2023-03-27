@@ -78,10 +78,8 @@ public class MainCharacter : MonoBehaviour
         
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Object")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
         if(rayHit.collider != null && Input.GetButtonDown("Jump")){
-            Debug.Log("상호작용");
             scanObject = rayHit.collider.gameObject;
             uiManager.Action(scanObject);
-
         }
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Portal")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
 

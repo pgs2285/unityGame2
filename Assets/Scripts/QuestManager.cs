@@ -25,7 +25,9 @@ public class QuestManager : MonoBehaviour
         questList.Add(50, new QuestData("나무열매를 찾아보자.", new int[] {300} ));
         questList.Add(60, new QuestData("할말이 있어", new int[] { 200 }));
         questList.Add(70, new QuestData(("너의 이름은?"), new int[] { 200 }));
-        questList.Add(80, new QuestData(("여기가 어디야?"), new int[] { 600 }));
+
+        ////////////cave///////////////////
+        questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 600,600}));
         
       
 
@@ -47,14 +49,7 @@ public class QuestManager : MonoBehaviour
     void NextQuest()
     {
         if (questActionIndex == questList[CharacterData.Instance.QuestID].npcId.Length) CharacterData.Instance.QuestID += 10;
-        /*        if (questList[CharacterData.Instance.QuestID].npcId[0] == 0)
-                {
-
-                    Debug.Log("몬스터 처치용 퀘스트 입니다.");
-                    Debug.Log(CharacterData.Instance.QuestID); // 여기에 몹 잡는거 카운트해주는 함수 호출해서 일정이상 잡으면 넘어감 될듯?
-                }
-          */
-
+        else CharacterData.Instance.QuestID += 1;
 
         questActionIndex = 0;
     }
