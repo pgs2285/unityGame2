@@ -10,7 +10,7 @@ public class closeDoor : MonoBehaviour
         if(CharacterData.Instance.QuestID == 81)
         {
             Light.SetActive(true);
-            gameObject.SetActive(false);
+           
         }    
     }
 }
