@@ -33,6 +33,9 @@ EditorBuildSettings:
     path: Assets/Scenes/3.cave.unity
     guid: 54e5e1a50213cbe4c954aaa8bba75054
   - enabled: 1
+    path: Assets/Scenes/4 bearCaveIngame.unity
+    guid: a61748b443f854153b11a2dd9df1d115
+  - enabled: 1
     path: Assets/Scenes/3.cutTreeVillage.unity
     guid: 2f865bf6837fec1499912978d66bc1dc
   - enabled: 1
