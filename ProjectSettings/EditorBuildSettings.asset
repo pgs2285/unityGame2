@@ -5,7 +5,37 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Endless Sky/MobileExample.unity
+    path: Assets/Scenes/3.TreeVillage 1.unity
+    guid: 13a44bf46269b5345ae6ec899bdc1bbb
   - enabled: 1
-    path: Assets/test.unity
+    path: Assets/Scenes/3.TreeVillage.unity
+    guid: bb659336c234740a4a393b1a89433db4
+  - enabled: 1
+    path: Assets/Scenes/4 bearCave.unity
+    guid: 1c05c0ed408194344af732b855261a57
+  - enabled: 1
+    path: Assets/Scenes/0.MainMenu.unity
+    guid: 7a4368f7789624ce1a58afffb2949f42
+  - enabled: 1
+    path: Assets/Scenes/1.Dream.unity
+    guid: 24b87369a10104f649e2d17f0ea600a6
+  - enabled: 1
+    path: Assets/Scenes/2.SecondCutScene 1.unity
+    guid: 94a037c42da924bdb86a08cd6d32caae
+  - enabled: 1
+    path: Assets/Scenes/3.cave.unity
+    guid: 54e5e1a50213cbe4c954aaa8bba75054
+  - enabled: 1
+    path: Assets/Scenes/3.cutTreeVillage.unity
+    guid: 2f865bf6837fec1499912978d66bc1dc
+  - enabled: 1
+    path: Assets/Scenes/-1.PressToStart.unity
+    guid: a2ae95368b1ca447dbe71147b7f97b92
+  m_configObjects: {}
