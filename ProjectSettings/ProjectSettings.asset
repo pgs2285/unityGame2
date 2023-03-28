@@ -862,7 +862,7 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
-    Collab: 1
+    Collab: 0
     ErrorHub: 0
     Game Performance: 0
     Game_Performance: 0
@@ -885,11 +885,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 9c35c46b-b3cf-45ca-9ef3-03ec94499d16
+  cloudProjectId: e978cb09-dc81-437e-ac50-572167ce5db5
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: catAdventure (1)
-  organizationId: sp981212
+  projectName: catAdventure
+  organizationId: huyi3482
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1
   playerDataPath: 
