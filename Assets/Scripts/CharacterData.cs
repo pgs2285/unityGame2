@@ -91,7 +91,7 @@ public class CharacterData : Singleton<CharacterData>
         set { currentMP = value; }
     }
 
-    int questID = 10;
+    public int questID = 10;
     public int QuestID
     {
         get { return questID; }

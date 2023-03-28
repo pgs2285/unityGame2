@@ -35,6 +35,8 @@ public class TalkManager : MonoBehaviour
         talkData.Add(200 + 60, new string[] { "혼란스럽지?", " 아마 무슨일인가 싶을거야...", "일단 나를 따라와봐.", "지금까지 일어난 일에 대해 설명을 해줄게", "앞으로 쭉가다보면 덩굴이 하나 있을거야..", "내가 임시로 덩굴을 뛰어넘을 수 있는 방법을 하나 알려줄게", "이제부터 스페이스바를 누르면 일정 거리를 뛰어넘을 수 있을거야.", "덩굴 넘어서 보도록하자" });
 
         talkData.Add(200 + 70, new string[]{"여기 보이는 나무가 이 모든 일의 근원지야.", "원래는 아름다운 동내였지만 어쩌다보니 이렇게 되었네..","(후드를 벗으며)", "너에게 남은 내 힘을 모두 전해줄게", "앞으로 이렇게만든 7대종을 물리치면서 이런 후드를 얻어가면 그 힘을 사용할 수 있을거야", "행운을 빌게", "옆에 포탈을 이용해서 먼저 곰을 잡으러 가봐."});
+        talkData.Add(600 + 80, new string[] { "벽에 이상한 무늬가 있다." , "수상한 빛이 내 몸에 스며들었다.","이 빛은 뭐지?", "뭔진 모르겠지만 앞으로의 동굴탐험에 큰 도움이 되겠어"});
+
 
 
     }
@@ -43,6 +45,7 @@ public class TalkManager : MonoBehaviour
     public GameObject Tutorial;
     public Item TutorialFruit;
     public TextMeshProUGUI TutorialMessage;
+
    
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
@@ -84,6 +87,10 @@ public class TalkManager : MonoBehaviour
 
                         break;
 
+////////////////////////////////////여기부터 4 bearCave//////////////////////////////////////////
+                    case 680:
+               
+                        break;
                     default:
                         break;
                 }
