@@ -6,10 +6,12 @@ public class closetheDoor : MonoBehaviour
 {
 
     public GameObject door;
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag== "Player") {
             door.SetActive(true);
+            
             StartCoroutine(Shake(0.5f, 2.0f));
             
         }
