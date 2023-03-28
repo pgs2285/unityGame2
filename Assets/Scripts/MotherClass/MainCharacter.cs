@@ -39,8 +39,8 @@ public class MainCharacter : MonoBehaviour
 
     }
 
-    public float X;
-    public float Y;
+    float X;
+    float Y;
     public void walk()
     {
         X = Input.GetAxisRaw("Horizontal");
@@ -88,8 +88,31 @@ public class MainCharacter : MonoBehaviour
             movePanel.SetActive(true);
         }
 
+        switchingAble();
+
+    }
 
 
+    public void switchingAble() { 
+        //// questID가 80이면 스위칭 가능하게함 (스킬 2개 받고감)
+        if(CharacterData.Instance.questID > 80) // 80보다 크면
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                /*
+                  
+                 1. 캐릭터 외형변화
+                 2. 캐릭터 animation변화
+                 3. ui 스킬 변화
+                 4. 마우스 좌,우 클릭시 사용 스킬변화
+                 5. UI main, sub 위치 변화시키기
+                 6. 변화 직후에는 몇초간 우클릭 스킬 사용 불가하게 만들기
+       
+                 */
+            }
+        }
+    
+    
     }
 
 }

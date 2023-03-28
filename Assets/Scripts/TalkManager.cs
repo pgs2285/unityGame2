@@ -82,7 +82,7 @@ public class TalkManager : MonoBehaviour
                         break;
 
                     case 270:
-                        //스킬 주고, 맵 이동 가능케함.
+                    
                         
 
                         break;
