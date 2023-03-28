@@ -862,12 +862,15 @@ PlayerSettings:
   cloudServicesEnabled:
     Analytics: 0
     Build: 0
-    Collab: 0
+    Collab: 1
     ErrorHub: 0
+    Game Performance: 0
     Game_Performance: 0
     Hub: 0
     Purchasing: 0
+    UDP: 0
     UNet: 1
+    Unity Ads: 0
     Unity_Ads: 0
   luminIcon:
     m_Name: 
@@ -882,11 +885,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 
+  cloudProjectId: 9c35c46b-b3cf-45ca-9ef3-03ec94499d16
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: New Unity Project (1)
-  organizationId: 
+  projectName: catAdventure (1)
+  organizationId: sp981212
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 1
   playerDataPath: 
