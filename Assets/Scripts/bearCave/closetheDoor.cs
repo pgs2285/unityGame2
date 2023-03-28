@@ -5,13 +5,16 @@ using UnityEngine;
 public class closetheDoor : MonoBehaviour
 {
 
-    public GameObject door;
+
+    public Animator LeftdoorAnimation;
+    public Animator RightdoorAnimation;
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag== "Player") {
-            door.SetActive(true);
-            
+
+            LeftdoorAnimation.SetBool("Open",true);
+            RightdoorAnimation.SetBool("Open",true);
             StartCoroutine(Shake(0.5f, 2.0f));
             
         }
