@@ -32805,6 +32805,74 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 7697138508051133415}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: switcingEffect
+      value: 
+      objectReference: {fileID: 2665102798950586030, guid: 9d908544de5f74c6b809dc662bf7c4c2,
+        type: 3}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterChange.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[0].Speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[1].Speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[0].runSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[1].runSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[0].characterAnime
+      value: 
+      objectReference: {fileID: 2128850716}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[1].characterAnime
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[0].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d39a319bbedd3b04a8d30c11a18a2d15,
+        type: 3}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[1].characterSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 12f02aee437754469bc6a14ac946175f,
+        type: 3}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[0].AnimatorControllerName
+      value: mainCharacterWalk
+      objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: characterInfo.Array.data[1].AnimatorControllerName
+      value: FoxIdle1
+      objectReference: {fileID: 0}
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_RootOrder
@@ -33585,7 +33653,7 @@ PrefabInstance:
     - target: {fileID: 3644779425216516938, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4710011763816001494, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
@@ -33681,7 +33749,7 @@ PrefabInstance:
     - target: {fileID: 7765245237970131687, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9010779047517169556, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}

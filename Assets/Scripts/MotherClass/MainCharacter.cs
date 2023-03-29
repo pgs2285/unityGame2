@@ -1,6 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
+[System.Serializable]
+public struct CharacterInfo{
+    public Sprite characterSprite;
+    public string AnimatorControllerName;
+    public float Speed;
+    public Image portrait;
+}
+
+
 
 public class MainCharacter : MonoBehaviour
 {
@@ -91,24 +102,45 @@ public class MainCharacter : MonoBehaviour
         switchingAble();
 
     }
+    int index;
 
+    
+    [SerializeField]
+    public CharacterInfo[] characterInfo;
 
+    SpriteRenderer spriteRenderer;
+    RuntimeAnimatorController newController;
+    public GameObject switcingEffect;
     public void switchingAble() { 
         //// questID가 80이면 스위칭 가능하게함 (스킬 2개 받고감)
-        if(CharacterData.Instance.questID > 80) // 80보다 크면
+        if(CharacterData.Instance.questID >= 80) // 80보다 크면
         {
+            /*
+                  
+                 1. 캐릭터 외형변화                             (O)
+                 2. 캐릭터 animation변화                       (O)
+                 3. ui 스킬 변화                               ()
+                 4. 마우스 좌,우 클릭시 사용 스킬변화               ()
+                 5. UI main, sub 위치 변화시키기                ()
+                 6. 변화 직후에는 몇초간 우클릭 스킬 사용 불가하게 만들기   ()  
+       
+            */
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                /*
-                  
-                 1. 캐릭터 외형변화
-                 2. 캐릭터 animation변화
-                 3. ui 스킬 변화
-                 4. 마우스 좌,우 클릭시 사용 스킬변화
-                 5. UI main, sub 위치 변화시키기
-                 6. 변화 직후에는 몇초간 우클릭 스킬 사용 불가하게 만들기
-       
-                 */
+                Debug.Log("Switching");
+                if(index == 0) index = 1;
+                
+                else index = 0;
+                
+                Instantiate(switcingEffect,this.transform.position, this.transform.rotation);
+                Destroy(switcingEffect,1.0f);
+                spriteRenderer = GetComponent<SpriteRenderer>();
+                spriteRenderer.sprite = characterInfo[index].characterSprite;
+                newController = Resources.Load<RuntimeAnimatorController>(characterInfo[index].AnimatorControllerName);
+                CharacterData.Instance.Speed = characterInfo[index].Speed;
+                animator.runtimeAnimatorController = newController;
+                
+                        
             }
         }
     
