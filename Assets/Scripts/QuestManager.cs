@@ -18,16 +18,16 @@ public class QuestManager : MonoBehaviour
     public TextMeshProUGUI QuestName;
 
     void GenerateData(){
-        questList.Add(10, new QuestData("빛을 따라가보자", new int[] {200}));
-        questList.Add(20, new QuestData("의문의 존재", new int[] { 200 }));
-        questList.Add(30, new QuestData("배가 고파1", new int[] { 100 }));
-        questList.Add(40, new QuestData("배가 고파2", new int[]{200}));
-        questList.Add(50, new QuestData("나무열매를 찾아보자.", new int[] {300} ));
-        questList.Add(60, new QuestData("할말이 있어", new int[] { 200 }));
-        questList.Add(70, new QuestData(("너의 이름은?"), new int[] { 200 }));
+        questList.Add(10, new QuestData("빛을 따라가보자", new int[] {2000}));
+        questList.Add(20, new QuestData("의문의 존재", new int[] { 2000 }));
+        questList.Add(30, new QuestData("배가 고파1", new int[] { 1000 }));
+        questList.Add(40, new QuestData("배가 고파2", new int[]{2000}));
+        questList.Add(50, new QuestData("나무열매를 찾아보자.", new int[] {3000} ));
+        questList.Add(60, new QuestData("할말이 있어", new int[] { 2000 }));
+        questList.Add(70, new QuestData(("너의 이름은?"), new int[] { 2000 }));
 
         ////////////cave///////////////////
-        questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 600,600}));
+        questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 6000}));
         
       
 
@@ -49,7 +49,7 @@ public class QuestManager : MonoBehaviour
     void NextQuest()
     {
         if (questActionIndex == questList[CharacterData.Instance.QuestID].npcId.Length) CharacterData.Instance.QuestID += 10;
-        else CharacterData.Instance.QuestID += 1;
+        // else CharacterData.Instance.QuestID += 1;
 
         questActionIndex = 0;
     }

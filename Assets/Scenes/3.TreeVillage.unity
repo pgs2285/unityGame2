@@ -44554,6 +44554,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5274317256394696534, guid: c0bb26075a2331940a2134315aeebff9,
+        type: 3}
+      propertyPath: m_Name
+      value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274317256394696536, guid: c0bb26075a2331940a2134315aeebff9,
+        type: 3}
+      propertyPath: m_text
+      value: Z
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274317256394696536, guid: c0bb26075a2331940a2134315aeebff9,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5274317257005281360, guid: c0bb26075a2331940a2134315aeebff9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6081740628247577261, guid: c0bb26075a2331940a2134315aeebff9,
         type: 3}
       propertyPath: m_AnchorMax.y
