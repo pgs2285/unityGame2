@@ -59,7 +59,7 @@ public class JumpSkill : MonoBehaviour
         {
             coolTimeIndicator.gameObject.SetActive(false);
             icon.color = Color.white;
-            if (Input.GetKeyDown(KeyCode.Space) && CharacterData.Instance.IsDashAble)
+            if (Input.GetKeyDown(KeyCode.Z) && CharacterData.Instance.IsDashAble)
             {
                 
                 jumpSkill();

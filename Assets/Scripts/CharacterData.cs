@@ -9,6 +9,10 @@ public class CharacterData : Singleton<CharacterData>
     bool isDashAble = false;
     int hungry = 10;
 
+    public int mainCh = 0;
+    public int subCh = 1;
+
+    
     public int Hungry
     {
         get { return hungry; }
