@@ -1,40 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class catRightClickAttack : MonoBehaviour
 {
-    public float comboResetTime = 1.0f; // 콤보 리셋 시간
-    private float lastAttackTime = 0.0f; // 마지막 공격 시간
-    private int comboCount = 0; // 현재 콤보 수
     private Animator animator;
+    private float lastAttackTime;
+    private int attackCount;
 
-    private void Start()
+    public float comboTime = 1.0f;
+    public float attackRange = 1.5f;
+
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) || comboCount > 0)
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Time.time - lastAttackTime < comboResetTime && Input.GetMouseButtonDown(0))
+            if (Time.time - lastAttackTime < comboTime && attackCount < 3)
             {
-                comboCount++;
+                attackCount++;
+                animator.SetBool("isAttacking", true);
             }
-
-
-            if (comboCount > 3)
+            else
             {
-                comboCount = 0;
+                attackCount = 1;
+                animator.SetInteger("attackCount", attackCount);
+                animator.SetBool("isAttacking", true);
             }
 
             lastAttackTime = Time.time;
-            Debug.Log(comboCount);
-            // 애니메이션 트리거 설정
-            animator.SetInteger("ComboCount", comboCount);
+        }
+
+        if (Time.time - lastAttackTime >= comboTime && animator.GetBool("isAttacking"))
+        {
+            animator.SetBool("isAttacking", false);
         }
     }
-}
 
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+    }
+}
 
