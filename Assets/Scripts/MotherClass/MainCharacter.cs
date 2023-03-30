@@ -9,6 +9,7 @@ public struct CharacterInfo{
     public string AnimatorControllerName;
     public float Speed;
     public Sprite portrait;
+
 }
 
 
@@ -159,7 +160,10 @@ public class MainCharacter : MonoBehaviour
                 
             }
         }
-    
+
+
+
+
     
     }
 
