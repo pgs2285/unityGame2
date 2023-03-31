@@ -33367,7 +33367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44858366e55e4e8db7e001238206cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2128850725
+--- !u!114 &2128850721
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -33376,10 +33376,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2128850717}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 756eaef1eeb4a415dadfacfffce4c33f, type: 3}
+  m_Script: {fileID: 11500000, guid: 5926e270f27f440beaeec29998c2239b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comboResetTime: 0.3
+  comboResetTime: 1
+  objectPrefab: {fileID: 1022130966032389789, guid: a5fb162932b0a4536a02e9c7129ecfa9,
+    type: 3}
+  mainCamera: {fileID: 415202003}
 --- !u!1 &2130830642
 GameObject:
   m_ObjectHideFlags: 0
