@@ -50,8 +50,8 @@ public class MainCharacter : MonoBehaviour
 
     }
 
-    float X;
-    float Y;
+    public float X;
+    public float Y;
     public void walk()
     {
         X = Input.GetAxisRaw("Horizontal");
@@ -102,7 +102,6 @@ public class MainCharacter : MonoBehaviour
         switchingAble();
 
     }
-    int index;
 
     
     [SerializeField]
@@ -111,6 +110,10 @@ public class MainCharacter : MonoBehaviour
     SpriteRenderer spriteRenderer;
     RuntimeAnimatorController newController;
     public GameObject switcingEffect;
+
+    public float cooldownTime = 5.0f;
+    public float filledTime = 0.0f;
+
     public void switchingAble() { 
         //// questID가 80이면 스위칭 가능하게함 (스킬 2개 받고감)
         if(CharacterData.Instance.questID >= 80 && CharacterData.Instance.IsMove) // 80보다 크면
@@ -121,29 +124,40 @@ public class MainCharacter : MonoBehaviour
                  2. 캐릭터 animation변화                       (O)
                  3. ui 스킬 변화                               ()
                  4. 마우스 좌,우 클릭시 사용 스킬변화               ()
-                 5. UI main, sub 위치 변화시키기                ()
-                 6. 변화 직후에는 몇초간 우클릭 스킬 사용 불가하게 만들기   ()  
+                 5. UI main, sub 위치 변화시키기                (O)
+                 6. 변화 직후에는 몇초간 스킬 사용 불가하게 만들기   (O)  
        
             */
-            if (Input.GetKeyDown(KeyCode.Q))
+
+            if (cooldownTime > filledTime)
             {
-                Debug.Log("Switching");
-                int tmp;
-                /// 메인과 서브 위치 바꿔주기
-                tmp = CharacterData.Instance.mainCh;
-                CharacterData.Instance.mainCh = CharacterData.Instance.subCh;
-                CharacterData.Instance.subCh = tmp;
-                //이펙트 생성 후 삭제
-                Instantiate(switcingEffect,this.transform.position, this.transform.rotation); 
-                Destroy(switcingEffect,1.0f);
-                //sprite와 animator변경해주기
-                spriteRenderer = GetComponent<SpriteRenderer>();
-                spriteRenderer.sprite = characterInfo[CharacterData.Instance.mainCh].characterSprite;
-                newController = Resources.Load<RuntimeAnimatorController>(characterInfo[CharacterData.Instance.mainCh].AnimatorControllerName);
-                CharacterData.Instance.Speed = characterInfo[CharacterData.Instance.mainCh].Speed;
-                animator.runtimeAnimatorController = newController;
+                filledTime += Time.deltaTime; //쿨타임일시
+               
+            }
+            else //쿨타임이 아닐때 스킬 사용하게
+            {
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+
+                    Debug.Log("Switching");
+                    int tmp;
+                    /// 메인과 서브 위치 바꿔주기
+                    tmp = CharacterData.Instance.mainCh;
+                    CharacterData.Instance.mainCh = CharacterData.Instance.subCh;
+                    CharacterData.Instance.subCh = tmp;
+                    //이펙트 생성 후 삭제
+                    Instantiate(switcingEffect, this.transform.position, this.transform.rotation);
+                    Destroy(switcingEffect, 1.0f);
+                    //sprite와 animator변경해주기
+                    spriteRenderer = GetComponent<SpriteRenderer>();
+                    spriteRenderer.sprite = characterInfo[CharacterData.Instance.mainCh].characterSprite;
+                    newController = Resources.Load<RuntimeAnimatorController>(characterInfo[CharacterData.Instance.mainCh].AnimatorControllerName);
+                    CharacterData.Instance.Speed = characterInfo[CharacterData.Instance.mainCh].Speed;
+                    animator.runtimeAnimatorController = newController;
+                    filledTime = 0.0f;
+
+                }
                 
-                        
             }
         }
 
