@@ -27,10 +27,11 @@ public class catRightClickAttack : MonoBehaviour
     public void LeftClick(){
         if (Input.GetMouseButtonDown(0) || comboCount > 0)
         {
-            Debug.Log("Enter Successfully");
+
             CharacterData.Instance.IsMove = false;
             Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
-            if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //오른쪽클릭시
+
+            if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
                 
                 transform.eulerAngles = new Vector3(0, 180, 0);
                 
@@ -38,15 +39,16 @@ public class catRightClickAttack : MonoBehaviour
             else{
                 transform.eulerAngles = new Vector3(0, 0, 0);
             }
-
-            if (comboCount == 0) lastAttackTime = Time.time; // 처음 들어올때만 찍혀야함
     
             if (Time.time - lastAttackTime < comboResetTime)
             {
-                if (Input.GetMouseButton(0)) comboCount++;
+               
+                if (Input.GetMouseButtonDown(0)) comboCount++;
+                Debug.Log(comboCount);
             }
             else
             {
+                Debug.Log(Time.time - lastAttackTime);
                 comboCount = 0;
             }
 
@@ -55,6 +57,7 @@ public class catRightClickAttack : MonoBehaviour
                 comboCount = 0;
             }
             // 애니메이션 트리거 설정
+            if (comboCount == 0) lastAttackTime = Time.time; // 처음 들어올때만 찍혀야함
             animator.SetInteger("ComboCount", comboCount);
         }else CharacterData.Instance.IsMove = true;
     }
