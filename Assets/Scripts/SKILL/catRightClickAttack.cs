@@ -15,6 +15,8 @@ public class catRightClickAttack : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
+       
+      
     }
  
 
@@ -22,6 +24,7 @@ public class catRightClickAttack : MonoBehaviour
     {
         LeftClick();
         RightClick();
+        shieldSkill();
     }
 
     public void LeftClick(){
@@ -44,11 +47,9 @@ public class catRightClickAttack : MonoBehaviour
             {
                
                 if (Input.GetMouseButtonDown(0)) comboCount++;
-                Debug.Log(comboCount);
             }
             else
             {
-                Debug.Log(Time.time - lastAttackTime);
                 comboCount = 0;
             }
 
@@ -81,6 +82,22 @@ public class catRightClickAttack : MonoBehaviour
 
             Instantiate(objectPrefab, transform.position , rotation);
         }
+    }
+
+    public void shieldSkill()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+          
+            CharacterData.Instance.Shield += 1;
+            Debug.Log(CharacterData.Instance.CurrentHP);
+            StartCoroutine(returnHP(1));
+        }
+    }
+    IEnumerator returnHP(int shieldAmount)
+    {
+        yield return new WaitForSeconds(5);
+        CharacterData.Instance.Shield -= shieldAmount;
     }
 }
 

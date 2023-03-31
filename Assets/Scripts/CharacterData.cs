@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class CharacterData : Singleton<CharacterData>
 {
-    int maxHP = 4;
+    int maxHP = 6;
     bool isMove = true;
     bool isDashAble = false;
     int hungry = 10;
-
+    
     public int mainCh = 0;
     public int subCh = 1;
 
+    int shield = 0;
+    public int Shield { get { return shield; } set { shield = value; } }
     
     public int Hungry
     {
