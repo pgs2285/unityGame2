@@ -50,8 +50,8 @@ public class MainCharacter : MonoBehaviour
 
     }
 
-    float X;
-    float Y;
+    public float X;
+    public float Y;
     public void walk()
     {
         X = Input.GetAxisRaw("Horizontal");
