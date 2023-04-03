@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
 
     
 
-    private int limitHP=4;
+    private int limitHP=6;
 
 
     public void Start(){
@@ -39,8 +39,14 @@ public class UIManager : MonoBehaviour
         for(int i = 0; i < CharacterData.Instance.CurrentHP; i++){
             hpBar.transform.GetChild(i).gameObject.SetActive(true);
         }
-        for(int i = CharacterData.Instance.CurrentHP; i < limitHP; i++){
+        for(int i = CharacterData.Instance.CurrentHP; i < 4; i++){
             hpBar.transform.GetChild(i).gameObject.SetActive(false);
+        }        
+        for(int i = 0; i < CharacterData.Instance.Shield; i++){
+            hpBar.transform.GetChild(i+4).gameObject.SetActive(true);
+        }
+        for(int i = CharacterData.Instance.Shield; i < 4; i++){
+            hpBar.transform.GetChild(i+4).gameObject.SetActive(false);
         }
 
         // level.text = CharacterData.Instance.Level.ToString();
