@@ -22,15 +22,15 @@ public class catKeyboard : MonoBehaviour
         mainCharacter = GetComponent<MainCharacter>();
     }
     
-    float catJCoolTime = 0;
-    float catKCoolTime = 1;
-    float foxJCoolTime = 2;
-    float foxKCoolTime = 10;
+    public float catJCoolTime = 0;
+    public float catKCoolTime = 2;
+    public float foxJCoolTime = 2;
+    public float foxKCoolTime = 10;
 
-    float catjFilledTime = 0;
-    float catkFilledTime = 0;
-    float foxjFilledTime = 0;
-    float foxkFilledTime = 0;
+    public float catjFilledTime = 0;
+    public float catkFilledTime = 0;
+    public float foxjFilledTime = 0;
+    public float foxkFilledTime = 0;
 
 
 
@@ -126,7 +126,7 @@ public class catKeyboard : MonoBehaviour
 
     public void shieldSkill()
     {
-        if(foxkCoolTime >= foxkFilledTime){
+        if(foxKCoolTime >= foxkFilledTime){
             foxkFilledTime += Time.deltaTime;
         }else{
             if (Input.GetKeyDown(KeyCode.K))
