@@ -9,6 +9,8 @@ public class catRightClickAttack : MonoBehaviour
     private int comboCount = 0; // 현재 콤보 수
     private Animator animator;
 
+    
+
     private MainCharacter mainCharacter;
 
     private void Start()

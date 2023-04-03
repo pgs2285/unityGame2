@@ -10,6 +10,10 @@ public class catKeyboard : MonoBehaviour
     private int comboCount = 0; // 현재 콤보 수
     private Animator animator;
 
+    float dashDistance = 2.0f;
+    float dashTime = 0.3f;
+    float dashTimer = 0.0f;
+
     private MainCharacter mainCharacter;
 
     private void Start()
@@ -17,20 +21,49 @@ public class catKeyboard : MonoBehaviour
         animator = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
     }
- 
+    
+    public float catJCoolTime = 0;
+    public float catKCoolTime = 2;
+    public float foxJCoolTime = 2;
+    public float foxKCoolTime = 10;
+
+    public float catjFilledTime = 0;
+    public float catkFilledTime = 0;
+    public float foxjFilledTime = 0;
+    public float foxkFilledTime = 0;
+
+
 
     private void Update()
     {
-        jKeyBoard();
-        kKeyboard();
-        shieldSkill();
-        LAttack();
+
+        switch(CharacterData.Instance.mainCh){
+            case 0: // 고양이
+
+                jKeyBoard(); // 고양이 j 스킬 
+                CatKAttack(); // 고양이 k  스킬
+                
+            break;
+
+            case 1: // 여우
+
+                FoxJSKill(); // 여우 j 스킬
+                shieldSkill(); // 여우 k 스킬
+                
+                
+                
+            break;
+        }
+        
+        
+        
+        
     }
 
     public void jKeyBoard(){
         if (Input.GetKeyDown(KeyCode.J) || comboCount > 0)
         {
-            Debug.Log("Enter Successfully");
+        
             CharacterData.Instance.IsMove = false;
             Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
             // if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //오른쪽클릭시
@@ -64,37 +97,48 @@ public class catKeyboard : MonoBehaviour
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
     public Camera mainCamera; // 메인 카메라
     Vector3 direction = new Vector3(0,0,0);
-    public void kKeyboard(){
-       if (Input.GetKeyDown(KeyCode.K))
-        {   
+    public void FoxJSKill(){
+        if(foxJCoolTime >= foxjFilledTime){
+            foxjFilledTime += Time.deltaTime;
+        }else{
+            if (Input.GetKeyDown(KeyCode.J))
+                {   
 
-            
-            if(mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
-            else if(mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
-            else if(mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
-            else if(mainCharacter.X == 0 && mainCharacter.Y == -1)direction = Vector3.down;
-            else if(mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1,1,0);
-            else if(mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1,1,0);
-            else if(mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1,-1,0);
-            else if(mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1,-1,0);
-            
+                    
+                    if(mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
+                    else if(mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
+                    else if(mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
+                    else if(mainCharacter.X == 0 && mainCharacter.Y == -1)direction = Vector3.down;
+                    else if(mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1,1,0);
+                    else if(mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1,1,0);
+                    else if(mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1,-1,0);
+                    else if(mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1,-1,0);
+                    
 
-            
-            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
+                    
+                    Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
 
-            Instantiate(objectPrefab, transform.position , rotation);
+                    Instantiate(objectPrefab, transform.position , rotation);
+                    foxjFilledTime = 0;
+                }
         }
     }
 
     public void shieldSkill()
     {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
+        if(foxKCoolTime >= foxkFilledTime){
+            foxkFilledTime += Time.deltaTime;
+        }else{
+            if (Input.GetKeyDown(KeyCode.K))
+            {
 
-            CharacterData.Instance.Shield += 1;
-            Debug.Log(CharacterData.Instance.CurrentHP);
-            StartCoroutine(returnHP(1));
+                CharacterData.Instance.Shield += 1;
+           
+                StartCoroutine(returnHP(1));
+                foxkFilledTime = 0;
+            }
         }
+
     }
     IEnumerator returnHP(int shieldAmount)
     {
@@ -105,64 +149,65 @@ public class catKeyboard : MonoBehaviour
     public GameObject foxLSkill;
 
     public int stack;
-
-    public void LAttack()
+    bool isDashing = true;
+    public void CatKAttack()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+
+        if(catKCoolTime >= catkFilledTime)
         {
-
-
-            if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
-            else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
-            else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
-            else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
-            else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
-            else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
-            else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
-            else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
-
-
-
-            Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
-
-            if (CharacterData.Instance.FoxSkillStack < 3)
+            catkFilledTime += Time.deltaTime;
+        }else{
+            if (Input.GetKeyDown(KeyCode.K))
             {
-                GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-            }else if(CharacterData.Instance.FoxSkillStack == 3)
-            {
-                StartCoroutine(DashSkill(direction));
-                CharacterData.Instance.FoxSkillStack = 0;
+                if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
+                else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
+                else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
+                else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
+                else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
+                else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
+                else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
+                else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
+
+
+
+                Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
+
+                if (CharacterData.Instance.FoxSkillStack < 3)
+                {
+                    GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
+                }else if(CharacterData.Instance.FoxSkillStack == 3)
+                {
+                    animator.SetBool("Dash", true);
+                    StartCoroutine(Dash(direction, 3.0f, 0.8f));
+                }
+                catkFilledTime = 0;
+        
             }
- 
-            
-            Debug.Log("Stack : " + CharacterData.Instance.FoxSkillStack);
-            
+
+                
         }
     }
-    Rigidbody2D rb2d;
-    float dashDistance = 2.0f;
-    float dashTime = 0.3f;
-    IEnumerator DashSkill(Vector3 direciton)
+    IEnumerator Dash(Vector2 direction, float distance, float time)
     {
-        /*
-        yield return new WaitForSeconds(0);
-        Vector3 target = transform.position + direction;
-        while (Vector3.Distance(transform.position, target) > 0.5f)
+        float elapsedTime = 0f;
+        Vector2 startPosition = transform.position;
+        Vector2 targetPosition = startPosition + direction * distance;
+
+        while (elapsedTime < time)
         {
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + direction * 2 , 0.5f);
-            
-            yield return new WaitForFixedUpdate();
-            Debug.Log(transform.position + " target : "+ target);
-            CharacterData.Instance.IsMove = false;
+            float t = elapsedTime / time;
+            transform.position = Vector2.Lerp(startPosition, targetPosition, t * 8);
+            elapsedTime += Time.deltaTime;
+            CharacterData.Instance.FoxSkillStack = 0;
+            yield return null;
         }
 
-        CharacterData.Instance.IsMove = true;
-        */
-        rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = direciton * dashDistance / dashTime;
-        yield return new WaitForFixedUpdate();
-
+        transform.position = targetPosition;
+        animator.SetBool("Dash", false);
     }
+
+
+
 }
 
 
