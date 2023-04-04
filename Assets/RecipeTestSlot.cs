@@ -16,5 +16,6 @@ public class RecipeTestSlot : Singleton<RecipeTestSlot>
     void Update()
     {
         Debug.Log(Inventory.instance.itemList[0]);
+        Debug.Log(Inventory.instance.quantityList[0]);
     }
 }
