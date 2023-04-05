@@ -63,7 +63,7 @@ public class catKeyboard : MonoBehaviour
     public void jKeyBoard(){
         if (Input.GetKeyDown(KeyCode.J) || comboCount > 0)
         {
-            Debug.Log("Enter Successfully");
+        
             CharacterData.Instance.IsMove = false;
             Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
             // if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //오른쪽클릭시
@@ -133,7 +133,7 @@ public class catKeyboard : MonoBehaviour
             {
 
                 CharacterData.Instance.Shield += 1;
-                Debug.Log(CharacterData.Instance.CurrentHP);
+           
                 StartCoroutine(returnHP(1));
                 foxkFilledTime = 0;
             }
@@ -153,8 +153,9 @@ public class catKeyboard : MonoBehaviour
     public void CatKAttack()
     {
 
-        if(catKCoolTime >= foxkFilledTime){
-            foxkFilledTime += Time.deltaTime;
+        if(catKCoolTime >= catkFilledTime)
+        {
+            catkFilledTime += Time.deltaTime;
         }else{
             if (Input.GetKeyDown(KeyCode.K))
             {
@@ -179,10 +180,10 @@ public class catKeyboard : MonoBehaviour
                     animator.SetBool("Dash", true);
                     StartCoroutine(Dash(direction, 3.0f, 0.8f));
                 }
-                foxkFilledTime = 0;
+                catkFilledTime = 0;
         
             }
-                Debug.Log("Stack : " + CharacterData.Instance.FoxSkillStack);
+
                 
         }
     }

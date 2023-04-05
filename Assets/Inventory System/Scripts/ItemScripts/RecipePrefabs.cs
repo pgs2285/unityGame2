@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-[CreateAssetMenu(fileName = "Resource", menuName = "Item/Resource")]
-public class Resource : Item
+[CreateAssetMenu(fileName = "Recipe", menuName = "Item/Recipe")]
+public class RecipePrefabs : Item
 {
-    public resourceType type;
+    public Item[] ingredients;
 
     public override void Use()
     {
@@ -14,6 +14,6 @@ public class Resource : Item
         // Inventory.instance.RemoveItem(this, 1);
     }
 
-    public enum resourceType { Wood, Herb, Ore }
+    
 }
 

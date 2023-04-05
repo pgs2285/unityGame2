@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.UI;
 using TMPro;
 
-public class Skill2Indicator : MonoBehaviour
+public class SkillIndicator : MonoBehaviour
 {
     public MainCharacter mainCharacter;
     public catKeyboard keyboard;
@@ -34,6 +34,7 @@ public class Skill2Indicator : MonoBehaviour
         }
 
 
-        GetComponent<Image>().sprite = mainCharacter.characterInfo[CharacterData.Instance.mainCh].Skill1Image;
+        gameObject.GetComponent<Image>().sprite = mainCharacter.characterInfo[CharacterData.Instance.mainCh].Skill1Image;
+        
     }
 }

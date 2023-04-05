@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,8 +11,7 @@ public struct CharacterInfo{
     public Sprite portrait;
     public Sprite Skill1Image;
     public Sprite Skill2Image;
-    public float skill1CoolTime;
-    public float skill2CoolTime;
+ 
 }
 
 
