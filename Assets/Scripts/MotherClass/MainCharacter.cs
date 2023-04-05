@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +9,9 @@ public struct CharacterInfo{
     public string AnimatorControllerName;
     public float Speed;
     public Sprite portrait;
-
+    public Sprite Skill1Image;
+    public Sprite Skill2Image;
+ 
 }
 
 
@@ -122,8 +124,8 @@ public class MainCharacter : MonoBehaviour
                   
                  1. 캐릭터 외형변화                             (O)
                  2. 캐릭터 animation변화                       (O)
-                 3. ui 스킬 변화                               ()
-                 4. 마우스 좌,우 클릭시 사용 스킬변화               ()
+                 3. ui 스킬 변화                               (O)
+                 4. 마우스 좌,우 클릭시 사용 스킬변화               (O)
                  5. UI main, sub 위치 변화시키기                (O)
                  6. 변화 직후에는 몇초간 스킬 사용 불가하게 만들기   (O)  
        

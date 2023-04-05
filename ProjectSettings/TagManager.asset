@@ -11,6 +11,7 @@ TagManager:
   - elementText
   - amountText
   - Obstacle
+  - Enemy
   layers:
   - Default
   - TransparentFX

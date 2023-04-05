@@ -12,6 +12,9 @@ public class CharacterData : Singleton<CharacterData>
     public int mainCh = 0;
     public int subCh = 1;
 
+    int foxSkillStack = 0;
+    public int FoxSkillStack { get { return foxSkillStack; } set { foxSkillStack = value; } } 
+
     int shield = 0;
     public int Shield { get { return shield; } set { shield = value; } }
     

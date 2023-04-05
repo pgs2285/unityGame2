@@ -77,7 +77,7 @@ public class TalkManager : MonoBehaviour
                     case 3050:
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
-                        Inventory.instance.AddItem(TutorialFruit, 1);
+                        Inventory.instance.AddItem(TutorialFruit, 3);
                         Destroy(GameObject.Find("TutorialApple"));
 
                         break;
