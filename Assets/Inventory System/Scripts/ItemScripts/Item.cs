@@ -30,8 +30,8 @@ public class Item : ScriptableObject
             case 10:
                 CharacterData.Instance.Hungry += 30;
                 break;
-            case 100:
-                CharacterData.Instance.CurrentHP += 1;
+            case 30:
+                CharacterData.Instance.Hungry += 100;
                 break;
         }
     }
