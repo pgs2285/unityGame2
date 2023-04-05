@@ -9,15 +9,19 @@ public class AddRecipes : MonoBehaviour
 
     private void Start()
     {
-         buttonList = recipeSlots.GetComponentsInChildren<Button>();
+        buttonList = recipeSlots.GetComponentsInChildren<Button>();
     }
 
     private void Update()
     {
-        foreach (Recipe recipe in RecipeSystem.Instance.recipeList)
+        int idx = 0;
+        foreach (RecipePrefabs recipe in RecipeSystem.Instance.recipeList)
         {
-            Debug.Log(recipe.item.itemIcon);
-            buttonList[0].GetComponent<Image>().sprite = recipe.item.itemIcon;
+            buttonList[idx].interactable = true;
+            buttonList[idx].GetComponent<Image>().sprite = recipe.itemIcon;
+
+            buttonList[idx].GetComponent<RecipeSlot>().recipe = recipe;
+            idx++;
         }
     }
 }

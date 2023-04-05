@@ -4,8 +4,8 @@ using UnityEngine;
 public class RecipeSystem : Singleton<RecipeSystem>
 {
     // 레시피 리스트
-    public List<Recipe> recipeList = new List<Recipe>();
-    public Item bakedApple;
+    public List<RecipePrefabs> recipeList = new List<RecipePrefabs>();
+    public RecipePrefabs bakedApple;
     // 아이템 리스트
 
 
@@ -14,8 +14,8 @@ public class RecipeSystem : Singleton<RecipeSystem>
         // 특정 if 문을 만족하면 "BakedApple" 레시피를 레시피 리스트에 추가합니다.
         if (true) // 여기에 조건을 적어주세요.
         {
-            Recipe bakedAppleRecipe = new Recipe("BakedApple", new List<string>() { "Apple", "Touch" }, bakedApple);
-            recipeList.Add(bakedAppleRecipe);
+            
+            recipeList.Add(bakedApple);
         }
     }
 
@@ -23,12 +23,12 @@ public class RecipeSystem : Singleton<RecipeSystem>
     private void CheckRecipe()
     {
         int idx = 0;
-        foreach (Recipe recipe in recipeList)
+        foreach (RecipePrefabs recipe in recipeList)
         {
             bool canMakeRecipe = true;
-
+            idx = 0;
             // 레시피에 필요한 아이템들이 모두 있는지 검사합니다.
-            foreach (string itemName in recipe.itemNames)
+            foreach (Item IngredientsName in recipe.ingredients)
             {
                 bool hasItem = false;
 
@@ -36,7 +36,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
                 foreach (Item item in Inventory.instance.itemList)
                 {
                     idx ++; 
-                    if (item.itemName == itemName)
+                    if (item.itemName == IngredientsName.itemName)
                     {
                         hasItem = true;
                         if (Inventory.instance.quantityList[idx] < 1)
@@ -57,11 +57,11 @@ public class RecipeSystem : Singleton<RecipeSystem>
             // 레시피를 만들 수 있으면 아이템을 생성합니다.
             if (canMakeRecipe)
             {
-                foreach (string itemName in recipe.itemNames)
+                foreach (Item itemName in recipe.ingredients)
                 {
-                    RemoveItemFromInventory(itemName);
+                    RemoveItemFromInventory(itemName.itemName);
                 }
-                AddItemToInventory(recipe.item);
+                AddItemToInventory(recipe);
             }
         }
     }
@@ -84,7 +84,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     }
 
     // 인벤토리에 아이템을 추가합니다.
-    private void AddItemToInventory(Item makeditem)
+    private void AddItemToInventory(RecipePrefabs makeditem)
     {
         int idx = 0;
         foreach (Item item in Inventory.instance.itemList)
@@ -100,17 +100,5 @@ public class RecipeSystem : Singleton<RecipeSystem>
     }
 }
 
-// 레시피 클래스
-public class Recipe
-{
-    public string resultItemName;
-    public List<string> itemNames;
-    public Item item;
-    public Recipe(string resultItemName, List<string> itemNames, Item item)
-    {
-        this.resultItemName = resultItemName;
-        this.itemNames = itemNames;
-        this.item = item;
-    }
-}
+
 
