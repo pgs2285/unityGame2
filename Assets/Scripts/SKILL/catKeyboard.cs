@@ -172,10 +172,10 @@ public class catKeyboard : MonoBehaviour
 
                 Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
 
-                if (CharacterData.Instance.FoxSkillStack < 3)
+                if (CharacterData.Instance.FoxSkillStack < 2)
                 {
                     GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-                }else if(CharacterData.Instance.FoxSkillStack == 3)
+                }else if(CharacterData.Instance.FoxSkillStack == 2)
                 {
                     animator.SetBool("Dash", true);
                     StartCoroutine(Dash(direction, 3.0f, 0.8f));

@@ -35,6 +35,7 @@ public class UIManager : MonoBehaviour
     public void Start(){
         // infoPanel.SetActive(false);
     }
+    
     public void Update(){
         for(int i = 0; i < CharacterData.Instance.CurrentHP; i++){
             hpBar.transform.GetChild(i).gameObject.SetActive(true);

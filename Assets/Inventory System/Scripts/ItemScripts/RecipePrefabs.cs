@@ -8,10 +8,11 @@ public class RecipePrefabs : Item
     {
         base.Use();
 
+
         //Use Resource
 
         //Use the following line if you want to destroy this type of item after use
-        // Inventory.instance.RemoveItem(this, 1);
+        Inventory.instance.RemoveItem(this, 1);
     }
 
     

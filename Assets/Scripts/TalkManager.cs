@@ -45,6 +45,7 @@ public class TalkManager : MonoBehaviour
     public GameObject SKill1;
     public GameObject Tutorial;
     public Item TutorialFruit;
+    public Item Touch;
     public TextMeshProUGUI TutorialMessage;
 
    
@@ -78,6 +79,7 @@ public class TalkManager : MonoBehaviour
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 3);
+                        Inventory.instance.AddItem(Touch, 2);
                         Destroy(GameObject.Find("TutorialApple"));
 
                         break;
