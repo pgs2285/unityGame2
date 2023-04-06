@@ -8,9 +8,18 @@ public class CharacterData : Singleton<CharacterData>
     bool isMove = true;
     bool isDashAble = false;
     int hungry = 10;
+
+    bool[] isAttackRuneOpened = new bool[2];
+    public bool[] IsAttackRuneOpened { get; set; } = new bool[2];
+
+    bool[] isSpeedRuneOpened = new bool[4];
+    public bool[] IsSpeedRuneOpened { get; set; } = new bool[3];
     
     public int mainCh = 0;
     public int subCh = 1;
+
+    int rp = 6;
+    public int RP { get { return rp; } set { rp = value; } }
 
     int foxSkillStack = 0;
     public int FoxSkillStack { get { return foxSkillStack; } set { foxSkillStack = value; } } 
@@ -40,12 +49,6 @@ public class CharacterData : Singleton<CharacterData>
         get { return maxHP; }
         set { maxHP = value; }
     }
-    int maxMP = 4;
-    public int MaxMP
-    {
-        get { return maxMP; }
-        set { maxMP = value; }
-    }
 
     float speed = 3f;
     public float Speed
@@ -53,37 +56,13 @@ public class CharacterData : Singleton<CharacterData>
         get { return speed; }
         set { speed = value; }
     }
-    float runSpeed = 6f;
-    public float RunSpeed
-    {
-        get { return runSpeed; }
-        set { runSpeed = value; }
-    }
+
     int attackPoint = 2;
     public int AttackPoint
     {
         get { return attackPoint; }
         set { attackPoint = value; }
     }
-    int level = 1;
-    public int Level
-    {
-        get { return level; }
-        set { level = value; }
-    }
-    bool isFullLevel = false;
-    public bool IsFullLevel
-    {
-        get { return isFullLevel; }
-        set { isFullLevel = value; }
-    }
-    decimal experience = 0;
-    public decimal Experience
-    {
-        get { return experience; }
-        set { experience = value; }
-    }
-
 
 
 
@@ -108,41 +87,8 @@ public class CharacterData : Singleton<CharacterData>
     } 
 
 
-    public decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     void Start()
     {
-        if (PlayerPrefs.HasKey("MaxHP"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("MaxHP");
-        }
-        if (PlayerPrefs.HasKey("CurrentHP"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("CurrentHP");
-        }
-        if (PlayerPrefs.HasKey("MaxMP"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("MaxMP");
-        }
-        if (PlayerPrefs.HasKey("CurrentMP"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("CurrentMP");
-        }
-        if (PlayerPrefs.HasKey("Speed"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("Speed");
-        }
-        if (PlayerPrefs.HasKey("RunSpeed"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("RunSpeed");
-        }
-        if (PlayerPrefs.HasKey("AttackPoint"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("AttackPoint");
-        }
-        if (PlayerPrefs.HasKey("Experience"))
-        {
-            CurrentHP = PlayerPrefs.GetInt("Experience");
-        }
 
     }
 
