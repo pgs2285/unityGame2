@@ -33,6 +33,7 @@ public class Item : ScriptableObject
             case 30:
                 CharacterData.Instance.Hungry += 100;
                 break;
+            
         }
     }
 }

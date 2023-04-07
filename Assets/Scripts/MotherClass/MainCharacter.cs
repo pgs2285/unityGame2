@@ -30,13 +30,7 @@ public class MainCharacter : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    protected void LevelUp(int level) { //추후 PlayerPrefs.HasKey("Level")로 매개변수 넘겨주면 됨
-        if (CharacterData.Instance.Experience > fullExperience[level - 1]) { // 만약 경험치가 요구경험치보다 높으면
-            CharacterData.Instance.Level += 1;
-            CharacterData.Instance.Experience = 0; // 경험치는 다시 0으로 초기화
-        }
 
-    }
     protected void isDeath() {
         if (CharacterData.Instance.CurrentHP < 0) { //currentHP가  0보다 작으면
             Debug.Log("GameOver");
@@ -63,12 +57,7 @@ public class MainCharacter : MonoBehaviour
        
     }
 
-    public void run()
-    {
-        X = Input.GetAxisRaw("Horizontal");
-        Y = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.RunSpeed);
-    }
+
     Vector3 dirVec;
     GameObject scanObject;
     public GameObject movePanel;
