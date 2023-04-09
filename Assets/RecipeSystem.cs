@@ -23,12 +23,19 @@ public class RecipeSystem : Singleton<RecipeSystem>
 
     public GameObject RecipePanel;
     bool isRecipePanelActive = false;
+
+    public GameObject RunePanel;
+    bool isRoonPanelActive = false;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
             RecipePanel.SetActive(isRecipePanelActive);
             isRecipePanelActive = !isRecipePanelActive;
+        }
+        if(Input.GetKeyDown(KeyCode.Tab)){
+            RunePanel.SetActive(isRoonPanelActive);
+            isRoonPanelActive = !isRoonPanelActive;
         }
     }
 }
