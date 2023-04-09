@@ -14,6 +14,12 @@ public class CharacterData : Singleton<CharacterData>
 
     bool[] isSpeedRuneOpened = new bool[4];
     public bool[] IsSpeedRuneOpened { get; set; } = new bool[3];
+
+    bool[] foxShieldSkillRuneOpened = new bool[3];
+    public bool[] FoxShieldSkillRuneOpened { get; set; } = new bool[3];
+
+    bool[] foxAttackSkillRuneOpened = new bool[3];
+    public bool[] FoxAttackSkillRuneOpened { get; set; } = new bool[3];
     
     public int mainCh = 0;
     public int subCh = 1;
