@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 173694346958265929}
   - component: {fileID: 173694346958265930}
-  - component: {fileID: 2637987301116214690}
   - component: {fileID: 173694346958265928}
   - component: {fileID: 173694346958265975}
   - component: {fileID: 173694346958265974}
@@ -89,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2637987301116214690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 173694346958265932}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80e14c196bfe54c4a80be70d3dce1db1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpDistance: 1
-  cooldownTime: 2
 --- !u!114 &173694346958265928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,11 +100,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44858366e55e4e8db7e001238206cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverPanel: {fileID: 1483997143426849110, guid: 2fb143ae34f12409bb3c9b91e154f70b, type: 3}
+  gameoverPanel: {fileID: 1483997143426849110, guid: 2fb143ae34f12409bb3c9b91e154f70b,
+    type: 3}
   uiManager: {fileID: 0}
   animator: {fileID: 0}
   X: 0
   Y: 0
+  movePanel: {fileID: 0}
+  characterInfo: []
+  switcingEffect: {fileID: 0}
+  cooldownTime: 5
+  filledTime: 0
+  onTheLeg: {fileID: 0}
 --- !u!61 &173694346958265975
 BoxCollider2D:
   m_ObjectHideFlags: 0

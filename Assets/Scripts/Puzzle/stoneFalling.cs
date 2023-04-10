@@ -15,10 +15,9 @@ public class stoneFalling : MonoBehaviour
     public float shootForce; // 돌을 던질 힘
     private void Throw()
     {
-        Debug.Log("Hello");
         GameObject rock = Instantiate(rockPrefab, shootPoint.position, Quaternion.identity); // 돌 오브젝트 생성
-        Rigidbody rockRb = rock.GetComponent<Rigidbody>();
-        rockRb.AddForce(transform.forward * shootForce, ForceMode.Impulse); // 돌을 발사
+        Rigidbody2D rockRb = rock.GetComponent<Rigidbody2D>();
+        rockRb.AddForce(transform.forward * shootForce, ForceMode2D.Impulse); // 돌을 발사
     
     }
 }
