@@ -61,7 +61,7 @@ public class MainCharacter : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
     public GameObject movePanel;
-    void FixedUpdate()
+    void Update()
     {
 
         if (X == -1) { dirVec = Vector3.left; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 180, 0);}
