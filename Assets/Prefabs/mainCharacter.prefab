@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 173694346958265975}
   - component: {fileID: 173694346958265974}
   - component: {fileID: -7813588250177028419}
+  - component: {fileID: 1228842989390114072}
   m_Layer: 0
   m_Name: mainCharacter
   m_TagString: Player
@@ -179,3 +180,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1228842989390114072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 173694346958265932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756eaef1eeb4a415dadfacfffce4c33f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comboResetTime: 0.3
+  catJCoolTime: 0
+  catKCoolTime: 2
+  foxJCoolTime: 2
+  foxKCoolTime: 10
+  catjFilledTime: 0
+  catkFilledTime: 0
+  foxjFilledTime: 0
+  foxkFilledTime: 0
+  objectPrefab: {fileID: 1022130966032389789, guid: a5fb162932b0a4536a02e9c7129ecfa9,
+    type: 3}
+  mainCamera: {fileID: 0}
+  foxLSkill: {fileID: 8332450376822563010, guid: ebc6c2a4263ab0245bb988448b212606,
+    type: 3}
+  stack: 0

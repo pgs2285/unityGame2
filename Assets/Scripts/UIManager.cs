@@ -91,7 +91,12 @@ public class UIManager : MonoBehaviour
     public void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
         int questTalkIndex = questManager.getQuestTalkIndex(id);
         string talkData = talkManager.getTalk(id + questTalkIndex, talkIndex);
+        if(talkData =="") {
 
+            isAction = false;
+            talkIndex = 0;
+            return;
+        }
         if(talkData == null){
             isAction = false;
             talkIndex = 0;
