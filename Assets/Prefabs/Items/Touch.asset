@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: 
   ID: 0
   price: 0
-  Stackable: 0
+  Stackable: 1
   itemIcon: {fileID: 21300000, guid: 0e663e9b68652484099047a85ceef55b, type: 3}
   Description: 
   typeOfConsumable: 0

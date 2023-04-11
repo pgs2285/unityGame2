@@ -30,13 +30,7 @@ public class MainCharacter : MonoBehaviour
     {
         animator = GetComponent<Animator>();
     }
-    protected void LevelUp(int level) { //추후 PlayerPrefs.HasKey("Level")로 매개변수 넘겨주면 됨
-        if (CharacterData.Instance.Experience > fullExperience[level - 1]) { // 만약 경험치가 요구경험치보다 높으면
-            CharacterData.Instance.Level += 1;
-            CharacterData.Instance.Experience = 0; // 경험치는 다시 0으로 초기화
-        }
 
-    }
     protected void isDeath() {
         if (CharacterData.Instance.CurrentHP < 0) { //currentHP가  0보다 작으면
             Debug.Log("GameOver");
@@ -63,28 +57,24 @@ public class MainCharacter : MonoBehaviour
        
     }
 
-    public void run()
-    {
-        X = Input.GetAxisRaw("Horizontal");
-        Y = Input.GetAxisRaw("Vertical");
-        transform.Translate(new Vector2(X, Y) * Time.deltaTime * CharacterData.Instance.RunSpeed);
-    }
+
     Vector3 dirVec;
     GameObject scanObject;
     public GameObject movePanel;
     void Update()
     {
-        if (!uiManager.isAction && CharacterData.Instance.IsMove)
-        {
-            walk();
-        }
-        if (X == -1) { dirVec = Vector3.left; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 180, 0); }
+
+        if (X == -1) { dirVec = Vector3.left; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 180, 0);}
         else if (X == 1) { dirVec = Vector3.right; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 0, 0); }
         else if (Y == -1) {dirVec = Vector3.down; animator.SetBool("move", true); }
         else if (Y == 1){ dirVec = Vector3.up; animator.SetBool("move", true);}
         else
         {
             animator.SetBool("move", false);
+        }
+        if (!uiManager.isAction && CharacterData.Instance.IsMove)
+        {
+            walk();
         }
         //방향을 알려주는 dirVec
         Debug.DrawRay(transform.position, dirVec * 0.7f, new Color(0,1,0));    
@@ -162,11 +152,15 @@ public class MainCharacter : MonoBehaviour
                 
             }
         }
-
-
-
-
     
     }
+
+        public GameObject onTheLeg;
+        public void GetStun(){
+            transform.position = onTheLeg.GetComponent<LegMovement>().startPos;
+            animator.SetBool("Stun", false);
+
+        }
+
 
 }
