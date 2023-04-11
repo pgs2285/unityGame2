@@ -23,7 +23,11 @@ public class LegMovement : MonoBehaviour
         {
             Debug.Log("Player is on the leg");
             isOntheLeg = true;
-            startPos = other.transform.position;
+            if(GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>().GetBool("Stun") == false)
+            {
+                startPos = other.transform.position;    
+            }
+            
             if(startPos.x > transform.position.x)
             {
                 startPos.x += 0.5f;
