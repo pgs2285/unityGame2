@@ -41,7 +41,7 @@ public class QuestManager : MonoBehaviour
 
         if (id == questList[CharacterData.Instance.QuestID].npcId[questActionIndex]) questActionIndex++;
 
-
+        
         NextQuest();
         QuestName.text = questList[CharacterData.Instance.QuestID].questName;
     }
