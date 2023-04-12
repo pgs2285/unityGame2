@@ -37,7 +37,7 @@ public class TalkManager : MonoBehaviour
 
         talkData.Add(2000+70, new string[]{"사과를 먹었구나.", "포만감이 많이 오른거 같네", "하지만 아직도 배가 고파보여...", "그런 단일 아이템으로는 배고픔을 채울 수 없어.", "그래서 여러가지 재료를 모아서 요리를 해야해."," 내가 남은 사과를 하나 줄게 절대 먹지말고... 먹으면 게임망해", "한번 토치를 찾아서 요리를해보자!", "토치는 오른쪽 섬 어딘가에 있을거야!"});
       
-        talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게"});
+        talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
 
         talkData.Add(1 , new string[]{".... 그냥 레시피는 너혼자 독학하렴", "다음으로 넘어가자."});
 
@@ -98,7 +98,12 @@ public class TalkManager : MonoBehaviour
                         break;
 ////////////////////////////////////여기부터 4 bearCave//////////////////////////////////////////
 
-                        
+                    case 2080:
+                        Vector3 pos = GameObject.Find("FOX").transform.position;
+                        pos.x+=2;
+                        Instantiate(Resources.Load<GameObject>("Prefab/Pot"), pos, Quaternion.identity);
+
+                        break;
                     case 6080:
                
                         break;
