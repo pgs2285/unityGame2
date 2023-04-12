@@ -38,7 +38,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000+70, new string[]{"사과를 먹었구나.", "포만감이 많이 오른거 같네", "하지만 아직도 배가 고파보여...", "그런 단일 아이템으로는 배고픔을 채울 수 없어.", "그래서 여러가지 재료를 모아서 요리를 해야해."," 내가 남은 사과를 하나 줄게 절대 먹지말고... 먹으면 게임망해", "한번 토치를 찾아서 요리를해보자!", "토치는 오른쪽 섬 어딘가에 있을거야!"});
       
         talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
-
+        talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
         talkData.Add(1 , new string[]{".... 그냥 레시피는 너혼자 독학하렴", "다음으로 넘어가자."});
 
 
@@ -51,7 +51,7 @@ public class TalkManager : MonoBehaviour
     public TextMeshProUGUI TutorialMessage;
 
     
-    int count = 0;
+    int[] count = {0,0,0,0,0,0,0,0,0};
    
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
@@ -85,9 +85,9 @@ public class TalkManager : MonoBehaviour
                         break;
 
                     case 2070:
-                        if(count == 0) {
+                        if(count[0] == 0) {
                             Inventory.instance.AddItem(Resources.Load<Item>("Item/Fruit"), 1); // 레시피용 사과 하나 주기
-                            count++;
+                            count[0]++;
                         }
                         
                         if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/Torch"))){
@@ -99,13 +99,23 @@ public class TalkManager : MonoBehaviour
 ////////////////////////////////////여기부터 4 bearCave//////////////////////////////////////////
 
                     case 2080:
+                    if(count[1] == 0){
                         Vector3 pos = GameObject.Find("FOX").transform.position;
                         pos.x+=2;
                         Instantiate(Resources.Load<GameObject>("Prefab/Pot"), pos, Quaternion.identity);
-
+                        count[1]++;
+                    }
+                        if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
+                            CharacterData.Instance.QuestID = 80;  // 퀘스트아이디를 80으로 고정
+                            GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                            return "";
+                        }
                         break;
+                    case 2090: //여우를 따라가서 울타리를 부수기. 대충 y = 5로 이동시키면 될듯.
+                        StartCoroutine(walkingToLifeTree("y", 24)); //y로 10만큼 이동.
+                    break;
                     case 6080:
-               
+                        
                         break;
                     default:
                         break;
@@ -160,10 +170,13 @@ public class TalkManager : MonoBehaviour
     public GameObject fox;
     public GameObject cat;
     public GameObject lifeTreePortal;
-    IEnumerator walkingToLifeTree()
+    IEnumerator walkingToLifeTree(string xory,float increase)
     {
         Vector3 targetVector = fox.transform.position;
-        targetVector.y += 60;
+        fox.GetComponent<Animator>().SetBool("move", true);
+        if(xory == "x") targetVector.x += increase;
+        else if(xory=="y") targetVector.y += increase;
+
         while (Mathf.Abs(Vector3.Distance(targetVector, fox.transform.position)) > 0.001f)
         {
             fox.transform.position = Vector3.MoveTowards(fox.transform.position, targetVector, 0.03f);
@@ -178,6 +191,7 @@ public class TalkManager : MonoBehaviour
 
         }
         yield return new WaitForFixedUpdate();
+        fox.GetComponent<Animator>().SetBool("move", false);
     }
 
     string[] conversation;
