@@ -37,6 +37,12 @@ public class RecipeSystem : Singleton<RecipeSystem>
             RunePanel.SetActive(isRoonPanelActive);
             isRoonPanelActive = !isRoonPanelActive;
         }
+
+        if(CharacterData.Instance.QuestID == 80){
+            if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
+                CharacterData.Instance.QuestID += 10;
+            }
+        }
     }
 }
 

@@ -92,6 +92,11 @@ public class MainCharacter : MonoBehaviour
         }
 
         switchingAble();
+        rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Item"));
+        if(rayHit.collider != null && Input.GetButtonDown("Jump"))
+        {
+            rayHit.collider.GetComponent<getItem>().Get();   
+        }
 
     }
 
