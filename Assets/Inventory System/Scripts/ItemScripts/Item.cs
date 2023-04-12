@@ -29,6 +29,10 @@ public class Item : ScriptableObject
         {
             case 10:
                 CharacterData.Instance.Hungry += 30;
+                if(CharacterData.Instance.QuestID == 60){
+                    CharacterData.Instance.QuestID += 10;
+                }
+                Inventory.instance.RemoveItem(this, 1);
                 break;
             case 30:
                 CharacterData.Instance.Hungry += 100;
