@@ -8,7 +8,10 @@ public class CharacterData : Singleton<CharacterData>
     bool isMove = true;
     bool isDashAble = false;
     int hungry = 10;
-
+    public float catjAttackPoint = 1f;
+    public float catkAttackPoint = 2f;
+    public float foxjAttackPoint = 5f;
+    
     bool[] isAttackRuneOpened = new bool[2];
     public bool[] IsAttackRuneOpened { get; set; } = new bool[2];
 

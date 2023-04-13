@@ -28,6 +28,7 @@ public class QuestManager : MonoBehaviour
         ////////////cave///////////////////
         questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 2000}));
         questList.Add(90, new QuestData(("나를 따라와"), new int[] { 2000}));
+        questList.Add(100, new QuestData(("나를 따라와"), new int[] { 2000}));
         
       
 
