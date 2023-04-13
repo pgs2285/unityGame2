@@ -39,6 +39,8 @@ public class TalkManager : MonoBehaviour
       
         talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
         talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
+        talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
+        talkData.Add(2000 + 110 , new string[]{"이제 울타리를 부숴서 지나갈 수 있게 되었어.", "이제 다시한번 나를 따라와봐"});
         talkData.Add(1 , new string[]{".... 그냥 레시피는 너혼자 독학하렴", "다음으로 넘어가자."});
 
 
@@ -114,6 +116,11 @@ public class TalkManager : MonoBehaviour
                     case 2090: //여우를 따라가서 울타리를 부수기. 대충 y = 5로 이동시키면 될듯.
                         StartCoroutine(walkingToLifeTree("y", 24)); //y로 10만큼 이동.
                     break;
+                    case 2100:
+                            CharacterData.Instance.QuestID = 100;  // 퀘스트아이디를 80으로 고정
+                            GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                            return "";
+
                     case 6080:
                         
                         break;
@@ -179,7 +186,7 @@ public class TalkManager : MonoBehaviour
 
         while (Mathf.Abs(Vector3.Distance(targetVector, fox.transform.position)) > 0.001f)
         {
-            fox.transform.position = Vector3.MoveTowards(fox.transform.position, targetVector, 0.03f);
+            fox.transform.position = Vector3.MoveTowards(fox.transform.position, targetVector, 0.05f);
             if(fox.transform.position.y < cat.transform.position.y)
             {
                 Vector3 temp = cat.transform.position;

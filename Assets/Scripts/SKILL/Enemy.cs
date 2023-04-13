@@ -18,15 +18,18 @@ public class Enemy : MonoBehaviour
         // HpbarBackground.SetActive(true);
         this.GetComponent<Animator>().SetBool("Hit",true);
         hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
+        
     }
     
     public GameObject prfHPBar;
     public GameObject canvas;
     RectTransform hpBar;
+    GameObject prfHpBar;
     void Start()
     {
         currentHp = Hp;
-        hpBar = Instantiate(prfHPBar, canvas.transform).GetComponent<RectTransform>();
+        prfHpBar = Instantiate(prfHPBar, canvas.transform);
+        hpBar = prfHpBar.GetComponent<RectTransform>();
    
     }
 
@@ -38,9 +41,13 @@ public class Enemy : MonoBehaviour
         if (currentHp <= 0)
         {
             Destroy(gameObject);
-            Destroy(hpBar);
+            Destroy(prfHpBar);
         }
 
 
+    }
+    public void animationEnd()
+    {
+        this.GetComponent<Animator>().SetBool("Hit",false);
     }
 }

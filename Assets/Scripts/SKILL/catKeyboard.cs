@@ -96,7 +96,7 @@ public class catKeyboard : MonoBehaviour
                     collider.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
                 }
             }
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
             isAttacking = false;
     }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
