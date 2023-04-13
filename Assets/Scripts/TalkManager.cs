@@ -41,6 +41,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
         talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
         talkData.Add(2000 + 110 , new string[]{"이제 울타리를 부숴서 지나갈 수 있게 되었어.", "이제 다시한번 나를 따라와봐"});
+        talkData.Add(2000+120, new string[]{"여기가 이 모든일의 근원이야","너는 기억이 없겠지만 이 정말 많은 일이 있었어","7마리의 동물들은 세계수에 열린 열매를 먹고 믿을 수 없는 힘을 얻었지만, 그 힘을 과시하는 방법이 잘못됐어.","너는 그것을 지키는 과정에서 기억을 잃었을거야","이제 내가 너에게 후드를 하나줄게","이것을 입고 싸우면 지금과는 다른 힘을 얻을 수 있을거야"});
         talkData.Add(1 , new string[]{".... 그냥 레시피는 너혼자 독학하렴", "다음으로 넘어가자."});
 
 
@@ -120,7 +121,14 @@ public class TalkManager : MonoBehaviour
                             CharacterData.Instance.QuestID = 100;  // 퀘스트아이디를 80으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                             return "";
-
+                    case 2110:
+                        StartCoroutine(walkingToLifeTree("y", 23)); 
+                        break;
+                    case 2120:
+                        Tutorial.SetActive(true);
+                        TutorialMessage.text = "Q를 누르면 다른 동물로 변신 할 수 있습니다. 후드는 진행하며 얻어가세요. 또한 Tab을 누르면 각 후드를 강화할 수 있습니다.";
+                        StartCoroutine(Tutorial1Time());
+                        break;
                     case 6080:
                         
                         break;
