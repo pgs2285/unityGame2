@@ -12,6 +12,13 @@ public class Puzzle_foothold : MonoBehaviour
         StartCoroutine(Shake(0.3f, 0.5f));
         Door.SetActive(false);
     }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        //추후 소리호출
+        StartCoroutine(Shake(0.3f, 0.5f));
+        Door.SetActive(false);
+    }
     void OnTriggerExit2D(Collider2D other)
     {
         StartCoroutine(Shake(0.3f, 0.5f));
