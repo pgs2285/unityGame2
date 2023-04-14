@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enermy_Ai : MonoBehaviour
 {
-    // Start is called before the first frame update
     NavMeshAgent nav;
     public GameObject target;
     [SerializeField] Transform targetform;
@@ -14,9 +13,10 @@ public class Enermy_Ai : MonoBehaviour
     CircleCollider2D circleCollider2D;
     Rigidbody2D rigidbody2D;
     int time = 1;
-    int once = 1;
+    int once = 0;
     int key_ai = 0;
-
+    bool key = true;
+    int dir1;
     // Start is called before the first frame update
 
     void Start()
@@ -44,60 +44,67 @@ public class Enermy_Ai : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            int dir1 = Random.Range(0, 4);
             key_ai = 0;
         }
     }
 
     IEnumerator RandomMove()
     {
+
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            if (time < 3 && time > 0)
+
+            yield return new WaitForSeconds(0.01f);
+            if (time < 200 && time >= 0)
             {
+                rigidbody2D.velocity = new Vector2(0, 0);
                 time += 1;
                 animator.SetBool("iswalk", false);
-                Debug.Log("둠칫둠칫");
+
             }
-            else if (time < 4 && time > 3)
+            else if (time < 300 && time >= 200)
             {
-                Debug.Log("배회움직임 가동");
-                int dir1 = Random.Range(0, 4);
+
+                time += 1;
+                if (key)
+                {
+                    dir1 = Random.Range(0, 4);
+                }
+                key = false;
+
                 if (dir1 == 0)
                 {
-
-                    rigidbody2D.velocity = new Vector2(1, rigidbody2D.velocity.y);
-
+                    Vector2 pos = new Vector2(transform.position.x + 0.01f, transform.position.y);
+                    transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
 
                 else if (dir1 == 1)
                 {
-
-                    rigidbody2D.velocity = new Vector2(-1, rigidbody2D.velocity.y);
-
+                    Vector2 pos = new Vector2(transform.position.x - 0.01f, transform.position.y);
+                    transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
-
                 else if (dir1 == 2)
-
                 {
-
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 1);
-
+                    Vector2 pos = new Vector2(transform.position.x, transform.position.y + 0.01f);
+                    transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
-
                 else if (dir1 == 3)
                 {
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, -1);
+                    Vector2 pos = new Vector2(transform.position.x, transform.position.y - 0.01f);
+                    transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
                 animator.SetBool("iswalk", true);
+                Debug.Log(dir1);
+
             }
             else
             {
 
                 time = 1;
-                break;
+
+                key = true;
             }
+
         }
 
 
@@ -110,20 +117,20 @@ public class Enermy_Ai : MonoBehaviour
             StopCoroutine("RandomMove");
             nav.SetDestination(targetform.position);
             animator.SetBool("iswalk", true);
-            once = 1;
+            once = 0;
         }
         else
         {
-            if (once == 1)
+            if (once == 0)
             {
                 StartCoroutine("RandomMove");
-                once++;
+                once = 1;
             }
             else
             {
-                
+
             }
-            
+
         }
 
     }
