@@ -67,4 +67,5 @@ public class closetheDoor : MonoBehaviour
         chatPanel.SetActive(false);
         gameObject.SetActive(false);
     }
+
 }
