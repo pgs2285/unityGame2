@@ -10,12 +10,14 @@ public class LSkillController : MonoBehaviour
     {
 
         //Debug.Log(other.gameObject.tag);
-        if(other.gameObject.tag == "Enemy")
+        if(other.CompareTag("Enemy"))
         {
-            CharacterData.Instance.FoxSkillStack += 1;
-            //Debug.Log("Hit");   
+            CharacterData.Instance.FoxSkillStack ++;
+            other.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catkAttackPoint * CharacterData.Instance.AttackPoint);
+            Debug.Log("Hit");   
 
         }
+        
 
     }
 

@@ -180,7 +180,7 @@ public class catKeyboard : MonoBehaviour
                 if (CharacterData.Instance.FoxSkillStack < 2)
                 {
                     GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-                }else if(CharacterData.Instance.FoxSkillStack == 2)
+                }else if(CharacterData.Instance.FoxSkillStack >= 2)
                 {
                     animator.SetBool("Dash", true);
                     StartCoroutine(Dash(direction, 3.0f, 0.8f));

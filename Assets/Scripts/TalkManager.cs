@@ -20,7 +20,8 @@ public class TalkManager : MonoBehaviour
         talkData.Add(1000, new string[] { "맑은 물이다." });
         talkData.Add(3000, new string[] { "나무이다." }); //열매달린 나무
         talkData.Add(4000, new string[] { "평범한 나무이다." }); // 일반나무
-        talkData.Add(6000, new string[] { "벽에있는 이상한 무늬이다" });
+        talkData.Add(6000, new string[] { "막혀있다. 열 방법을 찾아봐야겠다." });
+        
 
         // 500 세계수
         //600 세계수 포탈(맵 전체이동 포탈)
@@ -122,12 +123,13 @@ public class TalkManager : MonoBehaviour
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                             return "";
                     case 2110:
-                        StartCoroutine(walkingToLifeTree("y", 23)); 
+                        StartCoroutine(walkingToLifeTree("y", 27)); 
                         break;
                     case 2120:
                         Tutorial.SetActive(true);
                         TutorialMessage.text = "Q를 누르면 다른 동물로 변신 할 수 있습니다. 후드는 진행하며 얻어가세요. 또한 Tab을 누르면 각 후드를 강화할 수 있습니다.";
                         StartCoroutine(Tutorial1Time());
+                        lifeTreePortal.SetActive(true);
                         break;
                     case 6080:
                         
