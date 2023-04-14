@@ -25,9 +25,12 @@ public class QuestManager : MonoBehaviour
         questList.Add(50, new QuestData("나무열매를 찾아보자.", new int[] {3000} ));
         questList.Add(60, new QuestData("할말이 있어", new int[] { 2000 }));
         questList.Add(70, new QuestData(("너의 이름은?"), new int[] { 2000 }));
-
         ////////////cave///////////////////
-        questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 6000}));
+        questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 2000}));
+        questList.Add(90, new QuestData(("나를 따라와"), new int[] { 2000}));
+        questList.Add(100, new QuestData(("울타리를 부수자"), new int[] { 2000}));
+        questList.Add(110, new QuestData(("나를 따라와2"), new int[] { 2000}));
+        questList.Add(120, new QuestData(("떠나요~"), new int[] { 2000}));
         
       
 

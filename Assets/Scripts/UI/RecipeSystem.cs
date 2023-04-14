@@ -37,6 +37,27 @@ public class RecipeSystem : Singleton<RecipeSystem>
             RunePanel.SetActive(isRoonPanelActive);
             isRoonPanelActive = !isRoonPanelActive;
         }
+
+        if(CharacterData.Instance.QuestID == 80){
+            if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
+                CharacterData.Instance.QuestID += 10;
+            }
+        }
+
+        switch(CharacterData.Instance.QuestID){
+            case 80:
+                if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
+                    CharacterData.Instance.QuestID += 10;
+                }
+                break;
+            
+            case 100:
+                if(GameObject.Find("Fence").transform.childCount == 0){ //모두 부서져 있으면
+                    CharacterData.Instance.QuestID += 10;
+                }
+            break;
+
+        }
     }
 }
 

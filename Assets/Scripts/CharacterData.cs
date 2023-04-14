@@ -6,9 +6,12 @@ public class CharacterData : Singleton<CharacterData>
 {
     int maxHP = 6;
     bool isMove = true;
-    bool isDashAble = false;
+    // bool isDashAble = false;
     int hungry = 10;
-
+    public float catjAttackPoint = 1f;
+    public float catkAttackPoint = 2f;
+    public float foxjAttackPoint = 5f;
+    
     bool[] isAttackRuneOpened = new bool[2];
     public bool[] IsAttackRuneOpened { get; set; } = new bool[2];
 
@@ -39,11 +42,11 @@ public class CharacterData : Singleton<CharacterData>
         set { hungry = value; }
     }
 
-    public bool IsDashAble
-    {
-        get { return isDashAble; }
-        set { isDashAble = value; }
-    }
+    // public bool IsDashAble
+    // {
+    //     get { return isDashAble; }
+    //     set { isDashAble = value; }
+    // }
     public bool IsMove
     {
         get { return isMove; }
@@ -69,6 +72,7 @@ public class CharacterData : Singleton<CharacterData>
         get { return attackPoint; }
         set { attackPoint = value; }
     }
+
 
 
 

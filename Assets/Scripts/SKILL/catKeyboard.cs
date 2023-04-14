@@ -60,39 +60,44 @@ public class catKeyboard : MonoBehaviour
         
     }
 
+    private bool isAttacking = false;
     public void jKeyBoard(){
-        if (Input.GetKeyDown(KeyCode.J) || comboCount > 0)
+        if ((Input.GetKeyDown(KeyCode.J)&& !isAttacking)&& comboCount == 0)
         {
-        
+            Debug.Log("Enemy hit1");
             CharacterData.Instance.IsMove = false;
-            Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
-            // if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //오른쪽클릭시
-                
-            //     transform.eulerAngles = new Vector3(0, 180, 0);
-                
-            // }
-            // else{
-            //     transform.eulerAngles = new Vector3(0, 0, 0);
-            // }
+            lastAttackTime = Time.time; // 마지막 공격 시간 갱신
+            isAttacking = true;
+            StartCoroutine(attack());
 
-            if (comboCount == 0) lastAttackTime = Time.time; // 처음 들어올때만 찍혀야함
-    
-            if (Time.time - lastAttackTime < comboResetTime)
-            {
-                if (Input.GetKeyDown(KeyCode.J)) comboCount++;
-            }
-            else
-            {
-                comboCount = 0;
-            }
+        }else if(Input.GetKeyDown(KeyCode.J) && (comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){
+            Debug.Log("Enemy hit2");
+            CharacterData.Instance.IsMove = false;
+            isAttacking = true;
+            StartCoroutine(attack());
+        }else if( (Time.time - lastAttackTime > comboResetTime)) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}
+        else if(comboCount > 1) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
+        else{
+            CharacterData.Instance.IsMove = true;
+        }
 
-            if (comboCount >= 3)
-            {
-                comboCount = 0;
-            }
-            // 애니메이션 트리거 설정
+    }
+
+    IEnumerator attack(){
+        
+            comboCount++;
             animator.SetInteger("ComboCount", comboCount);
-        }else CharacterData.Instance.IsMove = true;
+            Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
+            foreach (Collider2D collider in hit)
+            {
+                if (collider.gameObject.tag == "Enemy")
+                {   
+  
+                    collider.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
+                }
+            }
+            yield return new WaitForSeconds(0.4f);
+            isAttacking = false;
     }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
     public Camera mainCamera; // 메인 카메라
@@ -175,7 +180,7 @@ public class catKeyboard : MonoBehaviour
                 if (CharacterData.Instance.FoxSkillStack < 2)
                 {
                     GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-                }else if(CharacterData.Instance.FoxSkillStack == 2)
+                }else if(CharacterData.Instance.FoxSkillStack >= 2)
                 {
                     animator.SetBool("Dash", true);
                     StartCoroutine(Dash(direction, 3.0f, 0.8f));

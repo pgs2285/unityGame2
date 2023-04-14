@@ -28,7 +28,7 @@ public class Fire_Remove : MonoBehaviour
                 ray.collider.GetComponent<Enemy>().TakeDamage(30);
                 
             }            
-            ray.collider.GetComponent<Enemy>().Repeat();           
+            // ray.collider.GetComponent<Enemy>().Repeat();           
             DestroyFire();
         }
         
