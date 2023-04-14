@@ -60,21 +60,21 @@ public class Enermy_Ai : MonoBehaviour
                 animator.SetBool("iswalk", false);
                 Debug.Log("둠칫둠칫");
             }
-            else if (time < 4 && time > 3)
+            else if (time < 4 && time >= 3)
             {
                 Debug.Log("배회움직임 가동");
                 int dir1 = Random.Range(0, 4);
                 if (dir1 == 0)
                 {
 
-                    rigidbody2D.velocity = new Vector2(1, rigidbody2D.velocity.y);
+                    rigidbody2D.velocity = new Vector2(1, 0);
 
                 }
 
                 else if (dir1 == 1)
                 {
 
-                    rigidbody2D.velocity = new Vector2(-1, rigidbody2D.velocity.y);
+                    rigidbody2D.velocity = new Vector2(-1, 0);
 
                 }
 
@@ -82,13 +82,13 @@ public class Enermy_Ai : MonoBehaviour
 
                 {
 
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 1);
+                    rigidbody2D.velocity = new Vector2(0, 1);
 
                 }
 
                 else if (dir1 == 3)
                 {
-                    rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, -1);
+                    rigidbody2D.velocity = new Vector2(0, -1);
                 }
                 animator.SetBool("iswalk", true);
             }

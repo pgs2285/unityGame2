@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class closetheDoor : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class closetheDoor : MonoBehaviour
             StartCoroutine(Shake(0.5f, 2.0f));
             
         }
+        
+
     }
 
 
@@ -35,6 +38,33 @@ public class closetheDoor : MonoBehaviour
             yield return null;
         }
         transform.localPosition = originPos;
+
+
+
+        if(gameObject.name == "Trigger1"){
+            conversation[0] = "문이 잠겼어?";
+            conversation[1] = "더이상은 돌아갈 수 없겠어. 일단 앞으로 나아가야겠어.";
+            Debug.Log(gameObject.name);
+            StartCoroutine(talk());
+        }
+
+    }
+
+    public GameObject chatPanel;
+    public TextMeshProUGUI text;
+
+    string[] conversation = new string[2];
+    IEnumerator talk(){
+        int textIndex = 0;
+        while(conversation.Length > textIndex){
+
+            chatPanel.SetActive(true);
+            text.text = conversation[textIndex];
+            if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
+            yield return new WaitForSeconds(0.0001f);
+        }
+
+        chatPanel.SetActive(false);
         gameObject.SetActive(false);
     }
 }

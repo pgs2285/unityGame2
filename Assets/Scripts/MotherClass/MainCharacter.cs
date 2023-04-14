@@ -113,7 +113,7 @@ public class MainCharacter : MonoBehaviour
 
     public void switchingAble() { 
         //// questID가 80이면 스위칭 가능하게함 (스킬 2개 받고감)
-        if(CharacterData.Instance.questID >= 80 && CharacterData.Instance.IsMove) // 80보다 크면
+        if(CharacterData.Instance.questID >= 120 && CharacterData.Instance.IsMove) // 80보다 크면
         {
             /*
                   
