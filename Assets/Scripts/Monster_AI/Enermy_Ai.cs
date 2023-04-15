@@ -14,9 +14,10 @@ public class Enermy_Ai : MonoBehaviour
     Rigidbody2D rigidbody2D;
     int time = 1;
     int once = 0;
-    int key_ai = 0;
+    public int key_ai = 0;
     bool key = true;
     int dir1;
+    public bool isStun = false;
     // Start is called before the first frame update
 
     void Start()
@@ -30,22 +31,6 @@ public class Enermy_Ai : MonoBehaviour
         target = GameObject.Find("Player");
         animator = GetComponent<Animator>();
 
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("영역안에 들어왔습니다.");
-            key_ai = 1;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            key_ai = 0;
-        }
     }
 
     IEnumerator RandomMove()
@@ -92,6 +77,9 @@ public class Enermy_Ai : MonoBehaviour
                 {
                     Vector2 pos = new Vector2(transform.position.x, transform.position.y - 0.01f);
                     transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
+                }else if(dir1 == 4){ //스턴만을 위한 코드
+                    Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+                    transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
                 animator.SetBool("iswalk", true);
                 // Debug.Log(dir1);
@@ -109,32 +97,37 @@ public class Enermy_Ai : MonoBehaviour
 
 
     }
-    private void OnCollisionEnter2D(Collision2D other) {
-        Debug.Log("충돌");
-    }
-    // Update is called once per frame
+
     void Update()
     {
-        if (key_ai == 1)
-        {
-            StopCoroutine("RandomMove");
-            nav.SetDestination(targetform.position);
-            animator.SetBool("iswalk", true);
-            once = 0;
-        }
-        else
-        {
-            if (once == 0)
+        Debug.Log(key_ai + "진행방향" );
+        if(!isStun){
+
+            if (key_ai == 1)
             {
-                StartCoroutine("RandomMove");
-                once = 1;
+                // StopCoroutine("RandomMove");
+                nav.SetDestination(targetform.position);
+                animator.SetBool("iswalk", true);
+                once = 0;
             }
             else
             {
+                if (once == 0)
+                {
+                    // StartCoroutine("RandomMove");
+                    once = 1;
+                }
 
             }
+        }else{
+            // StopCoroutine("RandomMove");
+            //transform.position 고정시키기
+            transform.position = stunLocation;
 
+            key_ai = 0;
+            animator.SetBool("iswalk", false);
         }
 
     }
+    public Vector2 stunLocation;
 }
