@@ -13,7 +13,7 @@ public class SubCharacterUI : MonoBehaviour
     int truncateNumber;
     public GameObject panel;
     void Update(){
-        if (CharacterData.Instance.QuestID >= 80)
+        if (CharacterData.Instance.QuestID >= 120)
         {
             GetComponent<Image>().sprite = characterData.characterInfo[CharacterData.Instance.subCh].portrait;
 

@@ -94,7 +94,7 @@ public class Enermy_Ai : MonoBehaviour
                     transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
                 animator.SetBool("iswalk", true);
-                Debug.Log(dir1);
+                // Debug.Log(dir1);
 
             }
             else
@@ -108,6 +108,9 @@ public class Enermy_Ai : MonoBehaviour
         }
 
 
+    }
+    private void OnCollisionEnter2D(Collision2D other) {
+        Debug.Log("충돌");
     }
     // Update is called once per frame
     void Update()
