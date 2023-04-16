@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 1414847545344533739}
   - component: {fileID: 1414847545344533738}
   m_Layer: 0
-  m_Name: bear_enermy_idle1
+  m_Name: bear_enermy_PUZZLE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414847545344533746}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.09, y: 28.69, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -105,6 +105,9 @@ MonoBehaviour:
   target: {fileID: 0}
   targetform: {fileID: 0}
   distanceValue: 3
+  key_ai: 0
+  isStun: 0
+  stunLocation: {x: 0, y: 0}
 --- !u!50 &1414847545344533743
 Rigidbody2D:
   serializedVersion: 4

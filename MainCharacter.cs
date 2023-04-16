@@ -93,7 +93,7 @@ public class MainCharacter : MonoBehaviour
 
 
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Item"));
-
+        Debug.Log(rayHit.collider);
         if(rayHit.collider != null && Input.GetKeyDown(KeyCode.Space))
         {
 
