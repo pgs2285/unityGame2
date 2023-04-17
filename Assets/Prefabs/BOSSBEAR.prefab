@@ -10,16 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 1414847545344533740}
   - component: {fileID: 1414847545344533741}
+  - component: {fileID: 1414847545344533742}
   - component: {fileID: 1414847545344533743}
   - component: {fileID: 1414847545344533744}
   - component: {fileID: 1414847545344533745}
   - component: {fileID: 1414847545344533739}
   - component: {fileID: 1414847545344533738}
-  - component: {fileID: 2628631852132282122}
-  - component: {fileID: 3555333224832145987}
   m_Layer: 0
-  m_Name: bear_enermy_MonsterWave
-  m_TagString: Enemy
+  m_Name: BOSSBEAR
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +90,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1414847545344533742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1414847545344533746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b525938bb3fb304e9f58e3ab6aa9272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  targetform: {fileID: 0}
+  distanceValue: 3
+  key_ai: 0
+  isStun: 0
+  stunLocation: {x: 0, y: 0}
 --- !u!50 &1414847545344533743
 Rigidbody2D:
   serializedVersion: 4
@@ -181,7 +198,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1414847545344533746}
-  m_Enabled: 0
+  m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.2
   m_Speed: 3.5
@@ -196,40 +213,3 @@ NavMeshAgent:
   m_BaseOffset: 0.2
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2628631852132282122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414847545344533746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 424b387d5845e4e19adce21e63b1264b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hp: 30
-  currentHp: 30
-  cooltime: 0
-  prfHPBar: {fileID: 4061531177101327078, guid: 6242761ed6067fc42a70429564c828fa,
-    type: 3}
-  canvas: {fileID: 0}
-  height: 0
---- !u!114 &3555333224832145987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1414847545344533746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b525938bb3fb304e9f58e3ab6aa9272, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  targetform: {fileID: 0}
-  distanceValue: 3
-  key_ai: 0
-  isStun: 0
-  stunLocation: {x: 0, y: 0}
