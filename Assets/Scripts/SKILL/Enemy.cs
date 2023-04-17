@@ -34,6 +34,9 @@ public class Enemy : MonoBehaviour
     }
 
     public float height;
+    private void Awake() {
+        canvas = GameObject.Find("UI");
+    }
     void Update()
     {
         Vector3 _hpBarPos = Camera.main.WorldToScreenPoint(transform.position + Vector3.up * height);
@@ -41,6 +44,7 @@ public class Enemy : MonoBehaviour
         if (currentHp <= 0)
         {
             Destroy(gameObject);
+
             Destroy(prfHpBar);
         }
 
@@ -49,5 +53,16 @@ public class Enemy : MonoBehaviour
     public void animationEnd()
     {
         this.GetComponent<Animator>().SetBool("Hit",false);
+    }
+    public void OnDestroy(){
+            try{
+                if(GameObject.Find("SpawnPoint") != null) 
+                {
+                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().countEnemyDeath++;
+                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().EnemyCount--;
+                }
+            }catch{
+                Debug.Log("SpawnManager is not exist");
+            }
     }
 }

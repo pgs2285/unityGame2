@@ -12,6 +12,8 @@ TagManager:
   - amountText
   - Obstacle
   - Enemy
+  - Wall
+  - handLight
   layers:
   - Default
   - TransparentFX

@@ -91,12 +91,15 @@ public class MainCharacter : MonoBehaviour
             movePanel.SetActive(true);
         }
 
-        switchingAble();
+
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Item"));
-        if(rayHit.collider != null && Input.GetButtonDown("Jump"))
+
+        if(rayHit.collider != null && Input.GetKeyDown(KeyCode.Space))
         {
+
             rayHit.collider.GetComponent<getItem>().Get();   
         }
+        switchingAble();
 
     }
 
@@ -113,7 +116,7 @@ public class MainCharacter : MonoBehaviour
 
     public void switchingAble() { 
         //// questID가 80이면 스위칭 가능하게함 (스킬 2개 받고감)
-        if(CharacterData.Instance.questID >= 80 && CharacterData.Instance.IsMove) // 80보다 크면
+        if(CharacterData.Instance.questID >= 120 && CharacterData.Instance.IsMove) // 80보다 크면
         {
             /*
                   
