@@ -5,27 +5,24 @@ using UnityEngine;
 public class HoneyBEE : MonoBehaviour
 {
 
-    void Awake(){
-        StartCoroutine(beeGenerate());
-    }
+
     IEnumerator beeGenerate(){
-        yield return new WaitForSeconds(5.0f);
-        GameObject bee = Instantiate(Resources.Load("Prefabs/bee")) as GameObject;
+        yield return new WaitForSeconds(0.5f);
+        GameObject bee = Instantiate(Resources.Load("Prefab/bee"),transform.position + new Vector3(1, Random.Range(-1.0f,1.0f),0), Quaternion.identity) as GameObject;
 
     }
     float time;
     public void OnTriggerStay2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player"){
-            // 스페이스를 5초간 누르고 있으면 벌 3마리 소환?
+            // 스페이스를 5초간 누르고 있으면 벌 1마리 소환?
             if(Input.GetKey(KeyCode.Space)){
                 Debug.Log(time);
                 time += Time.deltaTime;
                 if(time >= 5.0f){
                     StartCoroutine(beeGenerate());
-                    StartCoroutine(beeGenerate());
-                    StartCoroutine(beeGenerate());
-                    Debug.Log("5초 경과");
+                    
+                    time = 0;
                 }
             }
 
