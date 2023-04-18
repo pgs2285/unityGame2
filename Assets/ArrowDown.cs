@@ -19,11 +19,19 @@ public class ArrowDown : MonoBehaviour
         CharacterData.Instance.IsMove = true;
         
     }   
-
+    Animator anim;
+    void Awake(){
+        anim = GetComponent<Animator>();
+    }
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.tag == "Player"){
+            anim.SetBool("hold", true);
             StartCoroutine(GoDown());
+
         }
+    }
+    void endAnim(){
+        anim.SetBool("hold", false);
     }
 }

@@ -20,15 +20,18 @@ public class BeeMovement : MonoBehaviour {
     }
     Animator beeAnim;
     Vector3 direction;
+    bool isDeath = false;
     void Update () {
-
+        if(!isDeath){
         direction = player.position - transform.position; // Calculate direction vector towards the player
         float noise = Mathf.PerlinNoise(Time.time * frequency, timeOffset) * 2f - 1f; // Perlin Noise value between -1 and 1
         Vector3 randomDirection = new Vector3(noise, 0f, noise); // Create a random direction vector
         direction += randomDirection * amplitude; // Add the random direction to the current direction vector
         direction = Vector3.ClampMagnitude(direction, 1f); // Limit the magnitude of the direction vector to 1
         transform.position += direction * speed * Time.deltaTime; // Move towards the player
-
+        }else{
+            direction = Vector3.zero;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -36,14 +39,13 @@ public class BeeMovement : MonoBehaviour {
         if(other.gameObject.tag == "Player"){
             CharacterData.Instance.CurrentHP-=1;
             beeAnim.SetTrigger("Death");
-            direction = Vector3.zero;
+            isDeath = true;
         }
         if(other.gameObject.name == "BOSSBEAR"){
             Debug.Log("곰충돌");
-            other.gameObject.GetComponent<BossBear>().enduranceBar.transform.localScale -= new Vector3(0,0.1f,0);
-            other.gameObject.GetComponent<BossBear>().enduranceBar.GetComponent<Animator>().SetBool("reduce", true);
+            other.gameObject.GetComponent<Enemy>().TakeDamage(10);
             beeAnim.SetTrigger("Death");
-            direction = Vector3.zero;
+            isDeath = true;
         }
     }
 }
