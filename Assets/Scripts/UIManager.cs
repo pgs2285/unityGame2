@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class UIManager : Singleton<UIManager>
@@ -36,41 +37,36 @@ public class UIManager : Singleton<UIManager>
         // infoPanel.SetActive(false);
         talkManager = GameObject.Find("TalkMgr").GetComponent<TalkManager>();
         questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
+        HPBar = GameObject.Find("HP");
     }
 
+
+    GameObject HPBar;
     public void Update(){
-        for(int i = 0; i < CharacterData.Instance.CurrentHP; i++){
-            hpBar.transform.GetChild(i).gameObject.SetActive(true);
+        for(int i =0; i<8;i++){
+            HPBar.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/null");
         }
-        for(int i = CharacterData.Instance.CurrentHP; i < 4; i++){
-            hpBar.transform.GetChild(i).gameObject.SetActive(false);
-        }        
-        for(int i = 0; i < CharacterData.Instance.Shield; i++){
-            hpBar.transform.GetChild(i+4).gameObject.SetActive(true);
+        for(int i = 0; i < CharacterData.Instance.MaxHP; i++){
+            HPBar.transform.GetChild(i/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/EmptyHP");
         }
-        for(int i = CharacterData.Instance.Shield; i < 4; i++){
-            hpBar.transform.GetChild(i+4).gameObject.SetActive(false);
+        for(int i =0; i < CharacterData.Instance.CurrentHP; i++){
+            
+            HPBar.transform.GetChild(i/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/FullHP");
+            if(CharacterData.Instance.CurrentHP % 2 == 1){
+                HPBar.transform.GetChild(CharacterData.Instance.CurrentHP/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/HalfHP");
+            }
+            if(CharacterData.Instance.Shield > 0){
+                for(int j = 0; j < CharacterData.Instance.Shield; j++){
+                    HPBar.transform.GetChild(CharacterData.Instance.CurrentHP/2+j/2 + 1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/FullShield");
+                    if(CharacterData.Instance.Shield % 2 == 1){
+                        HPBar.transform.GetChild(CharacterData.Instance.Shield/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/HalfShield");
+                    }
+                }
+            }
         }
-
-        // level.text = CharacterData.Instance.Level.ToString();
-        // nowEXP.text = CharacterData.Instance.Experience.ToString();
-        // fullEXP.text = CharacterData.Instance.fullExperience[CharacterData.Instance.Level - 1].ToString();
-
         
     }
 
-
-    // public void activeExtraInfo(){
-    //     if(infoPanel.activeSelf == false){
-    //         infoPanel.SetActive(true);
-    //         attackPoint.text = CharacterData.Instance.AttackPoint.ToString();
-            
-    //         speed.text = CharacterData.Instance.Speed.ToString();
-
-    //     }else{
-    //         infoPanel.SetActive(false);
-    //     }
-    // }
 
     [SerializeField] TextMeshProUGUI chatText;
     GameObject scanObject;
