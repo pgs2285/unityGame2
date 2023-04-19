@@ -39,17 +39,18 @@ public class catKeyboard : MonoBehaviour
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
-
-                jKeyBoard(); // 고양이 j 스킬 
-                CatKAttack(); // 고양이 k  스킬
+                if(CharacterData.Instance.IsAttackAble){
+                    jKeyBoard(); // 고양이 j 스킬 
+                    CatKAttack(); // 고양이 k  스킬
+                }
                 
             break;
 
             case 1: // 여우
-
-                FoxJSKill(); // 여우 j 스킬
-                shieldSkill(); // 여우 k 스킬
-                
+                if(CharacterData.Instance.IsAttackAble){
+                    FoxJSKill(); // 여우 j 스킬
+                    shieldSkill(); // 여우 k 스킬
+                }
                 
                 
             break;

@@ -167,6 +167,7 @@ public class MainCharacter : MonoBehaviour
         public void GetStun(){
             transform.position = onTheLeg.GetComponent<LegMovement>().startPos;
             animator.SetBool("Stun", false);
+            CharacterData.Instance.IsMove = true;
 
         }
 
