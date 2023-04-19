@@ -22,13 +22,14 @@ public class MainCharacter : MonoBehaviour
     [SerializeField]
     GameObject gameoverPanel;
 
-    public UIManager uiManager;
+    UIManager uiManager;
     decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     public Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        uiManager = GameObject.Find("UI").GetComponent<UIManager>();
     }
 
     protected void isDeath() {
