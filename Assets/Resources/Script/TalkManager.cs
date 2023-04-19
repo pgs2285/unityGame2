@@ -9,11 +9,6 @@ public class TalkManager : MonoBehaviour
     public Dictionary<int,string[]> talkData;
 
 
-    void Awake()
-    {
-        talkData = new Dictionary<int, string[]>();
-        GenerateData();
-    }
     void GenerateData(){ //데이터 등록하기~
         
         talkData.Add(2000, new string[] { "뭘 봐?"});
@@ -48,13 +43,23 @@ public class TalkManager : MonoBehaviour
 
     }
     public GameObject effect;
-    public GameObject SKill1;
+    
     public GameObject Tutorial;
-    public Item TutorialFruit;
-    public Item Touch;
+    Item TutorialFruit;
+    
     public TextMeshProUGUI TutorialMessage;
 
     
+    void Awake()
+    {
+        talkData = new Dictionary<int, string[]>();
+        GenerateData();
+        TutorialFruit = Resources.Load<Item>("Item/TutorialFruit");
+        fox = GameObject.Find("FOX");
+        cat = GameObject.FindWithTag("Player");
+        
+        lifeTreePortal = GameObject.Find("movePortal");
+    }
     int[] count = {0,0,0,0,0,0,0,0,0};
    
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
@@ -75,7 +80,6 @@ public class TalkManager : MonoBehaviour
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);
-                        //Inventory.instance.AddItem(Touch, 2);
                         Destroy(GameObject.Find("TutorialApple"));
 
                         break;
@@ -90,7 +94,7 @@ public class TalkManager : MonoBehaviour
 
                     case 2070:
                         if(count[0] == 0) {
-                            Inventory.instance.AddItem(Resources.Load<Item>("Item/Fruit"), 1); // 레시피용 사과 하나 주기
+                            Inventory.instance.AddItem(Resources.Load<Item>("Item/Apple"), 1); // 레시피용 사과 하나 주기
                             count[0]++;
                         }
                         
@@ -184,8 +188,8 @@ public class TalkManager : MonoBehaviour
     }
 
 
-    public GameObject fox;
-    public GameObject cat;
+    GameObject fox;
+    GameObject cat;
     public GameObject lifeTreePortal;
     IEnumerator walkingToLifeTree(string xory,float increase)
     {
@@ -211,21 +215,5 @@ public class TalkManager : MonoBehaviour
         fox.GetComponent<Animator>().SetBool("move", false);
     }
 
-    string[] conversation;
-    public GameObject chatPanel;
-    public TextMeshProUGUI text;
 
-    IEnumerator talk(){
-        int textIndex = 0;
-        while(conversation.Length > textIndex){
-
-            chatPanel.SetActive(true);
-            text.text = conversation[textIndex];
-            if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
-            yield return new WaitForSeconds(0.001f);
-        }
-
-        chatPanel.SetActive(false);
-
-    }
 }

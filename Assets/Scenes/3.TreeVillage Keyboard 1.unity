@@ -79104,6 +79104,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8299472024911617198, guid: 8e57f816498920b4387ca9551ff825d6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8299472024911617200, guid: 8e57f816498920b4387ca9551ff825d6,
         type: 3}
       propertyPath: id
@@ -96473,12 +96478,6 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
---- !u!1 &1172000956 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 607828887603273277, guid: cc8a3a5d5796c4460b231acfaf0ee170,
-    type: 3}
-  m_PrefabInstance: {fileID: 4710011764948061570}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1173654486 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5033133551422474838, guid: b05911762c25c4941b433a3c0f7f2278,
@@ -100443,7 +100442,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 0.995283, b: 0.995283, a: 1}
-  m_Intensity: 1.22
+  m_Intensity: 1.21
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 00000000
@@ -105168,7 +105167,7 @@ PrefabInstance:
         type: 3}
       propertyPath: uiManager
       value: 
-      objectReference: {fileID: 7697138508051133415}
+      objectReference: {fileID: 0}
     - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: switcingEffect
@@ -105281,12 +105280,12 @@ PrefabInstance:
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.4
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.83
+      value: -3.4
       objectReference: {fileID: 0}
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
@@ -106111,7 +106110,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SKill1
       value: 
-      objectReference: {fileID: 1172000956}
+      objectReference: {fileID: 0}
     - target: {fileID: 3128155924177115103, guid: b622d42d94f24e349b32c3329201ec20,
         type: 3}
       propertyPath: effect
@@ -106137,7 +106136,7 @@ PrefabInstance:
         type: 3}
       propertyPath: lifeTreePortal
       value: 
-      objectReference: {fileID: 1972797677}
+      objectReference: {fileID: 0}
     - target: {fileID: 3128155924177115103, guid: b622d42d94f24e349b32c3329201ec20,
         type: 3}
       propertyPath: TutorialMessage
@@ -108383,18 +108382,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1707295510648066728, guid: cc8a3a5d5796c4460b231acfaf0ee170, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc8a3a5d5796c4460b231acfaf0ee170, type: 3}
---- !u!114 &7697138508051133415 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3138138194831081061, guid: cc8a3a5d5796c4460b231acfaf0ee170,
-    type: 3}
-  m_PrefabInstance: {fileID: 4710011764948061570}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280715261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20a28d4e443fb88489b584cb864155a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &7697138508164249212 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3138138195783318526, guid: cc8a3a5d5796c4460b231acfaf0ee170,

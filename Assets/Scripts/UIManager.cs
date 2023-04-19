@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {   
     [SerializeField]
     private GameObject hpBar;
@@ -34,6 +34,8 @@ public class UIManager : MonoBehaviour
 
     public void Start(){
         // infoPanel.SetActive(false);
+        talkManager = GameObject.Find("TalkMgr").GetComponent<TalkManager>();
+        questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
     }
 
     public void Update(){
@@ -85,8 +87,8 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public TalkManager talkManager;
-    public QuestManager questManager;
+    TalkManager talkManager;
+    QuestManager questManager;
     
     public void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
         int questTalkIndex = questManager.getQuestTalkIndex(id);

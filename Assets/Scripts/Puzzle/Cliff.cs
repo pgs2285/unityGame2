@@ -14,6 +14,7 @@ public class Cliff : MonoBehaviour
         {
             Debug.Log("Player Fall from the leg");
             player.SetBool("Stun", true);
+            CharacterData.Instance.IsMove = false;
 
 
             

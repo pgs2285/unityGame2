@@ -35,7 +35,8 @@ public class CharacterData : Singleton<CharacterData>
 
     int shield = 0;
     public int Shield { get { return shield; } set { shield = value; } }
-    
+    bool isAttackAble = true;
+    public bool IsAttackAble { get { return isAttackAble; } set { isAttackAble = value; } }
     public int Hungry
     {
         get { return hungry; }
