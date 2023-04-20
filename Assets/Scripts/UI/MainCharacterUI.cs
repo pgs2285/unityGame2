@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class MainCharacterUI : MonoBehaviour
 {
-    public MainCharacter characterData;
+    MainCharacter characterData;
+    void Start(){
+        characterData = GameObject.FindWithTag("Player").GetComponent<MainCharacter>();
+    }
     void Update(){
         GetComponent<Image>().sprite = characterData.characterInfo[CharacterData.Instance.mainCh].portrait;
     }

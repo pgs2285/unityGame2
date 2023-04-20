@@ -7,12 +7,16 @@ using TMPro;
 
 public class SkillIndicator : MonoBehaviour
 {
-    public MainCharacter mainCharacter;
-    public catKeyboard keyboard;
+    MainCharacter mainCharacter;
+    catKeyboard keyboard;
 
     public TextMeshProUGUI coolTimeIndicator;
     public GameObject panel;
     float leftTime = 0;
+    void Start(){
+        mainCharacter = GameObject.FindWithTag("Player").GetComponent<MainCharacter>();
+        keyboard= GameObject.FindWithTag("Player").GetComponent<catKeyboard>();
+    }
     private void Update(){
         
         if(CharacterData.Instance.mainCh == 0){

@@ -13,7 +13,7 @@ public class ChildAI : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("영역안에 들어왔습니다.");
+
             gameObject.GetComponentInParent<Enermy_Ai>().key_ai = 1;
         }
     }
@@ -25,24 +25,7 @@ public class ChildAI : MonoBehaviour
             gameObject.GetComponentInParent<Enermy_Ai>().key_ai = 0;
         }
     }
-    private CircleCollider2D circleCollider;
 
-    private void Awake()
-    {
-        circleCollider = GetComponent<CircleCollider2D>();
-    }
-    
-    private void OnDrawGizmosSelected()
-    {
-        if (circleCollider != null)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position , circleCollider.radius);
-        }
-    }
-    private void Update() {
-        OnDrawGizmosSelected();
-    }
 
 
 }

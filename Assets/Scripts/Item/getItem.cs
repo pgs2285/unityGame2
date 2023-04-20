@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class getItem : MonoBehaviour
 {
-    
+    public GameObject light2DSprite;
     public void Get(){
+        Debug.Log(gameObject.name);
         try{
             Inventory.instance.AddItem(Resources.Load<Item>("Item/" + gameObject.name),1);
         }catch{
@@ -18,7 +19,7 @@ public class getItem : MonoBehaviour
                 }
             break;
             case "flashlight":
-                
+                light2DSprite.SetActive(true);
             break;
             
         }

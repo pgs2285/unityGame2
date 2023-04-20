@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +39,7 @@ public class catKeyboard : MonoBehaviour
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
-
+            
                 jKeyBoard(); // 고양이 j 스킬 
                 CatKAttack(); // 고양이 k  스킬
                 
@@ -137,9 +137,9 @@ public class catKeyboard : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.K))
             {
 
-                CharacterData.Instance.Shield += 1;
+                CharacterData.Instance.Shield += 3;
            
-                StartCoroutine(returnHP(1));
+                StartCoroutine(returnHP(3));
                 foxkFilledTime = 0;
             }
         }

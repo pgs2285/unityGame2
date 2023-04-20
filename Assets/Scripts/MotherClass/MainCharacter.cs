@@ -11,7 +11,7 @@ public struct CharacterInfo{
     public Sprite portrait;
     public Sprite Skill1Image;
     public Sprite Skill2Image;
- 
+    
 }
 
 
@@ -22,13 +22,15 @@ public class MainCharacter : MonoBehaviour
     [SerializeField]
     GameObject gameoverPanel;
 
-    public UIManager uiManager;
+    UIManager uiManager;
     decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     public Animator animator;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
+        uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+        // uiManager = UIManager.Instance.GetComponent<UIManager>();
     }
 
     protected void isDeath() {
@@ -91,12 +93,15 @@ public class MainCharacter : MonoBehaviour
             movePanel.SetActive(true);
         }
 
-        switchingAble();
+
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Item"));
-        if(rayHit.collider != null && Input.GetButtonDown("Jump"))
+
+        if(rayHit.collider != null && Input.GetKeyDown(KeyCode.Space))
         {
+
             rayHit.collider.GetComponent<getItem>().Get();   
         }
+        switchingAble();
 
     }
 
@@ -164,6 +169,7 @@ public class MainCharacter : MonoBehaviour
         public void GetStun(){
             transform.position = onTheLeg.GetComponent<LegMovement>().startPos;
             animator.SetBool("Stun", false);
+            CharacterData.Instance.IsMove = true;
 
         }
 

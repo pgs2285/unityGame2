@@ -23,6 +23,7 @@ public class Enermy_Ai : MonoBehaviour
     void Start()
     {
         key_ai = 0;
+        if(gameObject.name == "bear_enermy_MonsterWave(Clone)") key_ai = 1;
         targetform = GameObject.FindGameObjectWithTag("Player").transform;
         rigidbody2D = GetComponent<Rigidbody2D>();
         nav = GetComponent<NavMeshAgent>();
@@ -100,7 +101,6 @@ public class Enermy_Ai : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(key_ai + "진행방향" );
         if(!isStun){
 
             if (key_ai == 1)

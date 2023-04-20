@@ -17,15 +17,15 @@ public class closetheDoor : MonoBehaviour
             LeftdoorAnimation.SetBool("Open",true);
             RightdoorAnimation.SetBool("Open",true);
             StartCoroutine(Shake(0.5f, 2.0f));
-            
+
         }
-        
+
 
     }
 
 
-    public Camera cam;
-
+    public Camera cam; 
+    public GameObject monsterWave;
     public IEnumerator Shake(float _amount, float _duration)
     {
         float timer = 0;
@@ -37,9 +37,9 @@ public class closetheDoor : MonoBehaviour
             timer += Time.deltaTime;
             yield return null;
         }
-        transform.localPosition = originPos;
-
-
+        
+        if(gameObject.name == "Trigger2") Destroy(gameObject);  
+        if(gameObject.name == "Trigger3") monsterWave.SetActive(true);
 
         if(gameObject.name == "Trigger1"){
             conversation[0] = "문이 잠겼어?";
@@ -66,6 +66,7 @@ public class closetheDoor : MonoBehaviour
 
         chatPanel.SetActive(false);
         gameObject.SetActive(false);
+
     }
 
 }
