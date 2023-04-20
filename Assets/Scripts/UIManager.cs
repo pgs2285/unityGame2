@@ -43,8 +43,8 @@ public class UIManager : Singleton<UIManager>
 
     GameObject HPBar;
     public void Update(){
-        for(int i =0; i<8;i++){
-            HPBar.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/null");
+        for(int i =0; i<6;i++){
+            HPBar.transform.GetChild(i).gameObject.GetComponent<Image>().sprite = null;
         }
         for(int i = 0; i < CharacterData.Instance.MaxHP; i++){
             HPBar.transform.GetChild(i/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/EmptyHP");
@@ -55,16 +55,18 @@ public class UIManager : Singleton<UIManager>
             if(CharacterData.Instance.CurrentHP % 2 == 1){
                 HPBar.transform.GetChild(CharacterData.Instance.CurrentHP/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/HalfHP");
             }
-            if(CharacterData.Instance.Shield > 0){
-                for(int j = 0; j < CharacterData.Instance.Shield; j++){
-                    HPBar.transform.GetChild(CharacterData.Instance.CurrentHP/2+j/2 + 1).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/FullShield");
-                    if(CharacterData.Instance.Shield % 2 == 1){
-                        HPBar.transform.GetChild(CharacterData.Instance.Shield/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/HalfShield");
-                    }
+        //     if(CharacterData.Instance.Shield > 0){
+
+        //     }
+        }
+        if(CharacterData.Instance.Shield > 0){
+            for(int i = 0; i< CharacterData.Instance.Shield;i++){
+                HPBar.transform.GetChild(CharacterData.Instance.MaxHP/2 + i/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/FullShield");
+                if(CharacterData.Instance.Shield % 2 == 1){
+                    HPBar.transform.GetChild(CharacterData.Instance.MaxHP/2 + CharacterData.Instance.Shield/2).gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/HalfShield");
                 }
             }
         }
-        
     }
 
 
