@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RecipeSystem : Singleton<RecipeSystem>
 {
@@ -7,17 +8,24 @@ public class RecipeSystem : Singleton<RecipeSystem>
     public List<RecipePrefabs> recipeList = new List<RecipePrefabs>();
     public RecipePrefabs bakedApple;
     // 아이템 리스트
-
-    
+    Scene scene;
+    GameObject normalWorldObject;
+    GameObject anotherWorldObject;
+    GameObject normalWorldGround;
+    GameObject anotherWorldGround;
+    public GameObject anotherWorldEffect;
     private void Start()
     {
-  
-        if (true)
-        {
+        recipeList.Add(bakedApple);
             
-            recipeList.Add(bakedApple);
-            
-        }
+        
+        scene = SceneManager.GetActiveScene();
+        normalWorldGround = GameObject.Find("normalWorld");
+        normalWorldObject = GameObject.Find("normalWorldObject");
+        anotherWorldGround = GameObject.Find("anotherWorld");
+        anotherWorldObject = GameObject.Find("anotherWorldObject");
+        anotherWorldGround.SetActive(false);
+        anotherWorldObject.SetActive(false);
     }
 
 
@@ -26,6 +34,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
 
     public GameObject RunePanel;
     bool isRoonPanelActive = false;
+    bool world = true;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -58,7 +67,30 @@ public class RecipeSystem : Singleton<RecipeSystem>
             break;
 
         }
+
+
+        if(scene.name =="4 bearCave"){
+            if(Input.GetKeyDown(KeyCode.LeftShift)){
+                if(world){
+                    normalWorldGround.SetActive(true);
+                    normalWorldObject.SetActive(true);
+                    anotherWorldGround.SetActive(false);
+                    anotherWorldObject.SetActive(false);
+                    anotherWorldEffect.SetActive(false);
+                }else{
+                    anotherWorldGround.SetActive(true);
+                    anotherWorldObject.SetActive(true);
+                    anotherWorldEffect.SetActive(true);
+                    normalWorldGround.SetActive(false);
+                    normalWorldObject.SetActive(false);
+                }
+                world = !world;
+
+                
+            }
+        }
     }
+
 }
 
 

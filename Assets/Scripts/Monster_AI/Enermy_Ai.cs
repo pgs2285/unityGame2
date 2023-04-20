@@ -116,7 +116,7 @@ public class Enermy_Ai : MonoBehaviour
                 {
                     // StartCoroutine("RandomMove");
                     once = 1;
-                }
+                } animator.SetBool("iswalk", false);
 
             }
         }else{
