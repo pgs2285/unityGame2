@@ -11,7 +11,7 @@ public struct CharacterInfo{
     public Sprite portrait;
     public Sprite Skill1Image;
     public Sprite Skill2Image;
- 
+    
 }
 
 
@@ -30,6 +30,7 @@ public class MainCharacter : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+        // uiManager = UIManager.Instance.GetComponent<UIManager>();
     }
 
     protected void isDeath() {

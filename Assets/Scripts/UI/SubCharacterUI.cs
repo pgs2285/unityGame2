@@ -7,11 +7,14 @@ using System;
 
 public class SubCharacterUI : MonoBehaviour
 {
-    public MainCharacter characterData;
+    MainCharacter characterData;
     public TextMeshProUGUI coolTimeIndicator;
     float leftTime;
     int truncateNumber;
     public GameObject panel;
+    void Start(){
+        characterData = GameObject.FindWithTag("Player").GetComponent<MainCharacter>();
+    }
     void Update(){
         if (CharacterData.Instance.QuestID >= 120)
         {
