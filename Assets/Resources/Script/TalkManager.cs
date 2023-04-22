@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -38,7 +38,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
         talkData.Add(2000 + 110 , new string[]{"이제 울타리를 부숴서 지나갈 수 있게 되었어.", "이제 다시한번 나를 따라와봐"});
         talkData.Add(2000+120, new string[]{"여기가 이 모든일의 근원이야","너는 기억이 없겠지만 이 정말 많은 일이 있었어","7마리의 동물들은 세계수에 열린 열매를 먹고 믿을 수 없는 힘을 얻었지만, 그 힘을 과시하는 방법이 잘못됐어.","너는 그것을 지키는 과정에서 기억을 잃었을거야","이제 내가 너에게 후드를 하나줄게","이것을 입고 싸우면 지금과는 다른 힘을 얻을 수 있을거야"});
-        talkData.Add(1 , new string[]{".... 그냥 레시피는 너혼자 독학하렴", "다음으로 넘어가자."});
+  
 
 
     }
@@ -146,7 +146,7 @@ public class TalkManager : MonoBehaviour
         {
             Debug.LogException(e);
         }
-
+ 
         if (!talkData.ContainsKey(id))
         {
             
@@ -157,7 +157,7 @@ public class TalkManager : MonoBehaviour
                 else
                     return talkData[id - (id % 100)][talkIndex];
             }
-            else
+            else if(talkData.ContainsKey(id - (id % 10)))
             {
                 if (talkIndex == talkData[id - id % 10].Length) // 대사가 종료되었다면
                 {
@@ -168,7 +168,7 @@ public class TalkManager : MonoBehaviour
                     return talkData[id - id % 10][talkIndex];
                 }
             }
-
+            
         }
         if(talkIndex == talkData[id].Length)
             return null;

@@ -26,6 +26,11 @@ public class closetheDoor : MonoBehaviour
 
     public Camera cam; 
     public GameObject monsterWave;
+    textIndicator TextIndicator;
+    void Awake(){
+        TextIndicator = GameObject.Find("EtcController").GetComponent<textIndicator>();
+    }
+    string[] conversation = new string[2];
     public IEnumerator Shake(float _amount, float _duration)
     {
         float timer = 0;
@@ -44,29 +49,11 @@ public class closetheDoor : MonoBehaviour
         if(gameObject.name == "Trigger1"){
             conversation[0] = "문이 잠겼어?";
             conversation[1] = "더이상은 돌아갈 수 없겠어. 일단 앞으로 나아가야겠어.";
-            Debug.Log(gameObject.name);
-            StartCoroutine(talk());
+            Debug.Log(TextIndicator);
+            StartCoroutine(TextIndicator.talk(conversation));
         }
 
     }
 
-    public GameObject chatPanel;
-    public TextMeshProUGUI text;
-
-    string[] conversation = new string[2];
-    IEnumerator talk(){
-        int textIndex = 0;
-        while(conversation.Length > textIndex){
-
-            chatPanel.SetActive(true);
-            text.text = conversation[textIndex];
-            if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
-            yield return new WaitForSeconds(0.0001f);
-        }
-
-        chatPanel.SetActive(false);
-        gameObject.SetActive(false);
-
-    }
-
+ 
 }

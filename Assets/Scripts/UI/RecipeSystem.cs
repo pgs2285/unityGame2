@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.SceneManagement;
-using TMPro;
 
 public class RecipeSystem : Singleton<RecipeSystem>
 {
@@ -16,8 +14,6 @@ public class RecipeSystem : Singleton<RecipeSystem>
     GameObject normalWorldGround;
     GameObject anotherWorldGround;
     public GameObject anotherWorldEffect;
-    int count = 0;
-    public TextMeshProUGUI countDownText;
     private void Start()
     {
         recipeList.Add(bakedApple);
@@ -31,13 +27,6 @@ public class RecipeSystem : Singleton<RecipeSystem>
         anotherWorldGround.SetActive(false);
         anotherWorldObject.SetActive(false);
     }
-    IEnumerator countDown(){
-        while(count <= 10){
-        yield return new WaitForSeconds(1f);
-        count ++;     
-        }
-
-    }
 
 
     public GameObject RecipePanel;
@@ -46,7 +35,6 @@ public class RecipeSystem : Singleton<RecipeSystem>
     public GameObject RunePanel;
     bool isRoonPanelActive = false;
     bool world = true;
-    Coroutine countdownCoroutine ;
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
@@ -82,42 +70,26 @@ public class RecipeSystem : Singleton<RecipeSystem>
 
 
         if(scene.name =="4 bearCave"){
-            if(Input.GetKeyDown(KeyCode.LeftShift) && world){
-        
- 
+            if(Input.GetKeyDown(KeyCode.LeftShift)){
+                if(world){
+                    normalWorldGround.SetActive(true);
+                    normalWorldObject.SetActive(true);
+                    anotherWorldGround.SetActive(false);
+                    anotherWorldObject.SetActive(false);
+                    anotherWorldEffect.SetActive(false);
+                }else{
+                    anotherWorldGround.SetActive(true);
+                    anotherWorldObject.SetActive(true);
+                    anotherWorldEffect.SetActive(true);
+                    normalWorldGround.SetActive(false);
+                    normalWorldObject.SetActive(false);
+                }
+                world = !world;
 
-                anotherWorldGround.SetActive(true);
-                anotherWorldObject.SetActive(true);
-                anotherWorldEffect.SetActive(true);
-                normalWorldGround.SetActive(false);
-                normalWorldObject.SetActive(false);
-                world =false;
                 
-               
-                countdownCoroutine = StartCoroutine(countDown());
-                
-            }
-            else{ //여기가 사후세카이
-
-            }
-            if(count >= 10){
-                count = 0;
-                world = true;
-                normalWorldGround.SetActive(true);
-                normalWorldObject.SetActive(true);
-                anotherWorldGround.SetActive(false);
-                anotherWorldObject.SetActive(false);
-                anotherWorldEffect.SetActive(false);
-                countDownText.text = "";
-                StopCoroutine(countdownCoroutine);
-
-            }else{
-                countDownText.text = (10 - count).ToString();
             }
         }
     }
-
-
 
 }
 
