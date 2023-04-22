@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 [System.Serializable]
 public struct CharacterInfo{
     public Sprite characterSprite;
@@ -26,10 +27,12 @@ public class MainCharacter : MonoBehaviour
     decimal[] fullExperience = { 10, 20, 40, 80, 160, 320, 640, 1280 };
     public Animator animator;
 
+
     private void Start()
     {
         animator = GetComponent<Animator>();
         uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+
         // uiManager = UIManager.Instance.GetComponent<UIManager>();
     }
 
@@ -102,6 +105,7 @@ public class MainCharacter : MonoBehaviour
             rayHit.collider.GetComponent<getItem>().Get();   
         }
         switchingAble();
+
 
     }
 
