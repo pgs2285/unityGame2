@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -146,7 +146,7 @@ public class TalkManager : MonoBehaviour
         {
             Debug.LogException(e);
         }
-        Debug.Log("여기");
+ 
         if (!talkData.ContainsKey(id))
         {
             
@@ -168,7 +168,7 @@ public class TalkManager : MonoBehaviour
                     return talkData[id - id % 10][talkIndex];
                 }
             }
-        
+            
         }
         if(talkIndex == talkData[id].Length)
             return null;

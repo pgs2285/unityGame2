@@ -90,7 +90,7 @@ public class UIManager : Singleton<UIManager>
 
     TalkManager talkManager;
     QuestManager questManager;
-    
+    float delayTime = 0.03f;  
     public void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
         int questTalkIndex = questManager.getQuestTalkIndex(id);
         string talkData = talkManager.getTalk(id + questTalkIndex, talkIndex);
@@ -106,18 +106,13 @@ public class UIManager : Singleton<UIManager>
             questManager.checkQuest(id);
             return;
         }
+    
+
+
+        coroutine =  StartCoroutine(ShowText(talkData, delayTime));
+        endTalk = false;
+        // StopCoroutine(coroutine);
         
-        
-        if(isNPC){
-            float delayTime = 0.03f;
-            float lastUpdateTime = Time.time;
-            for(int i = 0; i <= talkData.Length; i++){ //대사를 한글자씩 띄워줌
-                coroutine =  StartCoroutine(ShowText(talkData, delayTime));
-                endTalk = false;
-            }
-            StopCoroutine(coroutine);
-            
-        }
         talkIndex++;
         isAction = true;
 

@@ -49,7 +49,7 @@ public class closetheDoor : MonoBehaviour
         if(gameObject.name == "Trigger1"){
             conversation[0] = "문이 잠겼어?";
             conversation[1] = "더이상은 돌아갈 수 없겠어. 일단 앞으로 나아가야겠어.";
-            Debug.Log(gameObject.name);
+            Debug.Log(TextIndicator);
             StartCoroutine(TextIndicator.talk(conversation));
         }
 
