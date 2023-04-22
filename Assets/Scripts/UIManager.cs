@@ -78,10 +78,13 @@ public class UIManager : Singleton<UIManager>
     public void Action(GameObject scanObj){ //대사 띄워줌
 
             scanObject = scanObj;
-            
             ObjData objData = scanObject.GetComponent<ObjData>();
-            talk(objData.id, objData.isNPC);
-            chatPanel.SetActive(isAction);
+
+            if(endTalk){
+
+                talk(objData.id, objData.isNPC);
+                chatPanel.SetActive(isAction);
+            }
 
     }
 
@@ -106,14 +109,30 @@ public class UIManager : Singleton<UIManager>
         
         
         if(isNPC){
-            chatText.text = talkData;
-        }else{
-            chatText.text = talkData;
+            float delayTime = 0.03f;
+            float lastUpdateTime = Time.time;
+            for(int i = 0; i <= talkData.Length; i++){ //대사를 한글자씩 띄워줌
+                coroutine =  StartCoroutine(ShowText(talkData, delayTime));
+                endTalk = false;
+            }
+            StopCoroutine(coroutine);
+            
         }
         talkIndex++;
         isAction = true;
 
     }
+    Coroutine coroutine;
+    bool endTalk = true;
+    IEnumerator ShowText(string talkData, float delayTime)
+    {
+        for(int i = 0; i <= talkData.Length; i++){
+            chatText.text = talkData.Substring(0, i);
+            yield return new WaitForSeconds(delayTime);
 
+        }
+        endTalk = true;
+    }
+    
 
 }
