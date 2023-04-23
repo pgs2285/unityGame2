@@ -78,16 +78,19 @@ public class UIManager : Singleton<UIManager>
     public void Action(GameObject scanObj){ //대사 띄워줌
 
             scanObject = scanObj;
-            
             ObjData objData = scanObject.GetComponent<ObjData>();
-            talk(objData.id, objData.isNPC);
-            chatPanel.SetActive(isAction);
+
+            if(endTalk){
+
+                talk(objData.id, objData.isNPC);
+                chatPanel.SetActive(isAction);
+            }
 
     }
 
     TalkManager talkManager;
     QuestManager questManager;
-    
+    float delayTime = 0.03f;  
     public void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
         int questTalkIndex = questManager.getQuestTalkIndex(id);
         string talkData = talkManager.getTalk(id + questTalkIndex, talkIndex);
@@ -103,17 +106,28 @@ public class UIManager : Singleton<UIManager>
             questManager.checkQuest(id);
             return;
         }
+    
+
+
+        coroutine =  StartCoroutine(ShowText(talkData, delayTime));
+        endTalk = false;
+        // StopCoroutine(coroutine);
         
-        
-        if(isNPC){
-            chatText.text = talkData;
-        }else{
-            chatText.text = talkData;
-        }
         talkIndex++;
         isAction = true;
 
     }
+    Coroutine coroutine;
+    bool endTalk = true;
+    IEnumerator ShowText(string talkData, float delayTime)
+    {
+        for(int i = 0; i <= talkData.Length; i++){
+            chatText.text = talkData.Substring(0, i);
+            yield return new WaitForSeconds(delayTime);
 
+        }
+        endTalk = true;
+    }
+    
 
 }
