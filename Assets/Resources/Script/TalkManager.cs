@@ -11,9 +11,9 @@ public class TalkManager : MonoBehaviour
 
     void GenerateData(){ //데이터 등록하기~
         
-        talkData.Add(2000, new string[] { "뭘 봐?"});
-        talkData.Add(1000, new string[] { "맑은 물이다." });
-        talkData.Add(3000, new string[] { "나무이다." }); //열매달린 나무
+        talkData.Add(2000, new string[] { "??? : 뭘 봐?"});
+        talkData.Add(1000, new string[] { "나무이다." });
+
         talkData.Add(4000, new string[] { "평범한 나무이다." }); // 일반나무
         talkData.Add(6000, new string[] { "막혀있다. 열 방법을 찾아봐야겠다." });
         
@@ -21,10 +21,10 @@ public class TalkManager : MonoBehaviour
         // 500 세계수
         //600 세계수 포탈(맵 전체이동 포탈)
         /////////////////////////////////캐릭터들의 기본대사 (퀘스트와 관련이 없으면 출력)/////////////////////////////////////
-        talkData.Add(2000 + 10, new string[] {"??? : \n 이 동굴에 생명체는 오랜만이구나...", "??? : \n 그래, 여긴 어쩌다 오게 되었니?", "이브 : \n 나도 몰라", "이브 : \n 일어나 보니 여기였어."});
-        talkData.Add(2000 + 20, new string[] { "??? : \n 배가 고프나 보구나", " ??? : \n ...", "??? : \n 저기 옆에 웅덩이에서 물이라도 마셔보는게 어때?", "??? : \n 웅덩이는 오른쪽으로 쭉가면 있을꺼아." });
+        talkData.Add(2000 + 10, new string[] {"??? : 드디어 왔구나.", "??? : 많이 기다렸어.", "??? : 배가 고픈가보구나?", "??? : 오른쪽으로 가면 길이있어. 오른쪽에 가면 사과가 있을거야", "??? : 누군가가 다리 건너편에 방해요소를 두었어. 조심히 건너도록해."});
+        talkData.Add(1000 + 20, new string[] { "나무에 잘익은 열매가 하나 보인다." });
         ////////////////////////// 1번퀘스트 종료 ////////////////////////////
-        talkData.Add(1000 + 30, new string[] { "맑은 물이다.", "목을 축였다." });
+        talkData.Add(2000 + 30, new string[] { "??? : 배고픔이 0이되면 게임 오버 되니 조심하도록해" });
         talkData.Add(2000 + 40, new string[] { "??? : \n 어때 좀 괜찮아 졌어?", "??? : \n 아직 배가 고픈가 보구나.", "??? : \n 위에 숲에는 먹을 수 있는 과일이 있을거야.", "??? : \n 주위에 나무들중에 하나쯤 있을거야.", "??? : \n 나무들을 보면서 확인해봐." });
         //////////////////////////2번퀘스트 종료//////////////////////////////
         talkData.Add(3000 + 50, new string[] { "나무에 조그만 열매가 보인다.", "사과를 획득했다." });
@@ -48,6 +48,7 @@ public class TalkManager : MonoBehaviour
     Item TutorialFruit;
     
     public TextMeshProUGUI TutorialMessage;
+
 
     
     void Awake()
@@ -76,7 +77,7 @@ public class TalkManager : MonoBehaviour
                         StartCoroutine(Effect(0));
                         break;
 
-                    case 3050:
+                    case 1020:
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);

@@ -16,8 +16,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     public Image itemImage;
     public Text quantity;
 
-    // The remove Button is where the player clicks to remove the item in this slot
-    public Button removeButton;
+    // // The remove Button is where the player clicks to remove the item in this slot
+    // public Button removeButton;
 
 
     // The following function is called everytime an item is added or removed from the inventory
@@ -31,7 +31,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             // Slot has item: Enable the icon and Remove Button
 
-            removeButton.enabled = true;
+            // removeButton.enabled = true;
             itemImage.enabled = true; 
             
             itemImage.sprite = itemInSlot.itemIcon;
@@ -54,7 +54,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         {
             // Slot Empy: Disable the Icon, quantity and Remove Button
             
-            removeButton.enabled = false;
+            // removeButton.enabled = false;
             itemImage.enabled = false;
             quantity.enabled = false;
         }
@@ -87,10 +87,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     }
 
     // Called when the player presses the Remove Button corresponding to this slot
-    public void RemoveItem()
-    {
-        // Removes item from the Inventory Script and consequently updates the UI(This occurs inside of RemoveItem())
-        // Currently removing one piece on stackable objects
-        Inventory.instance.RemoveItem(Inventory.instance.itemList[Inventory.instance.itemList.IndexOf(item)], 1);
-    }
+    // public void RemoveItem()
+    // {
+    //     // Removes item from the Inventory Script and consequently updates the UI(This occurs inside of RemoveItem())
+    //     // Currently removing one piece on stackable objects
+    //     Inventory.instance.RemoveItem(Inventory.instance.itemList[Inventory.instance.itemList.IndexOf(item)], 1);
+    // }
 }
