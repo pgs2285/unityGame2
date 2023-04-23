@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2715bfd8276dac94a89776e253f6ab35
+guid: 0b964db1a87004c669a92501cdcae124
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -131,8 +131,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4da95073fb285a344b53f1c2872d49c9
-      internalID: 1184770679
+      spriteID: 4ab123755df634c6c99de122291e3310
+      internalID: -1364390321
       vertices: []
       indices: 
       edges: []
@@ -152,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b20d227d130a1d4ab3a72f14435a7c1
-      internalID: 557456598
+      spriteID: 8da343cc4e38743c9a4453f371decf0d
+      internalID: -1407655274
       vertices: []
       indices: 
       edges: []
@@ -173,8 +173,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ff6384f611d354ca2480f1792d0c26
-      internalID: 777762377
+      spriteID: 4eca65099efdb4964bc3f603374cade6
+      internalID: 1357799546
       vertices: []
       indices: 
       edges: []
@@ -194,8 +194,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 82862b20f34ef5343b4dfb3e3adcc654
-      internalID: 229904955
+      spriteID: 39caffcd5ea564d57928da4106be524b
+      internalID: -1280922439
       vertices: []
       indices: 
       edges: []
@@ -215,8 +215,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 259d0ece92812004da59f2cd85f74df8
-      internalID: -1036496934
+      spriteID: 03b86e4dc9b6645d5a0d0f6d52f37d9c
+      internalID: 1791539744
       vertices: []
       indices: 
       edges: []
@@ -236,8 +236,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 457fd9bd91952444db949b847bde0103
-      internalID: -950589437
+      spriteID: 9d7d83af1b219440f9774dfd73600fe6
+      internalID: 2055553864
       vertices: []
       indices: 
       edges: []
@@ -257,8 +257,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6e332b70190364478ee73fb5aaed262
-      internalID: 748500469
+      spriteID: 9cf1a01d087c54601952c7435889fd26
+      internalID: -537745755
       vertices: []
       indices: 
       edges: []
@@ -278,8 +278,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fa7ce303724891468dbf1ce25ce9604
-      internalID: -1120868104
+      spriteID: ed7bd68d52ba946f6ac86375380b96f8
+      internalID: -1413616466
       vertices: []
       indices: 
       edges: []
@@ -299,8 +299,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f53865823578fe42b80f56dfabdf9b7
-      internalID: -1729736598
+      spriteID: 2ed9bbb9d7fbc4de4bf39e555a00b8e5
+      internalID: 1120515462
       vertices: []
       indices: 
       edges: []
@@ -308,7 +308,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 59bf8096d7a2d46aa848fffb3586865d
     internalID: 0
     vertices: []
     indices: 
@@ -316,15 +316,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      forest_slope_ver3_5: -950589437
-      forest_slope_ver3_3: 229904955
-      forest_slope_ver3_1: 557456598
-      forest_slope_ver3_6: 748500469
-      forest_slope_ver3_2: 777762377
-      forest_slope_ver3_8: -1729736598
-      forest_slope_ver3_4: -1036496934
-      forest_slope_ver3_0: 1184770679
-      forest_slope_ver3_7: -1120868104
+      forest_slope_ver3_5: 2055553864
+      forest_slope_ver3_3: -1280922439
+      forest_slope_ver3_1: -1407655274
+      forest_slope_ver3_6: -537745755
+      forest_slope_ver3_2: 1357799546
+      forest_slope_ver3_8: 1120515462
+      forest_slope_ver3_4: 1791539744
+      forest_slope_ver3_0: -1364390321
+      forest_slope_ver3_7: -1413616466
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
