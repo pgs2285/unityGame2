@@ -11,8 +11,8 @@ public class LegMovement : MonoBehaviour
     public bool isOntheLeg = false;
     public Vector3 startPos;
     void Update() {
-        float pingPong = Mathf.PingPong(Time.time * speed, moveAmount * 2) - moveAmount;
-        transform.position = new Vector3(transform.position.x, pingPong, transform.position.z);
+        // float pingPong = Mathf.PingPong(Time.time * speed, moveAmount * 2) - moveAmount;
+        // transform.position = new Vector3(transform.position.x, pingPong, transform.position.z);
     }
 
 
