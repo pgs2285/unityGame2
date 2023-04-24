@@ -27,9 +27,9 @@ public class Item : ScriptableObject
         Debug.Log(ID);
         switch (ID)
         {
-            case 10:
+            case 10: // TutorialApple
                 CharacterData.Instance.Hungry += 30;
-                if(CharacterData.Instance.QuestID == 60){
+                if(CharacterData.Instance.QuestID == 30){
                     CharacterData.Instance.QuestID += 10;
                 }
                 Inventory.instance.RemoveItem(this, 1);
