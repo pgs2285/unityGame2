@@ -11,9 +11,9 @@ public class TalkManager : MonoBehaviour
 
     void GenerateData(){ //데이터 등록하기~
         
-        talkData.Add(2000, new string[] { "뭘 봐?"});
-        talkData.Add(1000, new string[] { "맑은 물이다." });
-        talkData.Add(3000, new string[] { "나무이다." }); //열매달린 나무
+        talkData.Add(2000, new string[] { "??? : 뭘 봐?"});
+        talkData.Add(1000, new string[] { "나무이다." });
+
         talkData.Add(4000, new string[] { "평범한 나무이다." }); // 일반나무
         talkData.Add(6000, new string[] { "막혀있다. 열 방법을 찾아봐야겠다." });
         
@@ -21,11 +21,12 @@ public class TalkManager : MonoBehaviour
         // 500 세계수
         //600 세계수 포탈(맵 전체이동 포탈)
         /////////////////////////////////캐릭터들의 기본대사 (퀘스트와 관련이 없으면 출력)/////////////////////////////////////
-        talkData.Add(2000 + 10, new string[] {"??? : \n 이 동굴에 생명체는 오랜만이구나...", "??? : \n 그래, 여긴 어쩌다 오게 되었니?", "이브 : \n 나도 몰라", "이브 : \n 일어나 보니 여기였어."});
-        talkData.Add(2000 + 20, new string[] { "??? : \n 배가 고프나 보구나", " ??? : \n ...", "??? : \n 저기 옆에 웅덩이에서 물이라도 마셔보는게 어때?", "??? : \n 웅덩이는 오른쪽으로 쭉가면 있을꺼아." });
+        talkData.Add(2000 + 10, new string[] {"??? : 드디어 왔구나.", "??? : 많이 기다렸어.", "??? : 배가 고픈가보구나?", "??? : 오른쪽으로 가면 길이있어. 오른쪽에 가면 사과가 있을거야", "??? : 누군가가 다리 건너편에 방해요소를 두었어. 조심히 건너도록해."});
+        talkData.Add(1000 + 20, new string[] { "나무에 잘익은 열매가 하나 보인다." });
         ////////////////////////// 1번퀘스트 종료 ////////////////////////////
-        talkData.Add(1000 + 30, new string[] { "맑은 물이다.", "목을 축였다." });
-        talkData.Add(2000 + 40, new string[] { "??? : \n 어때 좀 괜찮아 졌어?", "??? : \n 아직 배가 고픈가 보구나.", "??? : \n 위에 숲에는 먹을 수 있는 과일이 있을거야.", "??? : \n 주위에 나무들중에 하나쯤 있을거야.", "??? : \n 나무들을 보면서 확인해봐." });
+        talkData.Add(2000 + 30, new string[]{"??? : 사과를 가져왔니?", "??? : 사과를 한번 먹어봐.", "배고픔이 어느정도 완화될거야."});
+        talkData.Add(2000 + 40, new string[] { "??? : 배고픔이 0이되면 게임 오버 되니 조심하도록해","??? : 여전히 베가 고파보이네. 역시 단일 음식으로는 배를 채우기 쉽지 않지.", "??? : 내가 사과스프 레시피를 하나 알려줄게.", "??? : 옆에 가마솥에 해당 레시피 요구재료를 넣어서 하나 사과스프 하나 만들어와봐.","??? :사과스프 레시피는 주변을 둘러보면 찾을 수 있을거야" });
+        
         //////////////////////////2번퀘스트 종료//////////////////////////////
         talkData.Add(3000 + 50, new string[] { "나무에 조그만 열매가 보인다.", "사과를 획득했다." });
 
@@ -36,8 +37,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
         talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
         talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
-        talkData.Add(2000 + 110 , new string[]{"이제 울타리를 부숴서 지나갈 수 있게 되었어.", "이제 다시한번 나를 따라와봐"});
-        talkData.Add(2000+120, new string[]{"여기가 이 모든일의 근원이야","너는 기억이 없겠지만 이 정말 많은 일이 있었어","7마리의 동물들은 세계수에 열린 열매를 먹고 믿을 수 없는 힘을 얻었지만, 그 힘을 과시하는 방법이 잘못됐어.","너는 그것을 지키는 과정에서 기억을 잃었을거야","이제 내가 너에게 후드를 하나줄게","이것을 입고 싸우면 지금과는 다른 힘을 얻을 수 있을거야"});
+        
   
 
 
@@ -48,6 +48,7 @@ public class TalkManager : MonoBehaviour
     Item TutorialFruit;
     
     public TextMeshProUGUI TutorialMessage;
+
 
     
     void Awake()
@@ -76,20 +77,23 @@ public class TalkManager : MonoBehaviour
                         StartCoroutine(Effect(0));
                         break;
 
-                    case 3050:
+                    case 1020:
                         Tutorial.SetActive(true);
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);
                         Destroy(GameObject.Find("TutorialApple"));
 
                         break;
-
-                    case 2060:
+                    case 2030:
                         if((Inventory.instance.itemList.Contains(TutorialFruit))){
-                            CharacterData.Instance.QuestID = 60;  // 퀘스트아이디를 60으로 고정
+                            CharacterData.Instance.QuestID = 30;  // 퀘스트아이디를 30으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                             return "";
                         }
+                        break;
+
+                    case 2060:
+
                         break;
 
                     case 2070:
@@ -149,8 +153,17 @@ public class TalkManager : MonoBehaviour
  
         if (!talkData.ContainsKey(id))
         {
-            
-            if(!talkData.ContainsKey(id - (id % 10))){
+            if(talkData.ContainsKey(id - (id % 1000))){
+                if (talkIndex == talkData[id - id % 1000].Length) // 대사가 종료되었다면
+                {
+                    return null;
+                }
+                else
+                {
+                    return talkData[id - id % 1000][talkIndex];
+                }
+            }
+            else if(talkData.ContainsKey(id - (id % 100))){
                 // 퀘스트 맨처음 대사가 없으면 (위 데이터기준 100,10의자리가 동시에 같은게 없을떄) 
                 if (talkIndex == talkData[id - (id % 100)].Length) // ex) 100번 나무는 130대 퀘스트가 없으니 100 기본대사 출력한다는 뜻
                     return null;
@@ -168,6 +181,8 @@ public class TalkManager : MonoBehaviour
                     return talkData[id - id % 10][talkIndex];
                 }
             }
+            else
+                Debug.Log("대사가 없는 id입니다. id : " + id + " talkIndex : " + talkIndex + " talkData : " + talkData.ContainsKey(id));
             
         }
         if(talkIndex == talkData[id].Length)

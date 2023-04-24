@@ -8,8 +8,6 @@ public class stone : MonoBehaviour {
     public float speed = 10f; // 초기 속도
     public float angle = 130f; // 발사 각도
 
-    
-
     private Vector3 velocity;
 
     private void Start() {
@@ -26,5 +24,12 @@ public class stone : MonoBehaviour {
         // 중력 가속도에 따라 속도 갱신
         velocity.y += gravity * Time.fixedDeltaTime;
         transform.position += velocity * Time.fixedDeltaTime;
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Player") {
+            CharacterData.Instance.CurrentHP -= 1;
+            Destroy(gameObject);
+        }
     }
 }

@@ -91,32 +91,44 @@ public class UIManager : Singleton<UIManager>
     TalkManager talkManager;
     QuestManager questManager;
     float delayTime = 0.03f;  
+    string fullText;
+    string[] talkData;
+    public GameObject namePanel;
     public void talk(int id, bool isNPC){ //talkManager에 있을 캐릭터의 저장된 대사를 가져옴 
         int questTalkIndex = questManager.getQuestTalkIndex(id);
-        string talkData = talkManager.getTalk(id + questTalkIndex, talkIndex);
-        if(talkData =="") {
+        string fullText = talkManager.getTalk(id + questTalkIndex, talkIndex);
+            if(fullText =="") {
 
-            isAction = false;
-            talkIndex = 0;
-            return;
+                isAction = false;
+                talkIndex = 0;
+                return;
+            }
+            if(fullText == null){
+                isAction = false;
+                talkIndex = 0;
+                questManager.checkQuest(id);
+                return;
+            }
+        talkData = fullText.Split(':');
+        if(talkData.Length <= 1){
+            namePanel.SetActive(false);
+            coroutine =  StartCoroutine(ShowText(talkData[0], delayTime));
+            endTalk = false;
+        }else if(talkData.Length == 2){
+            namePanel.SetActive(true);
+            nameText.text = talkData[0];
+
+
+            coroutine =  StartCoroutine(ShowText(talkData[1], delayTime));
+            endTalk = false;
         }
-        if(talkData == null){
-            isAction = false;
-            talkIndex = 0;
-            questManager.checkQuest(id);
-            return;
-        }
-    
-
-
-        coroutine =  StartCoroutine(ShowText(talkData, delayTime));
-        endTalk = false;
         // StopCoroutine(coroutine);
         
         talkIndex++;
         isAction = true;
 
     }
+    public TextMeshProUGUI nameText;
     Coroutine coroutine;
     bool endTalk = true;
     IEnumerator ShowText(string talkData, float delayTime)
