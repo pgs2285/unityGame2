@@ -14,6 +14,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     GameObject normalWorldGround;
     GameObject anotherWorldGround;
     public GameObject anotherWorldEffect;
+    public GameObject infoPanel;
     private void Start()
     {
         recipeList.Add(bakedApple);
@@ -33,6 +34,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     bool isRecipePanelActive = false;
 
     public GameObject RunePanel;
+    public GameObject InfoPanel;
     bool isRoonPanelActive = false;
     bool world = true;
     private void Update()
@@ -54,13 +56,13 @@ public class RecipeSystem : Singleton<RecipeSystem>
         }
 
         switch(CharacterData.Instance.QuestID){
-            case 80:
+            case 40:
                 if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
                     CharacterData.Instance.QuestID += 10;
                 }
                 break;
             
-            case 100:
+            case 60:
                 if(GameObject.Find("Fence").transform.childCount == 0){ //모두 부서져 있으면
                     CharacterData.Instance.QuestID += 10;
                 }

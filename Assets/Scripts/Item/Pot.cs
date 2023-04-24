@@ -12,6 +12,7 @@ public class Pot : MonoBehaviour
                 // 레시피 패널을 띄운다.
                 isActive = !isActive;
                 RecipeSystem.Instance.RecipePanel.SetActive(isActive);
+                RecipeSystem.Instance.InfoPanel.SetActive(!isActive);
             }
         }
     }
