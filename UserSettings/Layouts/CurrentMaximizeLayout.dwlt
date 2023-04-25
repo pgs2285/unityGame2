@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 1571
+  controlID: 2997
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -89,7 +89,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 1572
+  controlID: 2998
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,7 +249,7 @@ MonoBehaviour:
       containerId: overlay-toolbar__top
       floating: 0
       collapsed: 0
-      displayed: 1
+      displayed: 0
       snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
@@ -420,9 +420,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.6131272, y: 3.5207233, z: 0.5265604}
+    m_Target: {x: 1.4178569, y: 1.9435844, z: 0.37342733}
     speed: 2
-    m_Value: {x: 2.6373029, y: 3.5480523, z: 0.5221036}
+    m_Value: {x: 1.4178569, y: 1.9435844, z: 0.37342733}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -473,9 +473,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 9.458147
+    m_Target: 15.891085
     speed: 2
-    m_Value: 9.903819
+    m_Value: 15.891085
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -744,7 +744,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 34888
+  m_LastSelectedObjectID: 49006
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -803,9 +803,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 48880000
-      m_LastClickedID: 34888
-      m_ExpandedIDs: b2c9fffff8d6ffff3ce2ffff9cedfffffefaffff80890000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: f2f0fefff4f0feff26fdfeff7409ffff1a17ffff6823ffffa02fffffb0c9ffffb2c9fffff8d6ffff3ce2ffff9cedfffffefaffff808900009ac00000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -897,21 +897,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Image/cave
+    - Assets/Scenes/Map
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Image/cave
+  - Assets/Scenes/Map
   m_LastFoldersGridSize: -1
   m_LastProjectPath: "C:\\Users\\PC\\OneDrive\\\uBB38\uC11C\\unityGame2"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 447e0000
-    m_LastClickedID: 32324
+    m_SelectedIDs: 207f0000
+    m_LastClickedID: 32544
     m_ExpandedIDs: 00000000207e0000227e0000247e0000267e0000287e00002a7e00002c7e000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -965,8 +965,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 48880000
-    m_LastClickedInstanceID: 34888
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 00000000c47e0000
     m_RenameOverlay:
@@ -992,7 +992,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 1095}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 187
@@ -1015,8 +1015,8 @@ MonoBehaviour:
     y: 0
     width: 431
     height: 947
-  m_MinSize: {x: 276, y: 71}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}

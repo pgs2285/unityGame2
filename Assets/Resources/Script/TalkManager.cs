@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,7 +32,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000 + 50, new string[] { "??? : 앞에 울타리가 가로막고있어 나아갈수가 없네.", "??? : 공격키를 눌러 한번 부숴봐. 너라면 할수있어"});
 
         talkData.Add(2000+60, new string[]{"??? : 좋아. 지금 감각 잘 익혀두면 앞으로 편할거야.", "??? : 이제 계속 나를 따라와봐."});
-        talkData.Add(2000,70 , new string[]{"??? : 들어가"});
+        talkData.Add(2000+70 , new string[]{"??? : 들어가"});
         
         talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
         talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
