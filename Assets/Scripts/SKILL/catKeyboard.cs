@@ -87,7 +87,7 @@ public class catKeyboard : MonoBehaviour
         
             comboCount++;
             animator.SetInteger("ComboCount", comboCount);
-            Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(1, 1), 0);
+            Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(2, 2), 0);
             foreach (Collider2D collider in hit)
             {
                 if (collider.gameObject.tag == "Enemy")

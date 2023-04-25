@@ -28,12 +28,12 @@ public class TalkManager : MonoBehaviour
         talkData.Add(2000 + 40, new string[] { "??? : 배고픔이 0이되면 게임 오버 되니 조심하도록해","??? : 여전히 베가 고파보이네. 역시 단일 음식으로는 배를 채우기 쉽지 않지.", "??? : 내가 사과스프 레시피를 하나 알려줄게.", "??? : 옆에 가마솥에 해당 레시피 요구재료를 넣어서 하나 사과스프 하나 만들어와봐.","??? :사과스프 레시피는 주변을 둘러보면 찾을 수 있을거야" });
         
         //////////////////////////2번퀘스트 종료//////////////////////////////
-        talkData.Add(3000 + 50, new string[] { "나무에 조그만 열매가 보인다.", "사과를 획득했다." });
 
-        talkData.Add(2000 + 60, new string[] { "가져왔니?", "i키를 누르고 클릭하면 배고픔을 채울 수 있을거야", "배고픔은 매우 중요한 요소이니 잘 기억해둬!","사과를 먹고 다시한번 말을 걸어봐~"});
+        talkData.Add(2000 + 50, new string[] { "??? : 앞에 울타리가 가로막고있어 나아갈수가 없네.", "??? : 공격키를 눌러 한번 부숴봐. 너라면 할수있어"});
 
-        talkData.Add(2000+70, new string[]{"사과를 먹었구나.", "포만감이 많이 오른거 같네", "하지만 아직도 배가 고파보여...", "그런 단일 아이템으로는 배고픔을 채울 수 없어.", "그래서 여러가지 재료를 모아서 요리를 해야해."," 내가 남은 사과를 하나 줄게 절대 먹지말고... 먹으면 게임망해", "한번 토치를 찾아서 요리를해보자!", "토치는 오른쪽 섬 어딘가에 있을거야!"});
-      
+        talkData.Add(2000+60, new string[]{"??? : 좋아. 지금 감각 잘 익혀두면 앞으로 편할거야.", "??? : 이제 계속 나를 따라와봐."});
+        talkData.Add(2000,70 , new string[]{"??? : 들어가"});
+        
         talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
         talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
         talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
@@ -92,31 +92,37 @@ public class TalkManager : MonoBehaviour
                         }
                         break;
 
-                    case 2060:
-
-                        break;
-
-                    case 2070:
-                        if(count[0] == 0) {
-                            Inventory.instance.AddItem(Resources.Load<Item>("Item/Apple"), 1); // 레시피용 사과 하나 주기
-                            count[0]++;
-                        }
-                        
-                        if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/Torch"))){
-                            CharacterData.Instance.QuestID = 70;  // 퀘스트아이디를 70으로 고정
+                    case 2040:
+                        if(count[1] == 0){ // 한번만 실행되야하는요소.
+                            StartCoroutine(walkingToLifeTree("y", 3, 2040)); //y로 3만큼 이동.
+                            count[1]++;
+                        }if((!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup")))){ // 만약 사과스프가 없으면 (만들지 않았다면.)
+                            CharacterData.Instance.QuestID = 40;  // 퀘스트아이디를 40으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                             return "";
                         }
+
+                
+                        break;
+
+                    case 2050:
+                        if(count[0] == 0){
+                            StartCoroutine(walkingToLifeTree("y", 3)); //y로 3만큼 이동.
+                            count[0]++;
+                        }
+                        CharacterData.Instance.QuestID = 50;  // 퀘스트아이디를 80으로 고정
+                        GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                        return "";
+
                         break;
 ////////////////////////////////////여기부터 4 bearCave//////////////////////////////////////////
+                    case 2060:
+                        // 1.5,8 -> 9,8 -> 9,10,  -> 16,10 (x,y 좌표값)
+                        StartCoroutine(walkingToLifeTree("x", 7.5f, 2060)); //x로 9만큼 이동.
+                        break;
 
                     case 2080:
-                    if(count[1] == 0){
-                        Vector3 pos = GameObject.Find("FOX").transform.position;
-                        pos.x+=2;
-                        Instantiate(Resources.Load<GameObject>("Prefab/Pot"), pos, Quaternion.identity);
-                        count[1]++;
-                    }
+
                         if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
                             CharacterData.Instance.QuestID = 80;  // 퀘스트아이디를 80으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
@@ -206,7 +212,7 @@ public class TalkManager : MonoBehaviour
     GameObject fox;
     GameObject cat;
     public GameObject lifeTreePortal;
-    IEnumerator walkingToLifeTree(string xory,float increase)
+    IEnumerator walkingToLifeTree(string xory,float increase, int id = 0)
     {
         Vector3 targetVector = fox.transform.position;
         fox.GetComponent<Animator>().SetBool("move", true);
@@ -228,7 +234,25 @@ public class TalkManager : MonoBehaviour
         }
         yield return new WaitForFixedUpdate();
         fox.GetComponent<Animator>().SetBool("move", false);
+        if(id == 2040){
+            Vector3 pos = GameObject.Find("FOX").transform.position;
+            pos.x+=2;
+            Instantiate(Resources.Load<GameObject>("Prefab/Pot"), pos, Quaternion.identity);
+        }
+        else if(id == 2060) { // 9,8 -> 9,10,  -> 16,10 
+            if(step == 0){
+            step = 1;
+            StartCoroutine(walkingToLifeTree("y", 2, 2060));
+            
+            }else if(step == 1){
+                step = 2;
+                StartCoroutine(walkingToLifeTree("x", 7, 2060));
+                
+            }else if(step == 2){
+                StartCoroutine(walkingToLifeTree("y", 2, 2060));
+            }
+        }
     }
-
+    int step = 0;
 
 }
