@@ -31831,6 +31831,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811471537}
   m_CullTransparentMesh: 1
+--- !u!1 &863171062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863171063}
+  m_Layer: 0
+  m_Name: Fence
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &863171063
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863171062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.107008, y: 10.153446, z: 0.4298123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1249558634}
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &888788509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3138138194033841684, guid: cc8a3a5d5796c4460b231acfaf0ee170,
@@ -34321,7 +34353,7 @@ GameObject:
   - component: {fileID: 1249558631}
   - component: {fileID: 1249558635}
   m_Layer: 0
-  m_Name: fence_left
+  m_Name: Fence
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34339,8 +34371,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 424b387d5845e4e19adce21e63b1264b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
-  currentHp: 100
+  Hp: 30
+  currentHp: 30
   cooltime: 0
   prfHPBar: {fileID: 4061531177101327078, guid: 6242761ed6067fc42a70429564c828fa,
     type: 3}
@@ -34431,13 +34463,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249558630}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.4378, y: 7.194, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 13.544807, y: -2.9594464, z: -0.4298123}
   m_LocalScale: {x: 0.9758, y: 1.1322, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_Father: {fileID: 863171063}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1249558635
 Animator:
