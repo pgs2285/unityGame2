@@ -101,10 +101,17 @@ public class MainCharacter : MonoBehaviour
 
             rayHit.collider.GetComponent<getItem>().Get();   
         }
+
+        rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("InteractableObject"));
+        if(rayHit.collider != null && Input.GetKeyDown(KeyCode.Space) && OneTime == 0)
+        {
+            rayHit.collider.GetComponent<RandomIngredient>().GetItem();
+            OneTime ++;
+        }
         switchingAble();
 
     }
-
+    public int OneTime = 0;
     
     [SerializeField]
     public CharacterInfo[] characterInfo;
