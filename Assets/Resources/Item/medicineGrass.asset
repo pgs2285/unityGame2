@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 086ce4bd4efb77c4180089179b220146, type: 3}
-  m_Name: Apple
+  m_Name: medicineGrass
   m_EditorClassIdentifier: 
-  itemName: Apple
-  ID: 2
+  itemName: "\uC57D\uCD08"
+  ID: 40
   price: 0
   Stackable: 0
-  itemIcon: {fileID: 21300000, guid: 84f04161d727791498f9f75c15a6f9e6, type: 3}
-  Description: "\uB098\uBB34\uC5D0\uC11C \uC790\uB780 \uC798 \uC775\uC740 \uC0AC\uACFC\uC774\uB2E4."
+  itemIcon: {fileID: 21300000, guid: 2c52b27301c589d439e1481fd33d6ccf, type: 3}
+  Description: "\uB3D9\uAD74\uC5D0\uC11C \uD68D\uB4DD\uD55C \uC57D\uCD08\uC774\uB2E4"
   typeOfConsumable: 0
   HPRecover: 0

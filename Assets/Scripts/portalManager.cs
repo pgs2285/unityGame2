@@ -4,20 +4,30 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class portalManager : MonoBehaviour
 {
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public stageManager stage;
+    public string sceneName;
+    GameObject etcController;
+    void Awake()
     {
-        if (collision.collider.CompareTag("Player"))
-        {
-            SceneManager.LoadScene("4.Mob");
-        }
-        if(this.gameObject.name.ToString() == "CavePortal")
-        {
-            if (collision.collider.CompareTag("Player"))
-            {
-                SceneManager.LoadScene("3.cutTreeVillage");
-        
+        etcController = GameObject.Find("etcController");
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        switch(stage){
+            case stageManager.stage1:
+            
+
+            if(CharacterData.Instance.QuestID < 70){
+                StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"아직 여기서 할일이 남아있어."}));
+            }else{
+                SceneManager.LoadScene(sceneName);
             }
+            break;
         }
     }
+}
+public enum stageManager{
+    stage1,
+    stage2,
+    stage3,
+    stage4
 }
