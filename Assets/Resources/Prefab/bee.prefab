@@ -153,9 +153,10 @@ GameObject:
   - component: {fileID: 2529388671210584796}
   - component: {fileID: 7635451363578599533}
   - component: {fileID: 5089434534119784634}
+  - component: {fileID: -8630910191199847628}
   m_Layer: 0
   m_Name: bee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -290,3 +291,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-8630910191199847628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2529388671210584797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 424b387d5845e4e19adce21e63b1264b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 3
+  currentHp: 3
+  cooltime: 0
+  prfHPBar: {fileID: 4061531177101327078, guid: 6242761ed6067fc42a70429564c828fa,
+    type: 3}
+  canvas: {fileID: 0}
+  height: 0.5

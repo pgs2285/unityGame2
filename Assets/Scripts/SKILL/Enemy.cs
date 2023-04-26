@@ -43,9 +43,11 @@ public class Enemy : MonoBehaviour
         hpBar.position = _hpBarPos;
         if (currentHp <= 0)
         {
-            Destroy(gameObject);
 
             Destroy(prfHpBar);
+            Destroy(gameObject);
+
+
         }
 
 
@@ -63,6 +65,20 @@ public class Enemy : MonoBehaviour
                 }
             }catch{
                 Debug.Log("SpawnManager is not exist");
+            }
+
+            int random = Random.Range(0, 100);
+            if(gameObject.name == "bear_enermy_canKill(Clone)"){
+                Debug.Log("bear_enermy_canKill");
+                if(random < 40){ //30% 확률로 키 드랍
+                    if(!RecipeSystem.Instance.recipeList.Contains(Resources.Load("Prefab/goldRecipe")as RecipePrefabs)){
+                        Instantiate(Resources.Load("Prefab/goldRecipe"), transform.position, Quaternion.identity);
+                    }
+
+                }
+            }
+            else if(gameObject.name == "bearStone"){
+                    Instantiate(Resources.Load("Prefab/BearStone"), transform.position, Quaternion.identity);
             }
     }
 }

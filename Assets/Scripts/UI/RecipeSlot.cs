@@ -18,6 +18,7 @@ public class RecipeSlot : MonoBehaviour
     {
         int idx = 0;
         int idx2 = 0;
+
         recipeName.text = recipe.itemName;
         for(int i = 0; i< inventoryQuantityList.Length; i++){
             inventoryQuantityList[i].text = "0";
@@ -34,7 +35,11 @@ public class RecipeSlot : MonoBehaviour
                 
                 if(item == item2)    
                 {
+
                     inventoryQuantityList[idx].text = Inventory.instance.quantityList[idx2].ToString();
+
+
+                    
                 }
                 idx2++;
             }
@@ -77,7 +82,7 @@ public class RecipeSlot : MonoBehaviour
 
     public void MakeItem(){
         int idx = 0; 
-        Debug.Log("MakeItem");
+
         for(int i = 0; i< inventoryQuantityList.Length; i++){
             if(int.Parse(inventoryQuantityList[i].text) >= int.Parse(requireQuantityList[i].text)){ // 두개 순회하며 비교하기
                 idx++;
@@ -94,7 +99,8 @@ public class RecipeSlot : MonoBehaviour
         }
             for(int i = 0; i< ingridientCount; i++){
                 for(int j = 0; j< Inventory.instance.itemList.Count; j++){
-                    try{if(Inventory.instance.itemList[j].itemName == recipe.ingredients[i].itemName){
+                    try{
+                        if(Inventory.instance.itemList[j].itemName == recipe.ingredients[i].itemName){
                         Inventory.instance.quantityList[j] -= int.Parse(requireQuantityList[i].text);
                         if(Inventory.instance.quantityList[j] == 0){
                             Inventory.instance.itemList.RemoveAt(j);
