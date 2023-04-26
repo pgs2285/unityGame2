@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/0.MainMenu.unity
     guid: 7a4368f7789624ce1a58afffb2949f42
   - enabled: 1
-    path: Assets/Scenes/Map/3.Demo.unity
+    path: Assets/Scenes/Map/reference.unity
     guid: be0bbefc03d5e4a95a14acbd4c015150
   - enabled: 1
-    path: Assets/Scenes/Map/4.Demo.unity
+    path: Assets/Scenes/Map/3.Demo.unity
     guid: 30747f25fa1151145b2d3f908092223a
   - enabled: 1
     path: Assets/Scenes/1.Dream.unity

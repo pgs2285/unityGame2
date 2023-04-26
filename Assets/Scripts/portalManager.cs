@@ -22,6 +22,14 @@ public class portalManager : MonoBehaviour
                 SceneManager.LoadScene(sceneName);
             }
             break;
+
+            case stageManager.stage2:
+                if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/Key"))){
+                    SceneManager.LoadScene(sceneName);
+                }else{
+                    StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"문이 잠겨있어.", "어디선가 열쇠를 구해야 할거같다."}));
+                }
+            break;
         }
     }
 }
