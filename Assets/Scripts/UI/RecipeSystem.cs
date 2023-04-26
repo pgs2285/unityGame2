@@ -14,7 +14,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     GameObject normalWorldGround;
     GameObject anotherWorldGround;
     public GameObject anotherWorldEffect;
-    public GameObject infoPanel;
+
     private void Start()
     {
         recipeList.Add(bakedApple);
