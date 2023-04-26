@@ -14,7 +14,11 @@ public Transform cameraTransform;
             switch(now_Stage){
                 case nowStage.stage1:
                     StartCoroutine(switchingWorld());
-                break;
+                    break;
+                case nowStage.stage2:
+                    StartCoroutine(switchingWorld());
+                    break;
+                
             }
         }
         else{
