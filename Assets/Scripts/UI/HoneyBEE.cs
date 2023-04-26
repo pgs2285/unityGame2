@@ -22,6 +22,8 @@ public class HoneyBEE : MonoBehaviour
     IEnumerator beeGenerate(){
         yield return new WaitForSeconds(0.5f);
         GameObject bee = Instantiate(Resources.Load("Prefab/bee"),transform.position + new Vector3(1, Random.Range(-1.0f,1.0f),0), Quaternion.identity) as GameObject;
+        Destroy(GuageBar.gameObject);
+        Destroy(gameObject);
 
     }
     private void Update(){
@@ -38,7 +40,9 @@ public class HoneyBEE : MonoBehaviour
                 GuageBar.GetChild(0).GetComponent<Image>().fillAmount = currentGuage / Guage;
                 if(currentGuage >= 5.0f){
                     StartCoroutine(beeGenerate());
-                    
+                    Inventory.instance.AddItem(Resources.Load<Item>("Item/Honey"),3);
+
+
                     currentGuage = 0;
                 }
             }
