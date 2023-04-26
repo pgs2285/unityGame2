@@ -59,6 +59,11 @@ public class RecipeSystem : Singleton<RecipeSystem>
                     Debug.Log("퀘스트 60으로 변경");
                 }
             break;
+            case 80:
+                if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/goldRecipe"))){
+                    CharacterData.Instance.QuestID += 10;
+                }
+            break;
 
         }
 

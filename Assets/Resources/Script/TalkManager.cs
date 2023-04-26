@@ -123,16 +123,16 @@ public class TalkManager : MonoBehaviour
                         StartCoroutine(walkingToLifeTree("x", 7.5f, 2060)); //x로 9만큼 이동.
                         break;
 
-                    case 2080:
+                    case 4080:
 
-                        if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
+                        if(!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/goldRecipe"))){
                             CharacterData.Instance.QuestID = 80;  // 퀘스트아이디를 80으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                             return "";
                         }
                         break;
-                    case 2090: //여우를 따라가서 울타리를 부수기. 대충 y = 5로 이동시키면 될듯.
-                        StartCoroutine(walkingToLifeTree("y", 24)); //y로 10만큼 이동.
+                    case 4090: //여우를 따라가서 울타리를 부수기. 대충 y = 5로 이동시키면 될듯.
+                        Inventory.instance.AddItem(Resources.Load<Item>("Item/beautifulStone"), 1);
                     break;
                     case 2100:
                             CharacterData.Instance.QuestID = 100;  // 퀘스트아이디를 80으로 고정
