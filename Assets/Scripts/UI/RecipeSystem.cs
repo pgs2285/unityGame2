@@ -14,7 +14,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     GameObject normalWorldGround;
     GameObject anotherWorldGround;
     public GameObject anotherWorldEffect;
-    public GameObject infoPanel;
+
     private void Start()
     {
         recipeList.Add(bakedApple);
@@ -57,6 +57,11 @@ public class RecipeSystem : Singleton<RecipeSystem>
                 if(GameObject.Find("Fence").transform.childCount == 0){ //모두 부서져 있으면
                     CharacterData.Instance.QuestID += 10;
                     Debug.Log("퀘스트 60으로 변경");
+                }
+            break;
+            case 80:
+                if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/goldRecipe"))){
+                    CharacterData.Instance.QuestID += 10;
                 }
             break;
 

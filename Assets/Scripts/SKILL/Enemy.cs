@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     public GameObject prfHPBar;
     public GameObject canvas;
     RectTransform hpBar;
-    GameObject prfHpBar;
+    public GameObject prfHpBar;
     void Start()
     {
         currentHp = Hp;
@@ -43,9 +43,11 @@ public class Enemy : MonoBehaviour
         hpBar.position = _hpBarPos;
         if (currentHp <= 0)
         {
+
+            Destroy(prfHpBar.gameObject);
             Destroy(gameObject);
 
-            Destroy(prfHpBar);
+
         }
 
 
@@ -55,14 +57,19 @@ public class Enemy : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Hit",false);
     }
     public void OnDestroy(){
-            try{
-                if(GameObject.Find("SpawnPoint") != null) 
-                {
-                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().countEnemyDeath++;
-                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().EnemyCount--;
+
+            int random = Random.Range(0, 100);
+            if(gameObject.name == "bear_enermy_canKill(Clone)"){
+                Debug.Log("bear_enermy_canKill");
+                if(random < 40){ //30% 확률로 키 드랍
+                    if(!RecipeSystem.Instance.recipeList.Contains(Resources.Load("Prefab/goldRecipe")as RecipePrefabs)){
+                        Instantiate(Resources.Load("Prefab/goldRecipe"), transform.position, Quaternion.identity);
+                    }
+
                 }
-            }catch{
-                Debug.Log("SpawnManager is not exist");
+            }
+            else if(gameObject.name == "bearStone"){
+                    Instantiate(Resources.Load("Prefab/BearStone"), transform.position, Quaternion.identity);
             }
     }
 }

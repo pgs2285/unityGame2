@@ -38,7 +38,9 @@ public class BeeMovement : MonoBehaviour {
     {
         if(other.gameObject.tag == "Player"){
             CharacterData.Instance.CurrentHP-=1;
+            Destroy(gameObject.GetComponent<Enemy>().prfHpBar);
             beeAnim.SetTrigger("Death");
+
             isDeath = true;
         }
         if(other.gameObject.name == "BOSSBEAR"){
