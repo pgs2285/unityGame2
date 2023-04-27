@@ -216,6 +216,7 @@ MonoBehaviour:
   prfHPBar: {fileID: 4061531177101327078, guid: 6242761ed6067fc42a70429564c828fa,
     type: 3}
   canvas: {fileID: 0}
+  prfHpBar: {fileID: 0}
   height: 2
 --- !u!1 &4470585770495862532
 GameObject:

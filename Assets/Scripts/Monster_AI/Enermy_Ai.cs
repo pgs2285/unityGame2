@@ -29,7 +29,7 @@ public class Enermy_Ai : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         nav.updateRotation = false;
         nav.updateUpAxis = false;
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
 
     }
@@ -98,12 +98,18 @@ public class Enermy_Ai : MonoBehaviour
 
 
     }
-
+    float attackDelay = 3;
     void Update()
     {
         if(!isStun){
+            attackDelay -= Time.deltaTime;
+            if(Vector3.Distance(target.transform.position, transform.position) < 0.5 && attackDelay < 0){
 
-            if (key_ai == 1)
+                GetComponent<Animator>().SetBool("iswalk", false);
+                GetComponent<Animator>().SetBool("isattack", true);
+            
+            }
+            else if (key_ai == 1)
             {
                 // StopCoroutine("RandomMove");
                 nav.SetDestination(targetform.position);
@@ -130,4 +136,9 @@ public class Enermy_Ai : MonoBehaviour
 
     }
     public Vector2 stunLocation;
+    void animeReset(){
+        GetComponent<Animator>().SetBool("isattack", false);
+        attackDelay = 3;
+    }
+
 }
