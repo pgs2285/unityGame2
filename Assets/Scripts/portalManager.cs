@@ -12,24 +12,28 @@ public class portalManager : MonoBehaviour
         etcController = GameObject.Find("etcController");
     }
     private void OnTriggerEnter2D(Collider2D other) {
-        switch(stage){
-            case stageManager.stage1:
+        if(other.gameObject.tag == "Player"){
+         
             
+            switch(stage){
+                case stageManager.stage1:
+                
 
-            if(CharacterData.Instance.QuestID < 70){
-                StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"아직 여기서 할일이 남아있어."}));
-            }else{
-                SceneManager.LoadScene(sceneName);
-            }
-            break;
-
-            case stageManager.stage2:
-                if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/beautifulStone"))){
-                    SceneManager.LoadScene(sceneName);
+                if(CharacterData.Instance.QuestID < 70){
+                    StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"아직 여기서 할일이 남아있어."}));
                 }else{
-                    StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"문이 잠겨있어.", "어디선가 열쇠를 구해야 할거같다."}));
+                    SceneManager.LoadScene(sceneName);
                 }
-            break;
+                break;
+
+                case stageManager.stage2:
+                    if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/beautifulStone"))){
+                        SceneManager.LoadScene(sceneName);
+                    }else{
+                        StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"문이 잠겨있어.", "어디선가 열쇠를 구해야 할거같다."}));
+                    }
+                break;
+            }
         }
     }
 }

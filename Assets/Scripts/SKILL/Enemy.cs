@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     public GameObject prfHPBar;
     public GameObject canvas;
     RectTransform hpBar;
-    GameObject prfHpBar;
+    public GameObject prfHpBar;
     void Start()
     {
         currentHp = Hp;
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour
         if (currentHp <= 0)
         {
 
-            Destroy(prfHpBar);
+            Destroy(prfHpBar.gameObject);
             Destroy(gameObject);
 
 
@@ -57,15 +57,6 @@ public class Enemy : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Hit",false);
     }
     public void OnDestroy(){
-            try{
-                if(GameObject.Find("SpawnPoint") != null) 
-                {
-                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().countEnemyDeath++;
-                    GameObject.Find("SpawnPoint").GetComponent<SpawnManager>().EnemyCount--;
-                }
-            }catch{
-                Debug.Log("SpawnManager is not exist");
-            }
 
             int random = Random.Range(0, 100);
             if(gameObject.name == "bear_enermy_canKill(Clone)"){

@@ -20,6 +20,6 @@ MonoBehaviour:
   Description: "\uAFC0\uC744 \uAD73\uD600 \uAE08\uC73C\uB85C \uC18D\uC600\uB2E4."
   ingredients:
   - {fileID: 11400000, guid: 1a8fa2e388f75374fae88e7cec8e82c9, type: 2}
-  - {fileID: 11400000, guid: 1a8fa2e388f75374fae88e7cec8e82c9, type: 2}
-  - {fileID: 11400000, guid: 1a8fa2e388f75374fae88e7cec8e82c9, type: 2}
   - {fileID: 11400000, guid: 6b3d3530f5414ec4c9aa248e913266f7, type: 2}
+  - {fileID: 11400000, guid: 1a8fa2e388f75374fae88e7cec8e82c9, type: 2}
+  - {fileID: 11400000, guid: 1a8fa2e388f75374fae88e7cec8e82c9, type: 2}

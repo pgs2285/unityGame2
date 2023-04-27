@@ -13,11 +13,15 @@ public class RecipeSlot : MonoBehaviour
     public TextMeshProUGUI recipeName;
     public Image[] ingredientsList;
     public TextMeshProUGUI[] inventoryQuantityList;
-
+    
     public void RecipeClick()
     {
+        // recipe = Resources.Load<RecipePrefabs>("Recipe/" + EventSystem.current.currentSelectedGameObject.name);
         int idx = 0;
         int idx2 = 0;
+        
+        GameObject button = GameObject.Find("MakeButton");
+        button.GetComponent<RecipeSlot>().recipe = recipe;
 
         recipeName.text = recipe.itemName;
         for(int i = 0; i< inventoryQuantityList.Length; i++){
@@ -86,22 +90,30 @@ public class RecipeSlot : MonoBehaviour
         for(int i = 0; i< inventoryQuantityList.Length; i++){
             if(int.Parse(inventoryQuantityList[i].text) >= int.Parse(requireQuantityList[i].text)){ // 두개 순회하며 비교하기
                 idx++;
+                // Debug.Log(inventoryQuantityList[i].text + " <--(inventory) (require)--> " + requireQuantityList[i].text);
             }else{
                 return; 
-            }
+            } // pass
         }
         int ingridientCount = 0;
 
         for(int i = 0; i < requireQuantityList.Length;i++){ // 중간중간 0인 허수를 제거한다.
+        
             if(requireQuantityList[i].text == "0")
                 continue;
             else ingridientCount ++;
         }
+        int inventoryCount = Inventory.instance.itemList.Count;
+            Debug.Log("레시피"+ recipe.itemName+ "만들기, 필요 재료 개수"  +ingridientCount + "개");
             for(int i = 0; i< ingridientCount; i++){
-                for(int j = 0; j< Inventory.instance.itemList.Count; j++){
+                Debug.Log("레시피"+ recipe.itemName+ "만들기, 필요 재료"  + recipe.ingredients[i].itemName);
+                for(int j = 0; j< inventoryCount; j++){
                     try{
+
+                        Debug.Log(Inventory.instance.itemList[j].itemName + " <--(inventory) (require)--> " + recipe.ingredients[i].itemName);
                         if(Inventory.instance.itemList[j].itemName == recipe.ingredients[i].itemName){
                         Inventory.instance.quantityList[j] -= int.Parse(requireQuantityList[i].text);
+                        // Debug.Log("재료 소모 후 재료 개수" + Inventory.instance.quantityList[j]);
                         if(Inventory.instance.quantityList[j] == 0){
                             Inventory.instance.itemList.RemoveAt(j);
                             Inventory.instance.quantityList.RemoveAt(j);
@@ -109,7 +121,7 @@ public class RecipeSlot : MonoBehaviour
                     }
 
                     }catch{
-                        continue;
+
                     }   
 
                 }
