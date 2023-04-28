@@ -59,6 +59,14 @@ public class catKeyboard : MonoBehaviour
         
         
     }
+    public GameObject attackRegion;
+
+    void AttackRegion(){
+        attackRegion.SetActive(true);
+    }
+    void EndRegion(){
+        attackRegion.SetActive(false);
+    }
 
     private bool isAttacking = false;
     public void jKeyBoard(){
@@ -87,15 +95,14 @@ public class catKeyboard : MonoBehaviour
         
             comboCount++;
             animator.SetInteger("ComboCount", comboCount);
-            Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(2, 2), 0);
-            foreach (Collider2D collider in hit)
-            {
-                if (collider.gameObject.tag == "Enemy")
-                {   
-  
-                    collider.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
-                }
-            }
+            // Collider2D[] hit = Physics2D.OverlapBoxAll(transform.position, new Vector2(2, 2), 0);
+            // foreach (Collider2D collider in hit)
+            // {
+            //     if (collider.gameObject.tag == "Enemy")
+            //     {   
+            //         // collider.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
+            //     }
+            // }
             yield return new WaitForSeconds(0.4f);
             isAttacking = false;
     }

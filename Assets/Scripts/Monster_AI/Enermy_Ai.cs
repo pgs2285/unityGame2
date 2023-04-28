@@ -45,7 +45,7 @@ public class Enermy_Ai : MonoBehaviour
             {
                 rigidbody2D.velocity = new Vector2(0, 0);
                 time += 1;
-                animator.SetBool("iswalk", false);
+                // animator.SetBool("iswalk", false);
 
             }
             else if (time < 300 && time >= 200)
@@ -82,7 +82,7 @@ public class Enermy_Ai : MonoBehaviour
                     Vector2 pos = new Vector2(transform.position.x, transform.position.y);
                     transform.position = Vector2.MoveTowards(transform.position, pos, 0.1f);
                 }
-                animator.SetBool("iswalk", true);
+                // animator.SetBool("iswalk", true);
                 // Debug.Log(dir1);
 
             }
@@ -99,31 +99,36 @@ public class Enermy_Ai : MonoBehaviour
 
     }
     float attackDelay = 3;
+    bool[] cnt= new bool[4];
     void Update()
     {
         if(!isStun){
             attackDelay -= Time.deltaTime;
-            if(Vector3.Distance(target.transform.position, transform.position) < 0.5 && attackDelay < 0){
+            Debug.Log(attackDelay);
+            if(Vector3.Distance(target.transform.position, transform.position) < 1 && attackDelay < 0){
+                
+                
+                animator.SetBool("isattack", true);
+                Debug.Log("범위안에 들어옴");
 
-                GetComponent<Animator>().SetBool("iswalk", false);
-                GetComponent<Animator>().SetBool("isattack", true);
             
             }
             else if (key_ai == 1)
             {
                 // StopCoroutine("RandomMove");
+                Debug.Log("key ai = 1 : iswalk true");
                 nav.SetDestination(targetform.position);
+                if(target.transform.position.x > transform.position.x){
+                    transform.eulerAngles = new Vector3(0, 0, 0);
+                }else{
+                    transform.eulerAngles = new Vector3(0, 180, 0);
+                }
                 animator.SetBool("iswalk", true);
-                once = 0;
+                cnt[0] = true;
             }
-            else
+            else if(key_ai == 0)
             {
-                if (once == 0)
-                {
-                    // StartCoroutine("RandomMove");
-                    once = 1;
-                } animator.SetBool("iswalk", false);
-
+                animator.SetBool("iswalk", false);
             }
         }else{
             // StopCoroutine("RandomMove");
@@ -138,7 +143,12 @@ public class Enermy_Ai : MonoBehaviour
     public Vector2 stunLocation;
     void animeReset(){
         GetComponent<Animator>().SetBool("isattack", false);
-        attackDelay = 3;
+        transform.GetChild(1).gameObject.SetActive(false);
+        attackDelay = 2;
     }
+    void Attack(){
+        transform.GetChild(1).gameObject.SetActive(true);
+    }
+
 
 }
