@@ -16,6 +16,7 @@ TagManager:
   - handLight
   - playerFoot
   - AttackRegion
+  - Boss
   layers:
   - Default
   - TransparentFX
