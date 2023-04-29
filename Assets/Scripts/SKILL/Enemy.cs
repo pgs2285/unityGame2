@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         currentHp = currentHp - damage;
         // HpbarFilled.fillAmount = (float)currentHp / Hp;
         // HpbarBackground.SetActive(true);
-        this.GetComponent<Animator>().SetBool("Hit",true);
+        this.GetComponent<Animator>().SetBool("hit",true);
         hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
         
     }
@@ -71,5 +71,13 @@ public class Enemy : MonoBehaviour
             else if(gameObject.name == "bearStone"){
                     Instantiate(Resources.Load("Prefab/BearStone"), transform.position, Quaternion.identity);
             }
+    }
+    void hitReset(){
+        GetComponent<Animator>().SetBool("hit", false);
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0));
+    }
+
+    void nuckback(){
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 0));
     }
 }
