@@ -21,6 +21,7 @@ public class AW_obstacle1 : MonoBehaviour
         Debug.DrawRay(transform.position, dirVec* 1f, new Color(0,1,0));   
         if(rayHit.collider !=null){
             anim.SetBool("attack", true);
+
             //공격발싸
         }
     }
