@@ -22,8 +22,7 @@ public class Enermy_Ai : MonoBehaviour
 
     void Start()
     {
-        key_ai = 0;
-        if(gameObject.name == "bear_enermy_MonsterWave(Clone)") key_ai = 1;
+        key_ai = 1;
         targetform = GameObject.FindGameObjectWithTag("Player").transform;
         rigidbody2D = GetComponent<Rigidbody2D>();
         nav = GetComponent<NavMeshAgent>();
@@ -102,9 +101,14 @@ public class Enermy_Ai : MonoBehaviour
     bool[] cnt= new bool[4];
     void Update()
     {
+
+
         if(!isStun){
             attackDelay -= Time.deltaTime;
-            Debug.Log(attackDelay);
+            Debug.Log(Vector3.Distance(target.transform.position, transform.position));
+            if(gameObject.tag == "Boss" && Vector3.Distance(target.transform.position, transform.position)< 4 && attackDelay < 0){
+                animator.SetBool("isattack", true);
+            }
             if(Vector3.Distance(target.transform.position, transform.position) < 1 && attackDelay < 0){
                 
                 
@@ -138,6 +142,7 @@ public class Enermy_Ai : MonoBehaviour
             key_ai = 0;
             animator.SetBool("iswalk", false);
         }
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
 
     }
     public Vector2 stunLocation;

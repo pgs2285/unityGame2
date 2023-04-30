@@ -39,13 +39,15 @@ public class BossBear : MonoBehaviour
     private void Awake() {
         canvas = GameObject.Find("UI");
     }
+    public GameObject secondHpBar;
     void Update()
     {
        
         if (currentHp <= 0)
         {
             Destroy(prfHPBar.gameObject);
-            Destroy(gameObject);
+            //pattern 2 시작
+            secondHpBar.SetActive(true);
         }
 
 

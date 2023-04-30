@@ -33,6 +33,10 @@ public class portalManager : MonoBehaviour
                         StartCoroutine(etcController.GetComponent<Talk>().talk(new string[]{"문이 잠겨있어.", "어디선가 열쇠를 구해야 할거같다."}));
                     }
                 break;
+
+                case stageManager.TutorialStage:
+                    SceneManager.LoadScene(sceneName);
+                    break;
             }
         }
     }
@@ -41,5 +45,6 @@ public enum stageManager{
     stage1,
     stage2,
     stage3,
-    stage4
+    stage4,
+    TutorialStage
 }

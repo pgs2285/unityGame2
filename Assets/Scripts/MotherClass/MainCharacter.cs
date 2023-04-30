@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 [System.Serializable]
 public struct CharacterInfo{
     public Sprite characterSprite;
@@ -74,7 +74,7 @@ public class MainCharacter : MonoBehaviour
         {
             animator.SetBool("move", false);
         }
-        if (!uiManager.isAction && CharacterData.Instance.IsMove)
+        if ((!uiManager.isAction && CharacterData.Instance.IsMove) || SceneManager.GetActiveScene().name == "0.5.StartMap")
         {
             walk();
         }

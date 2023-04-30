@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {   
     [SerializeField]
     private GameObject hpBar;
@@ -39,7 +39,6 @@ public class UIManager : Singleton<UIManager>
         questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
         HPBar = GameObject.Find("HP");
     }
-
 
     GameObject HPBar;
     public void Update(){

@@ -39,11 +39,7 @@ public class RecipeSlot : MonoBehaviour
                 
                 if(item == item2)    
                 {
-
                     inventoryQuantityList[idx].text = Inventory.instance.quantityList[idx2].ToString();
-
-
-                    
                 }
                 idx2++;
             }
@@ -65,10 +61,7 @@ public class RecipeSlot : MonoBehaviour
         int idx = 0;
 
         Description.text = recipe.Description;
-        
         List<string> banList = new List<string>();
-
-
 
         foreach(Item item in recipe.ingredients)
         {
@@ -125,7 +118,6 @@ public class RecipeSlot : MonoBehaviour
                     }   
 
                 }
-
             }
         Inventory.instance.AddItem(recipe,1);
         RecipeClick();

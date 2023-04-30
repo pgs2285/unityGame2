@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
         currentHp = currentHp - damage;
         // HpbarFilled.fillAmount = (float)currentHp / Hp;
         // HpbarBackground.SetActive(true);
-        this.GetComponent<Animator>().SetBool("hit",true);
+        this.GetComponent<Animator>().SetBool("Hit",true);
         hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
         
     }

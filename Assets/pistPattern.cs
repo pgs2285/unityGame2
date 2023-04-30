@@ -85,17 +85,18 @@ public class pistPattern : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, Target, 0.2f);
                 yield return new WaitForFixedUpdate();
             }
-
+            Destroy(attackRange);
+            GameObject smashCrask = Instantiate(Resources.Load("Prefab/Smash_Effects") as GameObject,Target,Quaternion.identity);
             Target = transform.position + new Vector3(0,5f,0);
             while(Vector3.Distance(transform.position, Target) > 0.01f){
                 transform.position = Vector3.Lerp(transform.position, Target, 0.2f);
                 yield return new WaitForFixedUpdate();
             }
-
+            // Destroy(smashCrask);
 
             GetComponent<BoxCollider2D>().enabled = false;
 
-            Destroy(attackRange);
+
 
             pistMovement = StartCoroutine(attack());
 
