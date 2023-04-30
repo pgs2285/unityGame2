@@ -76866,7 +76866,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2128850715}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1808540621
 PrefabInstance:
@@ -79431,6 +79431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InventoryCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648854703039857353, guid: 278ec136c7eb14e1099580587515cf20,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7648854703039857354, guid: 278ec136c7eb14e1099580587515cf20,
         type: 3}
