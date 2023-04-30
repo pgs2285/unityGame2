@@ -8,6 +8,8 @@ public class CharacterAttackRegion : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy"){
             other.gameObject.GetComponent<Enemy>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
+        }else if(other.gameObject.tag == "Boss"){
+            other.gameObject.GetComponent<BossBear>().TakeDamage(CharacterData.Instance.catjAttackPoint * CharacterData.Instance.AttackPoint);
         }
     }
 }
