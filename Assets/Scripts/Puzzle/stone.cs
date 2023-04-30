@@ -31,5 +31,8 @@ public class stone : MonoBehaviour {
             CharacterData.Instance.CurrentHP -= 1;
             Destroy(gameObject);
         }
+        if(other.gameObject.tag == "Wall"){
+            Destroy(gameObject);
+        }
     }
 }
