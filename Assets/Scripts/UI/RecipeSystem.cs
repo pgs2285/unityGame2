@@ -18,7 +18,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     private void Start()
     {
         recipeList.Add(bakedApple);
-            
+
         
         scene = SceneManager.GetActiveScene();
         normalWorldGround = GameObject.Find("normalWorld");
@@ -40,10 +40,10 @@ public class RecipeSystem : Singleton<RecipeSystem>
     private void Update()
     {
    
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            RunePanel.SetActive(isRoonPanelActive);
-            isRoonPanelActive = !isRoonPanelActive;
-        }
+        // if(Input.GetKeyDown(KeyCode.Tab)){
+        //     RunePanel.SetActive(isRoonPanelActive);
+        //     isRoonPanelActive = !isRoonPanelActive;
+        // }
 
 
         switch(CharacterData.Instance.QuestID){

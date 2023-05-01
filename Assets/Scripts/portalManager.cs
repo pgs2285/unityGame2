@@ -46,6 +46,10 @@ public class portalManager : MonoBehaviour
                 case stageManager.stage4:
                     SceneManager.LoadScene(sceneName);
                     break;
+                case stageManager.BossStage:
+                if(GameObject.FindWithTag("Boss") == null)
+                    SceneManager.LoadScene(sceneName);
+                    break;
             }
         }
     }
@@ -56,4 +60,6 @@ public enum stageManager{
     stage3,
     stage4,
     TutorialStage
+    ,
+    BossStage
 }

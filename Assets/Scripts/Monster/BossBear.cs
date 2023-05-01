@@ -46,8 +46,8 @@ public class BossBear : MonoBehaviour
         if (currentHp <= 0)
         {
             Destroy(prfHPBar.gameObject);
-            //pattern 2 시작
-            secondHpBar.SetActive(true);
+            Destroy(gameObject);
+
         }
 
 
@@ -57,7 +57,7 @@ public class BossBear : MonoBehaviour
         this.GetComponent<Animator>().SetBool("Hit",false);
     }
     public GameObject Laser;
-    public GameObject Laser2;
+
     IEnumerator BossPattern(){
         yield return new WaitForSeconds(Random.Range(10.0f,15.0f));
         float angle = 0.0f;
@@ -67,7 +67,7 @@ public class BossBear : MonoBehaviour
         while (true){
 
             Laser.SetActive(true);
-            Laser2.SetActive(true);
+
 
 
             
@@ -78,12 +78,12 @@ public class BossBear : MonoBehaviour
                 break;
             }
             Laser.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
-            Laser2.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle+180);
+
             yield return new WaitForFixedUpdate();
         
 
         }
-        Laser2.SetActive(false);
+
         Laser.SetActive(false);
         StartCoroutine(BossPattern());
         
