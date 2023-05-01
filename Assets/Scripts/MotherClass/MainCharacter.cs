@@ -34,7 +34,7 @@ public class MainCharacter : MonoBehaviour
     }
 
     protected void isDeath() {
-        if (CharacterData.Instance.CurrentHP < 0) { //currentHP가  0보다 작으면
+        if (CharacterData.Instance.CurrentHP <= 0 || CharacterData.Instance.Hungry <= 0) { //currentHP가  0보다 작으면
             Debug.Log("GameOver");
             if (isCreated_GameOverPanel) {
                 Instantiate(gameoverPanel);
@@ -42,11 +42,7 @@ public class MainCharacter : MonoBehaviour
             }
         }
     }
-    protected void getDamage(int damage) {
-        CharacterData.Instance.CurrentHP -= damage;
-        isDeath(); // 죽었나 확인후 죽었으면 패널띄움
 
-    }
 
     public float X;
     public float Y;

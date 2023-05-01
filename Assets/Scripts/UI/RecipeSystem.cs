@@ -44,8 +44,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
         //     RunePanel.SetActive(isRoonPanelActive);
         //     isRoonPanelActive = !isRoonPanelActive;
         // }
-
-
+        RecipePanel = GameObject.Find("UI").transform.GetChild(0).gameObject;
         switch(CharacterData.Instance.QuestID){
             case 40:
                 if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){

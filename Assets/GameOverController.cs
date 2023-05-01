@@ -6,11 +6,12 @@ public class GameOverController : Singleton<GameOverController>
 {
     GameObject player;
     void Start(){
-        player = GameObject.FindWithTag("Player");
+
     }
 
     void Update()
     {
+        player = GameObject.FindWithTag("Player");
         if(CharacterData.Instance.CurrentHP <= 0){
             CharacterData.Instance.IsMove = false;
             player.GetComponent<Animator>().SetTrigger("isDead");
@@ -23,8 +24,5 @@ public class GameOverController : Singleton<GameOverController>
         }
     }
 
-    public void GameOverPanel(){
-        GameObject.Find("UI").SetActive(false); // UI 비활성화
-        Instantiate(Resources.Load("GameOverPanel") as GameObject, new Vector3(0, 0, 0), Quaternion.identity);
-    }
+
 }

@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44858366e55e4e8db7e001238206cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverPanel: {fileID: 1483997143426849110, guid: 2fb143ae34f12409bb3c9b91e154f70b,
+  gameoverPanel: {fileID: 6663404715564068355, guid: aebf82e9596133b4fbcb321bb33cfcee,
     type: 3}
   animator: {fileID: 0}
   X: 0

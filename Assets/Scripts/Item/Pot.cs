@@ -17,8 +17,14 @@ public class Pot : MonoBehaviour
                 isActive = !isActive;
                 RecipeSystem.Instance.RecipePanel.SetActive(isActive);
                 RecipeSystem.Instance.InfoPanel.SetActive(!isActive);
-                uiManager.isAction = isActive;;
+                uiManager.isAction = isActive;
             }
+        }
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            isActive = false;
+            RecipeSystem.Instance.RecipePanel.SetActive(isActive);
+            RecipeSystem.Instance.InfoPanel.SetActive(!isActive);
+            uiManager.isAction = isActive;;
         }
     }
 }
