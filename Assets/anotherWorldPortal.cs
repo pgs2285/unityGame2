@@ -13,6 +13,7 @@ public Transform cameraTransform;
         if(other.gameObject.tag == "Player"){
             switch(now_Stage){
                 case nowStage.stage1:
+                    
                     StartCoroutine(switchingWorld());
                     break;
                 case nowStage.stage2:

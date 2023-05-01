@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class _Inventory : MonoBehaviour
+public class _Inventory : Singleton<_Inventory>
 {
     public GameObject InventoryPanel;
     // public GameObject UIPanel;

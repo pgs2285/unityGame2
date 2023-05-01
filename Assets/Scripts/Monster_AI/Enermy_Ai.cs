@@ -22,7 +22,7 @@ public class Enermy_Ai : MonoBehaviour
 
     void Start()
     {
-        key_ai = 1;
+        // key_ai = 1;
         targetform = GameObject.FindGameObjectWithTag("Player").transform;
         rigidbody2D = GetComponent<Rigidbody2D>();
         nav = GetComponent<NavMeshAgent>();
@@ -106,9 +106,9 @@ public class Enermy_Ai : MonoBehaviour
         if(!isStun){
             attackDelay -= Time.deltaTime;
             Debug.Log(Vector3.Distance(target.transform.position, transform.position));
-            if(gameObject.tag == "Boss" && Vector3.Distance(target.transform.position, transform.position)< 4 && attackDelay < 0){
-                animator.SetBool("isattack", true);
-            }
+            // if(gameObject.tag == "Boss" && Vector3.Distance(target.transform.position, transform.position)< 4 && attackDelay < 0){
+            //     animator.SetBool("isattack", true);
+            // }
             if(Vector3.Distance(target.transform.position, transform.position) < 1 && attackDelay < 0){
                 
                 

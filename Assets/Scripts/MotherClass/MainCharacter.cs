@@ -108,8 +108,8 @@ public class MainCharacter : MonoBehaviour
             rayHit.collider.GetComponent<RandomIngredient>().GetItem();
             OneTime ++;
         }
-        switchingAble();
-
+        // switchingAble();
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
     public int OneTime = 0;
     

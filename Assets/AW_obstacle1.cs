@@ -10,10 +10,8 @@ public class AW_obstacle1 : MonoBehaviour
     void Awake()
     {
         anim = GetComponent<Animator>();
-        if(transform.localEulerAngles.z == 90) dirVec = new Vector2(1,0);
-        else if(transform.localEulerAngles.z == 180) dirVec = new Vector2(0,1);
-        else if(transform.localEulerAngles.z == 270) dirVec = new Vector2(-1,0);
-        else if(transform.localEulerAngles.z == 0) dirVec = new Vector2(0,-1);
+        if(GetComponent<SpriteRenderer>().flipX == false) dirVec = new Vector2(1,0);
+        if(GetComponent<SpriteRenderer>().flipX == true) dirVec = new Vector2(-1,0);
 
     }   
     // Update is called once per frame
@@ -23,6 +21,7 @@ public class AW_obstacle1 : MonoBehaviour
         Debug.DrawRay(transform.position, dirVec* 1f, new Color(0,1,0));   
         if(rayHit.collider !=null){
             anim.SetBool("attack", true);
+
             //공격발싸
         }
     }
