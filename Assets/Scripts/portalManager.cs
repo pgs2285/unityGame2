@@ -12,6 +12,8 @@ public class portalManager : MonoBehaviour
         etcController = GameObject.Find("etcController");
     }
     private void OnTriggerEnter2D(Collider2D other) {
+
+        Debug.Log("Trigger Enter");
         if(other.gameObject.tag == "Player"){
          
             
@@ -27,6 +29,10 @@ public class portalManager : MonoBehaviour
                 break;
 
                 case stageManager.stage2:
+                    SceneManager.LoadScene(sceneName);
+                break;
+
+                case stageManager.stage3:
                     if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/beautifulStone"))){
                         SceneManager.LoadScene(sceneName);
                     }else{
@@ -35,6 +41,9 @@ public class portalManager : MonoBehaviour
                 break;
 
                 case stageManager.TutorialStage:
+                    SceneManager.LoadScene(sceneName);
+                    break;
+                case stageManager.stage4:
                     SceneManager.LoadScene(sceneName);
                     break;
             }

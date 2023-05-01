@@ -32113,6 +32113,50 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1131929471}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &910111930
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910111932}
+  - component: {fileID: 910111931}
+  m_Layer: 0
+  m_Name: GameOverController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &910111931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910111930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83603a29535cf6943b0cab3a582ff1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &910111932
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910111930}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.9740937, y: -2.4861076, z: 0.01624861}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &916290182
 GameObject:
   m_ObjectHideFlags: 0
@@ -38442,7 +38486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 0
-  sceneName: 2.Demo
+  sceneName: 2.Demo 1
 --- !u!1 &2080912264
 GameObject:
   m_ObjectHideFlags: 0
@@ -47237,6 +47281,12 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: gameoverPanel
+      value: 
+      objectReference: {fileID: 6663404715564068355, guid: aebf82e9596133b4fbcb321bb33cfcee,
+        type: 3}
     - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: switcingEffect

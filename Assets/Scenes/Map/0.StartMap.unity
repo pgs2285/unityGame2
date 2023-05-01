@@ -5363,6 +5363,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7813588250177028419, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a6a9de100871f2e44b4fa14956a36d08, type: 2}
     - target: {fileID: 173694346958265928, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: animator
@@ -7342,6 +7347,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
+      propertyPath: mvInfo.Array.data[0].Delay
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
+        type: 3}
       propertyPath: mvInfo.Array.data[0].npcID
       value: 
       objectReference: {fileID: 400742124}
@@ -7352,13 +7362,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
+      propertyPath: mvInfo.Array.data[1].Delay
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
+        type: 3}
       propertyPath: mvInfo.Array.data[1].npcID
       value: 
       objectReference: {fileID: 1142568508}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
       propertyPath: mvInfo.Array.data[1].speed
-      value: 0.01
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
