@@ -32,13 +32,8 @@ public class MainCharacter : MonoBehaviour
     }
 
     protected void isDeath() {
-        if (CharacterData.Instance.CurrentHP < 0) { //currentHP가  0보다 작으면
-            Debug.Log("GameOver");
-            if (isCreated_GameOverPanel) {
-                Instantiate(gameoverPanel);
-                isCreated_GameOverPanel = false; //추후 버튼에서 다시시작, 종료를 누르면 다시 true로 바꿔줘야함
-            }
-        }
+        GameObject.Find("UI").SetActive(false); // UI 비활성화
+        Instantiate(Resources.Load("GameOverPanel") as GameObject, new Vector3(0, 0, 0), Quaternion.identity);
     }
     protected void getDamage(int damage) {
         CharacterData.Instance.CurrentHP -= damage;
