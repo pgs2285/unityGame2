@@ -13,10 +13,11 @@ public class Enemy : MonoBehaviour
     public float cooltime;
     public void TakeDamage(float damage)
     {
+        GetComponent<Animator>().SetBool("hit",true);
         currentHp = currentHp - damage;
         // HpbarFilled.fillAmount = (float)currentHp / Hp;
         // HpbarBackground.SetActive(true);
-        this.GetComponent<Animator>().SetBool("hit",true);
+        
         hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
         
     }
