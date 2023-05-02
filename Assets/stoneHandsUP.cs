@@ -8,8 +8,10 @@ public class stoneHandsUP : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindWithTag("Player");
+        Anime = Player.GetComponent<Animator>();
     }
     GameObject Player;
+    Animator Anime; 
     // Update is called once per frame
     bool isUp = false;
     void Update()
@@ -17,12 +19,14 @@ public class stoneHandsUP : MonoBehaviour
         if(Vector3.Distance(Player.transform.position, transform.position) < 1 && !isUp){
             if(Input.GetKeyDown(KeyCode.Space)){
                 isUp = true;
+                Anime.SetBool("RaiseHand",true);
             }
         }    
         else if(isUp){
-            transform.position = Player.transform.position + new Vector3(0, 0.5f, 0);
+            transform.position = Player.transform.position + new Vector3(0, 0.7f, 0);
             if(Input.GetKeyDown(KeyCode.Space)){
                 isUp = false;
+                Anime.SetBool("RaiseHand",false);
             }
         }
 

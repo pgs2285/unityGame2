@@ -15,6 +15,7 @@ public class _Inventory : Singleton<_Inventory>
             InventoryPanel.SetActive(activeInventory);
             // InventoryInfo.SetActive(activeInventory);
             // UIPanel.SetActive(!activeInventory);
+            CharacterData.Instance.IsMove = !activeInventory;
         }
     }
 }

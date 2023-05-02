@@ -62,13 +62,15 @@ public class MainCharacter : MonoBehaviour
     void Update()
     {
 
-        if (X == -1) { dirVec = Vector3.left; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 180, 0);}
-        else if (X == 1) { dirVec = Vector3.right; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 0, 0); }
-        else if (Y == -1) {dirVec = Vector3.down; animator.SetBool("move", true); }
-        else if (Y == 1){ dirVec = Vector3.up; animator.SetBool("move", true);}
+        if (X == -1 && !uiManager.isAction) { dirVec = Vector3.left; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 180, 0);}
+        else if (X == 1 && !uiManager.isAction) { dirVec = Vector3.right; animator.SetBool("move", true); transform.eulerAngles = new Vector3(0, 0, 0); }
+        else if (Y == -1 && !uiManager.isAction) {dirVec = Vector3.down; animator.SetBool("move", true); }
+        else if (Y == 1 && !uiManager.isAction){ dirVec = Vector3.up; animator.SetBool("move", true);}
         else
         {
             animator.SetBool("move", false);
+            X = 0;
+            Y = 0;
         }
         if ((!uiManager.isAction && CharacterData.Instance.IsMove) || SceneManager.GetActiveScene().name == "0.5.StartMap")
         {
@@ -76,6 +78,7 @@ public class MainCharacter : MonoBehaviour
         }
         //방향을 알려주는 dirVec
         Debug.DrawRay(transform.position, dirVec * 0.7f, new Color(0,1,0));    
+
         
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Object")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
         if(rayHit.collider != null && Input.GetButtonDown("Jump")){

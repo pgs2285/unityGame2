@@ -17,8 +17,8 @@ public class AW_obstacle1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 1f, LayerMask.GetMask("Player")); 
-        Debug.DrawRay(transform.position, dirVec* 1f, new Color(0,1,0));   
+        RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 1.5f, LayerMask.GetMask("Player")); 
+        Debug.DrawRay(transform.position, dirVec* 1.5f, new Color(0,1,0));   
         if(rayHit.collider !=null){
             anim.SetBool("attack", true);
 
