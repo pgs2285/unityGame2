@@ -45,6 +45,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
         //     isRoonPanelActive = !isRoonPanelActive;
         // }
         RecipePanel = GameObject.Find("UI").transform.GetChild(0).gameObject;
+        InfoPanel = GameObject.Find("UI").transform.GetChild(1).gameObject;
         switch(CharacterData.Instance.QuestID){
             case 40:
                 if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
