@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIManager : Singleton<UIManager>
+public class UIManager : MonoBehaviour
 {   
     [SerializeField]
     private GameObject hpBar;
@@ -27,20 +27,14 @@ public class UIManager : Singleton<UIManager>
     // [SerializeField]
     // private TextMeshProUGUI speed;
 
-
-    
-
     private int limitHP=6;
-
-
+    
     public void Start(){
         // infoPanel.SetActive(false);
         talkManager = GameObject.Find("TalkMgr").GetComponent<TalkManager>();
         questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
         HPBar = GameObject.Find("HP");
     }
-
-
     GameObject HPBar;
     public void Update(){
         for(int i =0; i<6;i++){

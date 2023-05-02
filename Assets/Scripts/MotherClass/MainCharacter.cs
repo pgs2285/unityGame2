@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 [System.Serializable]
 public struct CharacterInfo{
     public Sprite characterSprite;
@@ -34,7 +34,7 @@ public class MainCharacter : MonoBehaviour
     }
 
     protected void isDeath() {
-        if (CharacterData.Instance.CurrentHP < 0) { //currentHP가  0보다 작으면
+        if (CharacterData.Instance.CurrentHP <= 0 || CharacterData.Instance.Hungry <= 0) { //currentHP가  0보다 작으면
             Debug.Log("GameOver");
             if (isCreated_GameOverPanel) {
                 Instantiate(gameoverPanel);
@@ -42,11 +42,7 @@ public class MainCharacter : MonoBehaviour
             }
         }
     }
-    protected void getDamage(int damage) {
-        CharacterData.Instance.CurrentHP -= damage;
-        isDeath(); // 죽었나 확인후 죽었으면 패널띄움
 
-    }
 
     public float X;
     public float Y;
@@ -74,7 +70,7 @@ public class MainCharacter : MonoBehaviour
         {
             animator.SetBool("move", false);
         }
-        if (!uiManager.isAction && CharacterData.Instance.IsMove)
+        if ((!uiManager.isAction && CharacterData.Instance.IsMove) || SceneManager.GetActiveScene().name == "0.5.StartMap")
         {
             walk();
         }
@@ -108,8 +104,8 @@ public class MainCharacter : MonoBehaviour
             rayHit.collider.GetComponent<RandomIngredient>().GetItem();
             OneTime ++;
         }
-        switchingAble();
-
+        // switchingAble();
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
     }
     public int OneTime = 0;
     

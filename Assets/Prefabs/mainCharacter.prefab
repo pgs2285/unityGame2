@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 446022413902940268}
   - component: {fileID: 1337402226267634806}
+  - component: {fileID: 7227173750916487095}
   m_Layer: 0
   m_Name: Attackrange
   m_TagString: AttackRegion
@@ -58,6 +59,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32215312, y: 0.5049938}
   m_EdgeRadius: 0
+--- !u!114 &7227173750916487095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74733359464669093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 934812aadaf7e49538988bc93604f986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &173694346958265932
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d44858366e55e4e8db7e001238206cc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameoverPanel: {fileID: 1483997143426849110, guid: 2fb143ae34f12409bb3c9b91e154f70b,
+  gameoverPanel: {fileID: 6663404715564068355, guid: aebf82e9596133b4fbcb321bb33cfcee,
     type: 3}
   animator: {fileID: 0}
   X: 0

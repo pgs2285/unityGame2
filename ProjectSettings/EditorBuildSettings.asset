@@ -6,11 +6,47 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Map/-1.MainMenu 1.unity
+    guid: 329444dc7cf816c459c92b6da27a8968
+  - enabled: 1
+    path: Assets/Scenes/Map/0.StartMap.unity
+    guid: 94a037c42da924bdb86a08cd6d32caae
+  - enabled: 1
     path: Assets/Scenes/4 bearCave.unity
     guid: 13a44bf46269b5345ae6ec899bdc1bbb
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Map/2.Demo 1.unity
+    guid: b25803003a76bfc4d9bb5734249a908d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Map/1.Tutorial.unity
+    guid: 1d38ffe3f58554c46bfa0af26d134c4e
+  - enabled: 1
+    path: Assets/Scenes/Map/3.Demo 2.unity
+    guid: a0522c0f3edc74ebab4ba625eea4bc7c
+  - enabled: 1
+    path: Assets/Scenes/Map/4.Demo4.unity
+    guid: 470fb2042a0678d43beba84787ea65ed
+  - enabled: 1
+    path: Assets/Scenes/Map/6.BossCutscene.unity
+    guid: 63b80354ba2fdac41ab04ccdddea4516
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Map/6.Boss.unity
+    guid: c6e18d982fc459b4f9eb4a62c5243a0e
+  - enabled: 1
+    path: Assets/Scenes/Map/100.ending.unity
+    guid: d293d66ae0db01e44b971431840c83cf
+  - enabled: 1
+    path: Assets/Scenes/Map/test_5.unity
+    guid: 301b73fbed88e874490dc8a83177f657
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
@@ -20,21 +56,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Map/reference.unity
     guid: be0bbefc03d5e4a95a14acbd4c015150
-  - enabled: 1
-    path: Assets/Scenes/Map/3.Demo.unity
-    guid: 30747f25fa1151145b2d3f908092223a
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/1.Dream.unity
     guid: 24b87369a10104f649e2d17f0ea600a6
   - enabled: 1
-    path: Assets/Scenes/Map/0.StartMap.unity
-    guid: 94a037c42da924bdb86a08cd6d32caae
-  - enabled: 1
     path: Assets/Scenes/3.cave.unity
     guid: 54e5e1a50213cbe4c954aaa8bba75054
-  - enabled: 1
-    path: Assets/Scenes/Map/2.Demo.unity
-    guid: 887ca78d14043e14a8410da40b7a0eb1
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

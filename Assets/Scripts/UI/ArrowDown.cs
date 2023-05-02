@@ -10,10 +10,12 @@ public class ArrowDown : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         movePosition = transform.GetChild(0).gameObject; // 자식을 가져옴, 자식은 이동 위치를 나타내는 empty 오브젝트
         while(Vector3.Distance(objects.transform.position, movePosition.transform.position) > 0.05f){
-            objects.transform.position = Vector3.MoveTowards(objects.transform.position, movePosition.transform.position, 0.3f);
+            objects.transform.position = Vector3.MoveTowards(objects.transform.position, movePosition.transform.position, 0.2f);
             objects.GetComponent<BoxCollider2D>().enabled = false;
             CharacterData.Instance.IsMove = false;
-
+            if(player.transform.position.y < -80){
+                objects.GetComponent<BoxCollider2D>().enabled = true;
+            }
             yield return new WaitForFixedUpdate();
         }
 

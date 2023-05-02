@@ -15,6 +15,7 @@ public class Talk : MonoBehaviour
     public IEnumerator talk(string[] conversation){
         int textIndex = 0;
         while(conversation.Length > textIndex){
+            CharacterData.Instance.IsMove = false;
             yield return new WaitForSeconds(0.001f);
             chatPanel.SetActive(true);
             text.text = conversation[textIndex];
@@ -23,6 +24,7 @@ public class Talk : MonoBehaviour
         }
 
         chatPanel.SetActive(false);
+        CharacterData.Instance.IsMove = true;
         player.GetComponent<MainCharacter>().OneTime =0;
     }
 }
