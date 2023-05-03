@@ -77,7 +77,7 @@ public class CharacterData : Singleton<CharacterData>
 
 
 
-    int currentHP = 5;
+    int currentHP = 12;
     public int CurrentHP
     {
         get { return currentHP; }

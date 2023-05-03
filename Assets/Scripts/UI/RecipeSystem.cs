@@ -18,7 +18,7 @@ public class RecipeSystem : Singleton<RecipeSystem>
     private void Start()
     {
         recipeList.Add(bakedApple);
-            
+
         
         scene = SceneManager.GetActiveScene();
         normalWorldGround = GameObject.Find("normalWorld");
@@ -40,12 +40,12 @@ public class RecipeSystem : Singleton<RecipeSystem>
     private void Update()
     {
    
-        if(Input.GetKeyDown(KeyCode.Tab)){
-            RunePanel.SetActive(isRoonPanelActive);
-            isRoonPanelActive = !isRoonPanelActive;
-        }
-
-
+        // if(Input.GetKeyDown(KeyCode.Tab)){
+        //     RunePanel.SetActive(isRoonPanelActive);
+        //     isRoonPanelActive = !isRoonPanelActive;
+        // }
+        RecipePanel = GameObject.Find("UI").transform.GetChild(0).gameObject;
+        InfoPanel = GameObject.Find("UI").transform.GetChild(1).gameObject;
         switch(CharacterData.Instance.QuestID){
             case 40:
                 if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){

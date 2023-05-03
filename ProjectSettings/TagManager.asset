@@ -17,6 +17,7 @@ TagManager:
   - playerFoot
   - AttackRegion
   - Boss
+  - Portal
   layers:
   - Default
   - TransparentFX
