@@ -81,7 +81,8 @@ public class UIManager : MonoBehaviour
 
             if(endTalk && !isInteration){
                 talk(objData.id, objData.isNPC);
-                chatPanel.SetActive(isAction);
+                // chatPanel.SetActive(isAction);
+                GameObject.Find("ChatWindow").GetComponent<Animator>().SetBool("isShow",isAction);
             }
 
     }
