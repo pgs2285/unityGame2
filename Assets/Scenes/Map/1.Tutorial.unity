@@ -230,6 +230,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &30318933
 Animator:
@@ -543,6 +544,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &221572860
 Animator:
@@ -32350,6 +32352,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &916290186
 Animator:
@@ -32525,6 +32528,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &986244594
 Animator:
@@ -33703,6 +33707,11 @@ PrefabInstance:
       propertyPath: m_VerticalAlignment
       value: 512
       objectReference: {fileID: 0}
+    - target: {fileID: 4710011764111054257, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: decreaseInterval
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 4720312732253900026, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -34790,6 +34799,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!61 &1249558632
 BoxCollider2D:
@@ -35024,6 +35034,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &1352723606
 Animator:
@@ -38259,6 +38270,7 @@ MonoBehaviour:
     type: 3}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 0}
+  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &1835677269
 Animator:
@@ -47448,9 +47460,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: mainCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 173694346958265932, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 446022413902940268, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
@@ -47461,7 +47483,7 @@ PrefabInstance:
     - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: comboResetTime
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1337402226267634806, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
@@ -47473,7 +47495,18 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8858433883805637991, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8858433883805637991, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 415202003}
+    m_RemovedComponents:
+    - {fileID: 8858433883805637991, guid: be60cf386df903646ab58716b0290f77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: be60cf386df903646ab58716b0290f77, type: 3}
 --- !u!4 &2128850715 stripped
 Transform:
