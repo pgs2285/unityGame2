@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject hpBar;
 
+    GameObject player;
+
     // [SerializeField]
     // private TextMeshProUGUI level;
     
@@ -34,6 +36,7 @@ public class UIManager : MonoBehaviour
         talkManager = GameObject.Find("TalkMgr").GetComponent<TalkManager>();
         questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
         HPBar = GameObject.Find("HP");
+        player = GameObject.FindWithTag("Player");
     }
     GameObject HPBar;
     public void Update(){
@@ -69,15 +72,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject chatPanel;
     public bool isAction = false;
     public int talkIndex;
+
+    public bool isInteration = false; 
     public void Action(GameObject scanObj){ //대사 띄워줌
 
             scanObject = scanObj;
             ObjData objData = scanObject.GetComponent<ObjData>();
 
-            if(endTalk){
-
+            if(endTalk && !isInteration){
                 talk(objData.id, objData.isNPC);
-                chatPanel.SetActive(isAction);
+                // chatPanel.SetActive(isAction);
+                GameObject.Find("ChatWindow").GetComponent<Animator>().SetBool("isShow",isAction);
             }
 
     }
@@ -106,6 +111,7 @@ public class UIManager : MonoBehaviour
         talkData = fullText.Split(':');
         if(talkData.Length <= 1){
             namePanel.SetActive(false);
+            
             coroutine =  StartCoroutine(ShowText(talkData[0], delayTime));
             endTalk = false;
         }else if(talkData.Length == 2){
@@ -132,6 +138,7 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(delayTime);
 
         }
+
         endTalk = true;
     }
     

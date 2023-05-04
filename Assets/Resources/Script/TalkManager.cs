@@ -227,12 +227,12 @@ public class TalkManager : MonoBehaviour
         while (Mathf.Abs(Vector3.Distance(targetVector, fox.transform.position)) > 0.001f)
         {
             fox.transform.position = Vector3.MoveTowards(fox.transform.position, targetVector, 0.05f);
-            if(fox.transform.position.y < cat.transform.position.y)
-            {
-                Vector3 temp = cat.transform.position;
-                temp.y -= 1;
-                cat.transform.position = temp;
-            }
+            // if(fox.transform.position.y < cat.transform.position.y)
+            // {
+            //     Vector3 temp = cat.transform.position;
+            //     temp.y -= 1;
+            //     cat.transform.position = temp;
+            // }
             
             yield return new WaitForFixedUpdate();
 

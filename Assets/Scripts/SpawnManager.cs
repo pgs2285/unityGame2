@@ -20,12 +20,8 @@ public class SpawnManager : MonoBehaviour
             SpawnEnemy(x);
         }
         curTime += Time.deltaTime;
+        
 
-        // if(countEnemyDeath >= 10){
-        //     Debug.Log("몬스터를 모두 처치했습니다. 다음 스테이지로 넘어가셍");
-        //     Destroy(GameObject.Find("SpawnPoint"));
-        //     //여기서 막힌문 뚫어주기
-        // }
     }
 
     public void SpawnEnemy(int randomEnemy)
@@ -37,5 +33,7 @@ public class SpawnManager : MonoBehaviour
         EnemyCount++;
         curTime = 0;
     }
+
+
 
 }
