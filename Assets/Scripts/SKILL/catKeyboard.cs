@@ -35,6 +35,11 @@ public class catKeyboard : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            animator.SetBool("Dash", true);
+
+        }
+
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
@@ -119,10 +124,10 @@ public class catKeyboard : MonoBehaviour
     bool isAttackEnd = false;
     IEnumerator attack(){
         
-            comboCount++;
-            animator.SetInteger("ComboCount", comboCount);
-            yield return new WaitForSeconds(0.3f);
-            isAttacking = false;
+        comboCount++;
+        animator.SetInteger("ComboCount", comboCount);
+        yield return new WaitForSeconds(0.3f);
+        isAttacking = false;
            
     }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
@@ -218,6 +223,22 @@ public class catKeyboard : MonoBehaviour
                 
         }
     }
+    void DashSkill(){
+
+        if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
+        else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
+        else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
+        else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
+        else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
+        else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
+        else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
+        else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
+        StartCoroutine(Dash(direction, 1.5f, 1.5f));
+
+    }
+    void DashEnd(){
+        animator.SetBool("Dash", false);
+    }
     IEnumerator Dash(Vector2 direction, float distance, float time)
     {
         float elapsedTime = 0f;
@@ -234,7 +255,7 @@ public class catKeyboard : MonoBehaviour
         }
 
         transform.position = targetPosition;
-        animator.SetBool("Dash", false);
+
     }
 
 
