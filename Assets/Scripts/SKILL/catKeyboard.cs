@@ -39,7 +39,7 @@ public class catKeyboard : MonoBehaviour
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
             
-                jKeyBoard(); // 고양이 j 스킬 
+                Attack1();
                 CatKAttack(); // 고양이 k  스킬
                 
             break;
@@ -62,69 +62,69 @@ public class catKeyboard : MonoBehaviour
 
     void AttackRegion(){
         attackRegion.SetActive(true);
+        if(comboCount == 1) StartCoroutine(waitSecondAttack());
 
     }
+
+    IEnumerator waitSecondAttack(){
+        while(comboCount == 1){
+            if(Input.GetMouseButtonDown(0)){
+                comboCount = 2;
+                animator.SetInteger("ComboCount", comboCount);
+            }
+            yield return new WaitForSeconds(0.000001f);
+        }
+        isAttacking = false;
+    }
+
     void EndRegion(){
         attackRegion.SetActive(false);
+        if(comboCount == 1){
+            comboCount = 0;
+            animator.SetInteger("ComboCount", comboCount);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        if(comboCount == 2){
+            comboCount = 0;
+            animator.SetInteger("ComboCount", comboCount);
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
         end = true;
     }
 
     private bool isAttacking = false;
-    public void jKeyBoard(){
-        if(Input.GetMouseButtonDown(0)){
-            if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
-                    
-                // transform.eulerAngles = new Vector3(0, 180, 0);
-                if(transform.eulerAngles.y == 0){
-                    GetComponent<SpriteRenderer>().flipX = true;
+    public void Attack1(){
+        if(!isAttacking){
+            if(Input.GetMouseButtonDown(0)){
+                if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
+                        
+                    // transform.eulerAngles = new Vector3(0, 180, 0);
+                    if(transform.eulerAngles.y == 0){
+                        GetComponent<SpriteRenderer>().flipX = true;
+                    }
                 }
-            }
-            else{
-                // transform.eulerAngles = new Vector3(0, 0, 0);
-                if(transform.eulerAngles.y == 180){
-                    GetComponent<SpriteRenderer>().flipX = true;
+                else{
+                    // transform.eulerAngles = new Vector3(0, 0, 0);
+                    if(transform.eulerAngles.y == 180){
+                        GetComponent<SpriteRenderer>().flipX = true;
+                    }
                 }
+                isAttacking = true;
+                comboCount = 1;
+                animator.SetInteger("ComboCount", comboCount);
             }
+
         }
-
-
-        if ((Input.GetMouseButtonDown(0)&& !isAttacking)&& comboCount == 0)
-        {
-            Debug.Log("Enemy hit1");
-            // CharacterData.Instance.IsMove = false;
-            lastAttackTime = Time.time; // 마지막 공격 시간 갱신
-            isAttacking = true;
-            StartCoroutine(attack());
-
-        }else if(Input.GetMouseButtonDown(0) && (comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){
-            Debug.Log("Enemy hit2");
-            // CharacterData.Instance.IsMove = false;
-            isAttacking = true;
-            StartCoroutine(attack());
-        }else if( (Time.time - lastAttackTime > comboResetTime)) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}
-        else if(comboCount > 2) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
-        // else if(comboCount == 0 ){  GetComponent<SpriteRenderer>().flipX = false; }
-        // else{
-        //     // CharacterData.Instance.IsMove = true;
-        //     // GetComponent<SpriteRenderer>().flipX = false;
-        // }
-        if(Time.time - lastAttackTime > comboResetTime && end) 
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
-                end = false;
-            }
-
-
     }
     bool isAttackEnd = false;
-    IEnumerator attack(){
+    // IEnumerator attack(){
         
-            comboCount++;
-            animator.SetInteger("ComboCount", comboCount);
-            yield return new WaitForSeconds(0.3f);
-            isAttacking = false;
+    //         comboCount++;
+    //         animator.SetInteger("ComboCount", comboCount);
+    //         yield return new WaitForSeconds(0.3f);
+    //         isAttacking = false;
            
-    }
+    // }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
     public Camera mainCamera; // 메인 카메라
     Vector3 direction = new Vector3(0,0,0);
