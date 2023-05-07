@@ -25,12 +25,14 @@ public class Enemy : MonoBehaviour
     public GameObject canvas;
     RectTransform hpBar;
     public GameObject prfHpBar;
+
+    public SpawnManager spawnManager;
     void Start()
     {
         currentHp = Hp;
         prfHpBar = Instantiate(prfHPBar, canvas.transform);
         hpBar = prfHpBar.GetComponent<RectTransform>();
-   
+        spawnManager = GameObject.Find("enemySpawn").GetComponent<SpawnManager>();
     }
 
     public float height;
@@ -71,6 +73,7 @@ public class Enemy : MonoBehaviour
             else if(gameObject.name == "bearStone"){
                     Instantiate(Resources.Load("Prefab/BearStone"), transform.position, Quaternion.identity);
             }
+            spawnManager.EnemyCount--;
     }
     void hitReset(){
         GetComponent<Animator>().SetBool("hit", false);

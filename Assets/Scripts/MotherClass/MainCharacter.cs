@@ -59,6 +59,7 @@ public class MainCharacter : MonoBehaviour
     Vector3 dirVec;
     GameObject scanObject;
     public GameObject movePanel;
+    GameObject saveTalkObject;
     void Update()
     {
 
@@ -81,8 +82,13 @@ public class MainCharacter : MonoBehaviour
 
         
         RaycastHit2D rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Object")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
-        if(rayHit.collider != null && Input.GetButtonDown("Jump")){
-            scanObject = rayHit.collider.gameObject;
+        if((rayHit.collider != null && Input.GetButtonDown("Jump")) || (uiManager.talkIndex != 0 && Input.GetButtonDown("Jump"))){
+            try{
+                scanObject = rayHit.collider.gameObject;
+                saveTalkObject = scanObject;
+            }catch{
+                scanObject = saveTalkObject;
+            }
             uiManager.Action(scanObject);
         }
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Portal")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
