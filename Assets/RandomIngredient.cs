@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.UI;
 public class RandomIngredient : MonoBehaviour
 {
     int random;
@@ -25,6 +26,9 @@ public class RandomIngredient : MonoBehaviour
         if(isItemObtained){
             Inventory.instance.AddItem(item, 1);
             StartCoroutine(etcController.GetComponent<Talk>().talk(getConversation));
+            GameObject.Find("ItemPanel").GetComponent<Animator>().SetBool("state",true);
+            GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>().text = item.itemName;
+            GameObject.Find("ItemImage").GetComponent<Image>().sprite = item.itemIcon;
             isItemObtained = false;
         }else{
             StartCoroutine(etcController.GetComponent<Talk>().talk(noGetConversation));

@@ -39,7 +39,12 @@ public class catKeyboard : MonoBehaviour
             animator.SetBool("Dash", true);
 
         }
-
+        if(animator.GetInteger("ComboCount") > 0){
+            CharacterData.Instance.IsMove = false;
+        }else{
+            CharacterData.Instance.IsMove = true;
+            
+        }
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
@@ -66,10 +71,12 @@ public class catKeyboard : MonoBehaviour
     public GameObject attackRegion;
 
     void AttackRegion(){
+
         attackRegion.SetActive(true);
 
     }
     void EndRegion(){
+
         attackRegion.SetActive(false);
         end = true;
     }
@@ -245,12 +252,11 @@ public class catKeyboard : MonoBehaviour
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + direction * distance;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && animator.GetBool("Dash"))
         {
             float t = elapsedTime / time;
             transform.position = Vector2.Lerp(startPosition, targetPosition, t * 8);
             elapsedTime += Time.deltaTime;
-            CharacterData.Instance.FoxSkillStack = 0;
             yield return null;
         }
 

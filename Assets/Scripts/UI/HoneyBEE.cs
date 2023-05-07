@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class HoneyBEE : MonoBehaviour
 {
 
@@ -21,6 +22,9 @@ public class HoneyBEE : MonoBehaviour
     }
     IEnumerator beeGenerate(){
         yield return new WaitForSeconds(0.5f);
+        GameObject.Find("ItemPanel").GetComponent<Animator>().SetBool("state",true);
+        GameObject.Find("ItemName").GetComponent<TextMeshProUGUI>().text = Resources.Load<Item>("Item/Honey").itemName;
+        GameObject.Find("ItemImage").GetComponent<Image>().sprite = Resources.Load<Item>("Item/Honey").itemIcon;
         GameObject bee = Instantiate(Resources.Load("Prefab/bee"),transform.position + new Vector3(1, Random.Range(-1.0f,1.0f),0), Quaternion.identity) as GameObject;
         Destroy(GuageBar.gameObject);
         Destroy(gameObject);
@@ -40,7 +44,7 @@ public class HoneyBEE : MonoBehaviour
                 GuageBar.GetChild(0).GetComponent<Image>().fillAmount = currentGuage / Guage;
                 if(currentGuage >= 5.0f){
                     StartCoroutine(beeGenerate());
-                    Inventory.instance.AddItem(Resources.Load<Item>("Item/Honey"),3);
+                    Inventory.instance.AddItem(Resources.Load<Item>("Item/Honey"),1);
 
 
                     currentGuage = 0;
