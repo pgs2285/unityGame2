@@ -16,7 +16,7 @@ public class catKeyboard : MonoBehaviour
     private MainCharacter mainCharacter;
 
     private void Start()
-    {
+    {    SetAttack();
         animator = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
     }
@@ -32,6 +32,7 @@ public class catKeyboard : MonoBehaviour
     public float foxkFilledTime = 0;
 
     bool end = false;
+    Coroutine coroutine;
 
     private void Update()
     {
@@ -39,17 +40,11 @@ public class catKeyboard : MonoBehaviour
             animator.SetBool("Dash", true);
 
         }
-        if(animator.GetInteger("ComboCount") > 0){
-            CharacterData.Instance.IsMove = false;
-        }else{
-            CharacterData.Instance.IsMove = true;
-            
-        }
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
-            
-                atttakStart();
+                
+
                 CatKAttack(); // 고양이 k  스킬
                 
             break;
@@ -59,90 +54,61 @@ public class catKeyboard : MonoBehaviour
                 FoxJSKill(); // 여우 j 스킬
                 shieldSkill(); // 여우 k 스킬
                 
-                
-                
             break;
         }
         
         
+    
         
-        
+    }
+    public void SetAttack(){
+        time = 0f;
+        coroutine = StartCoroutine(ComboAtk());
+    }
+    float speed = 0.5f;
+    float maxTime = 1f;
+
+    float time = 0f;
+    int AtkNum = 0;
+    bool isAtk = false;
+    IEnumerator ComboAtk(){
+        yield return null;
+        while(!(Input.GetMouseButtonDown(0))){
+            time += Time.deltaTime * speed;
+            Debug.Log(time);
+            yield return null;
+        }
+        if(time <= maxTime){
+            animator.SetFloat("Blend", AtkNum++);
+            animator.SetTrigger("Attack");
+            if(AtkNum < 2){
+                SetAttack();
+            }else{
+                AtkNum = 0;
+                isAtk = false;
+                StartCoroutine(ComboAtk());
+            }
+        }
+        else{
+            animator.SetFloat("Blend", 0);
+            animator.SetTrigger("Attack");
+            isAtk = false;
+            AtkNum = 0;
+        }
+        time = 0;
+
     }
     public GameObject attackRegion;
 
     void AttackRegion(){
-
         attackRegion.SetActive(true);
-
     }
     void EndRegion(){
-
         attackRegion.SetActive(false);
-        comboCount = 0;
-        end = true;
     }
 
     private bool isAttacking = false;
-    void atttakStart(){
-        if(Input.GetMouseButtonDown(0)){
-            if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
-                    
-                // transform.eulerAngles = new Vector3(0, 180, 0);
-                if(transform.eulerAngles.y == 0){
-                    GetComponent<SpriteRenderer>().flipX = true;
-                }
-            }
-            else{
-                // transform.eulerAngles = new Vector3(0, 0, 0);
-                if(transform.eulerAngles.y == 180){
-                    GetComponent<SpriteRenderer>().flipX = true;
-                }
-            }
-        }
 
-        if(Input.GetMouseButtonDown(0) && comboCount == 0){
-            comboCount = 1;
-            animator.SetInteger("ComboCount", comboCount);
-            
-        }
-        else if(Input.GetMouseButtonDown(0) && comboCount == 1){
-            comboCount = 0;
-            animator.SetInteger("ComboCount", comboCount);
-        
-        }else if(comboCount > 2) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
-
-    }
-    public void jKeyBoard(){
-       
-
-        if ((!isAttacking)&& comboCount == 0)
-        {
-            lastAttackTime = Time.time; // 마지막 공격 시간 갱신
-            isAttacking = true;
-            StartCoroutine(attack());
-
-        }else if((comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){   
-            isAttacking = true;
-            StartCoroutine(attack());
-        }
-        
-        if((Time.time - lastAttackTime < comboResetTime &&end)) 
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-            end = false;
-        }
-
-
-    }
-    bool isAttackEnd = false;
-    IEnumerator attack(){
-        
-        animator.SetInteger("ComboCount", comboCount);
-        yield return new WaitForSeconds(0.3f);
-        isAttacking = false;
-        
-           
-    }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
     public Camera mainCamera; // 메인 카메라
     Vector3 direction = new Vector3(0,0,0);
