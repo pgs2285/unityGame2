@@ -35,11 +35,21 @@ public class catKeyboard : MonoBehaviour
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            animator.SetBool("Dash", true);
+
+        }
+        if(animator.GetInteger("ComboCount") > 0){
+            CharacterData.Instance.IsMove = false;
+        }else{
+            CharacterData.Instance.IsMove = true;
+            
+        }
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
             
-                Attack1();
+                atttakStart();
                 CatKAttack(); // 고양이 k  스킬
                 
             break;
@@ -61,70 +71,78 @@ public class catKeyboard : MonoBehaviour
     public GameObject attackRegion;
 
     void AttackRegion(){
+
         attackRegion.SetActive(true);
-        if(comboCount == 1) StartCoroutine(waitSecondAttack());
 
     }
-
-    IEnumerator waitSecondAttack(){
-        while(comboCount == 1){
-            if(Input.GetMouseButtonDown(0)){
-                comboCount = 2;
-                animator.SetInteger("ComboCount", comboCount);
-            }
-            yield return new WaitForSeconds(0.000001f);
-        }
-        isAttacking = false;
-    }
-
     void EndRegion(){
+
         attackRegion.SetActive(false);
-        if(comboCount == 1){
-            comboCount = 0;
-            animator.SetInteger("ComboCount", comboCount);
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
-        if(comboCount == 2){
-            comboCount = 0;
-            animator.SetInteger("ComboCount", comboCount);
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
+        comboCount = 0;
         end = true;
     }
 
     private bool isAttacking = false;
-    public void Attack1(){
-        if(!isAttacking){
-            if(Input.GetMouseButtonDown(0)){
-                if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
-                        
-                    // transform.eulerAngles = new Vector3(0, 180, 0);
-                    if(transform.eulerAngles.y == 0){
-                        GetComponent<SpriteRenderer>().flipX = true;
-                    }
+    void atttakStart(){
+        if(Input.GetMouseButtonDown(0)){
+            if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
+                    
+                // transform.eulerAngles = new Vector3(0, 180, 0);
+                if(transform.eulerAngles.y == 0){
+                    GetComponent<SpriteRenderer>().flipX = true;
                 }
-                else{
-                    // transform.eulerAngles = new Vector3(0, 0, 0);
-                    if(transform.eulerAngles.y == 180){
-                        GetComponent<SpriteRenderer>().flipX = true;
-                    }
-                }
-                isAttacking = true;
-                comboCount = 1;
-                animator.SetInteger("ComboCount", comboCount);
             }
-
+            else{
+                // transform.eulerAngles = new Vector3(0, 0, 0);
+                if(transform.eulerAngles.y == 180){
+                    GetComponent<SpriteRenderer>().flipX = true;
+                }
+            }
         }
+
+        if(Input.GetMouseButtonDown(0) && comboCount == 0){
+            comboCount = 1;
+            animator.SetInteger("ComboCount", comboCount);
+            
+        }
+        else if(Input.GetMouseButtonDown(0) && comboCount == 1){
+            comboCount = 0;
+            animator.SetInteger("ComboCount", comboCount);
+        
+        }else if(comboCount > 2) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
+
+    }
+    public void jKeyBoard(){
+       
+
+        if ((!isAttacking)&& comboCount == 0)
+        {
+            lastAttackTime = Time.time; // 마지막 공격 시간 갱신
+            isAttacking = true;
+            StartCoroutine(attack());
+
+        }else if((comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){   
+            isAttacking = true;
+            StartCoroutine(attack());
+        }
+        
+        if((Time.time - lastAttackTime < comboResetTime &&end)) 
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            end = false;
+        }
+
+
     }
     bool isAttackEnd = false;
-    // IEnumerator attack(){
+    IEnumerator attack(){
         
-    //         comboCount++;
-    //         animator.SetInteger("ComboCount", comboCount);
-    //         yield return new WaitForSeconds(0.3f);
-    //         isAttacking = false;
+        animator.SetInteger("ComboCount", comboCount);
+        yield return new WaitForSeconds(0.3f);
+        isAttacking = false;
+        
            
-    // }
+    }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
     public Camera mainCamera; // 메인 카메라
     Vector3 direction = new Vector3(0,0,0);
@@ -218,23 +236,38 @@ public class catKeyboard : MonoBehaviour
                 
         }
     }
+    void DashSkill(){
+
+        if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
+        else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
+        else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
+        else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
+        else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
+        else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
+        else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
+        else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
+        StartCoroutine(Dash(direction, 1.5f, 1.5f));
+
+    }
+    void DashEnd(){
+        animator.SetBool("Dash", false);
+    }
     IEnumerator Dash(Vector2 direction, float distance, float time)
     {
         float elapsedTime = 0f;
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + direction * distance;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && animator.GetBool("Dash"))
         {
             float t = elapsedTime / time;
             transform.position = Vector2.Lerp(startPosition, targetPosition, t * 8);
             elapsedTime += Time.deltaTime;
-            CharacterData.Instance.FoxSkillStack = 0;
             yield return null;
         }
 
         transform.position = targetPosition;
-        animator.SetBool("Dash", false);
+
     }
 
 
