@@ -39,12 +39,17 @@ public class catKeyboard : MonoBehaviour
             animator.SetBool("Dash", true);
 
         }
-
+        if(animator.GetInteger("ComboCount") > 0){
+            CharacterData.Instance.IsMove = false;
+        }else{
+            CharacterData.Instance.IsMove = true;
+            
+        }
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
             
-                jKeyBoard(); // 고양이 j 스킬 
+                atttakStart();
                 CatKAttack(); // 고양이 k  스킬
                 
             break;
@@ -66,16 +71,19 @@ public class catKeyboard : MonoBehaviour
     public GameObject attackRegion;
 
     void AttackRegion(){
+
         attackRegion.SetActive(true);
 
     }
     void EndRegion(){
+
         attackRegion.SetActive(false);
+        comboCount = 0;
         end = true;
     }
 
     private bool isAttacking = false;
-    public void jKeyBoard(){
+    void atttakStart(){
         if(Input.GetMouseButtonDown(0)){
             if(mainCamera.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x){ //캐릭터기준 오른쪽 클릭
                     
@@ -92,42 +100,47 @@ public class catKeyboard : MonoBehaviour
             }
         }
 
+        if(Input.GetMouseButtonDown(0) && comboCount == 0){
+            comboCount = 1;
+            animator.SetInteger("ComboCount", comboCount);
+            
+        }
+        else if(Input.GetMouseButtonDown(0) && comboCount == 1){
+            comboCount = 0;
+            animator.SetInteger("ComboCount", comboCount);
+        
+        }else if(comboCount > 2) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
 
-        if ((Input.GetMouseButtonDown(0)&& !isAttacking)&& comboCount == 0)
+    }
+    public void jKeyBoard(){
+       
+
+        if ((!isAttacking)&& comboCount == 0)
         {
-            Debug.Log("Enemy hit1");
-            // CharacterData.Instance.IsMove = false;
             lastAttackTime = Time.time; // 마지막 공격 시간 갱신
             isAttacking = true;
             StartCoroutine(attack());
 
-        }else if(Input.GetMouseButtonDown(0) && (comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){
-            Debug.Log("Enemy hit2");
-            // CharacterData.Instance.IsMove = false;
+        }else if((comboCount == 1 && !isAttacking) && (Time.time - lastAttackTime < comboResetTime)){   
             isAttacking = true;
             StartCoroutine(attack());
-        }else if( (Time.time - lastAttackTime > comboResetTime)) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}
-        else if(comboCount > 2) {comboCount = 0; animator.SetInteger("ComboCount", comboCount);}  
-        // else if(comboCount == 0 ){  GetComponent<SpriteRenderer>().flipX = false; }
-        // else{
-        //     // CharacterData.Instance.IsMove = true;
-        //     // GetComponent<SpriteRenderer>().flipX = false;
-        // }
-        if(Time.time - lastAttackTime > comboResetTime && end) 
-            {
-                GetComponent<SpriteRenderer>().flipX = false;
-                end = false;
-            }
+        }
+        
+        if((Time.time - lastAttackTime < comboResetTime &&end)) 
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+            end = false;
+        }
 
 
     }
     bool isAttackEnd = false;
     IEnumerator attack(){
         
-        comboCount++;
         animator.SetInteger("ComboCount", comboCount);
         yield return new WaitForSeconds(0.3f);
         isAttacking = false;
+        
            
     }
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
@@ -245,12 +258,11 @@ public class catKeyboard : MonoBehaviour
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + direction * distance;
 
-        while (elapsedTime < time)
+        while (elapsedTime < time && animator.GetBool("Dash"))
         {
             float t = elapsedTime / time;
             transform.position = Vector2.Lerp(startPosition, targetPosition, t * 8);
             elapsedTime += Time.deltaTime;
-            CharacterData.Instance.FoxSkillStack = 0;
             yield return null;
         }
 

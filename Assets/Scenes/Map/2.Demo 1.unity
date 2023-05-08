@@ -73732,7 +73732,7 @@ PrefabInstance:
         type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 723607326}
     - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: comboResetTime

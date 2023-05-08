@@ -91276,11 +91276,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 446022413902940268, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: mainCamera
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 723607326}
     - target: {fileID: 1228842989390114072, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: comboResetTime
@@ -91294,7 +91299,7 @@ PrefabInstance:
     - target: {fileID: 6369772151397990852, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be60cf386df903646ab58716b0290f77, type: 3}

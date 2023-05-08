@@ -141,6 +141,10 @@ public class UIManager : MonoBehaviour
 
         endTalk = true;
     }
+
+    void ItemPanelEnd(){
+        GameObject.Find("ItemPanel").GetComponent<Animator>().SetBool("state",false);
+    }
     
 
 }
