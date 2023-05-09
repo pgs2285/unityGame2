@@ -16,7 +16,7 @@ public class catKeyboard : MonoBehaviour
     private MainCharacter mainCharacter;
 
     private void Start()
-    {    SetAttack();
+    {
         animator = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
     }
@@ -33,7 +33,6 @@ public class catKeyboard : MonoBehaviour
 
     bool end = false;
     Coroutine coroutine;
-
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.LeftShift)){
@@ -63,11 +62,11 @@ public class catKeyboard : MonoBehaviour
     }
     public void SetAttack(){
         time = 0f;
-        coroutine = StartCoroutine(ComboAtk());
+        StartCoroutine(ComboAtk());
     }
     float speed = 0.5f;
     float maxTime = 1f;
-
+    float minTime = 0.4f;
     float time = 0f;
     int AtkNum = 0;
     bool isAtk = false;
@@ -86,7 +85,6 @@ public class catKeyboard : MonoBehaviour
             }else{
                 AtkNum = 0;
                 isAtk = false;
-                StartCoroutine(ComboAtk());
             }
         }
         else{
