@@ -13,10 +13,11 @@ public class Enemy : MonoBehaviour
     public float cooltime;
     public void TakeDamage(float damage)
     {
+        this.GetComponent<Animator>().SetTrigger("hit");
         currentHp = currentHp - damage;
         // HpbarFilled.fillAmount = (float)currentHp / Hp;
         // HpbarBackground.SetActive(true);
-        this.GetComponent<Animator>().SetBool("Hit",true);
+
         hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
         
     }
@@ -54,10 +55,6 @@ public class Enemy : MonoBehaviour
 
 
     }
-    public void animationEnd()
-    {
-        this.GetComponent<Animator>().SetBool("Hit",false);
-    }
     public void OnDestroy(){
 
             int random = Random.Range(0, 100);
@@ -76,11 +73,10 @@ public class Enemy : MonoBehaviour
             spawnManager.EnemyCount--;
     }
     void hitReset(){
-        GetComponent<Animator>().SetBool("hit", false);
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(0, 0));
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(-70, 0));
     }
 
     void nuckback(){
-        GetComponent<Rigidbody2D>().AddForce(new Vector2(100, 0));
+        GetComponent<Rigidbody2D>().AddForce(new Vector2(70, 0));
     }
 }
