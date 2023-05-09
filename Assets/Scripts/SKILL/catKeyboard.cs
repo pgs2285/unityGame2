@@ -36,9 +36,11 @@ public class catKeyboard : MonoBehaviour
 
     private void Update()
     {
+        if(coroutine == null){
+            coroutine = StartCoroutine(ComboAtk());
+        }
         if(Input.GetKeyDown(KeyCode.LeftShift)){
             animator.SetBool("Dash", true);
-
         }
 
         switch(CharacterData.Instance.mainCh){
@@ -66,47 +68,56 @@ public class catKeyboard : MonoBehaviour
         coroutine = StartCoroutine(ComboAtk());
     }
     float speed = 0.5f;
-    float maxTime = 1f;
+    float maxTime = 0.7f;
 
     float time = 0f;
     int AtkNum = 0;
     bool isAtk = false;
     IEnumerator ComboAtk(){
         yield return null;
-        while(!(Input.GetMouseButtonDown(0))){
+        while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
             time += Time.deltaTime * speed;
             Debug.Log(time);
             yield return null;
         }
-        if(time <= maxTime){
-            animator.SetFloat("Blend", AtkNum++);
-            animator.SetTrigger("Attack");
-            if(AtkNum < 2){
-                SetAttack();
-            }else{
-                AtkNum = 0;
+        if(isAttackEnd){
+            if(time <= maxTime){
+                    animator.SetFloat("Blend", AtkNum++);
+                    animator.SetTrigger("Attack");
+                    if(AtkNum < 2){
+                        SetAttack();
+                    }else{
+                        AtkNum = 0;
+                        isAtk = false;
+                        coroutine = StartCoroutine(ComboAtk());
+                    }
+                }
+            else{
+                coroutine = StartCoroutine(ComboAtk());
+                animator.SetFloat("Blend", 0);
+                animator.SetTrigger("Attack");
                 isAtk = false;
-                StartCoroutine(ComboAtk());
+                AtkNum = 0;
             }
-        }
-        else{
-            animator.SetFloat("Blend", 0);
-            animator.SetTrigger("Attack");
-            isAtk = false;
-            AtkNum = 0;
+        }else{
+            coroutine = StartCoroutine(ComboAtk());
         }
         time = 0;
 
     }
+    
     public GameObject attackRegion;
 
     void AttackRegion(){
         attackRegion.SetActive(true);
+        isAttackEnd = false;
     }
     void EndRegion(){
         attackRegion.SetActive(false);
+        isAttackEnd = true;
+        
     }
-
+    bool isAttackEnd = true;
     private bool isAttacking = false;
 
     public GameObject objectPrefab; // 생성할 오브젝트 프리팹
