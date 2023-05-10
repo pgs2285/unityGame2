@@ -77,7 +77,6 @@ public class catKeyboard : MonoBehaviour
         yield return null;
         while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
             time += Time.deltaTime * speed;
-            Debug.Log(time);
             yield return null;
         }
         if(isAttackEnd){

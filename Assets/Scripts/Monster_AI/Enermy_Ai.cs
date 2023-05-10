@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Enermy_Ai : MonoBehaviour
 {
-    NavMeshAgent nav;
+    public NavMeshAgent nav;
     public GameObject target;
     [SerializeField] Transform targetform;
     Animator animator;
@@ -105,7 +105,7 @@ public class Enermy_Ai : MonoBehaviour
 
         if(!isStun){
             attackDelay -= Time.deltaTime;
-            Debug.Log(Vector3.Distance(target.transform.position, transform.position));
+            // Debug.Log(Vector3.Distance(target.transform.position, transform.position));
             // if(gameObject.tag == "Boss" && Vector3.Distance(target.transform.position, transform.position)< 4 && attackDelay < 0){
             //     animator.SetBool("isattack", true);
             // }
