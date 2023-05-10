@@ -175,6 +175,7 @@ public class catKeyboard : MonoBehaviour
 
     public int stack;
     bool isDashing = true;
+    public GameObject bulletPrefab;
     public void CatKAttack()
     {
 
@@ -182,12 +183,29 @@ public class catKeyboard : MonoBehaviour
         {
             catkFilledTime += Time.deltaTime;
         }else{
-            if (Input.GetMouseButtonDown(1))
-            {
-                animator.SetTrigger("Skill1");                
-                catkFilledTime = 0;
-        
-            }
+        if (Input.GetMouseButtonDown(1))
+        {
+            
+            animator.SetTrigger("Skill1");
+            catkFilledTime = 0;
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = -mainCamera.transform.position.z;
+            Vector3 targetPos = mainCamera.ScreenToWorldPoint(mousePos);
+            Debug.Log(targetPos);
+            targetPos.z = 0f;
+
+            Vector3 fireDirection = targetPos - transform.position;
+            fireDirection.z = 0f;
+
+            // 발사 방향을 계산하는 부분 수정
+            float angle = Mathf.Atan2(fireDirection.y, fireDirection.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
+
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = fireDirection.normalized * 10f;
+
+            Destroy(bullet, 2f);
+        }
 
                 
         }
