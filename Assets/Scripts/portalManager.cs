@@ -13,7 +13,6 @@ public class portalManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other) {
 
-        Debug.Log("Trigger Enter");
         if(other.gameObject.tag == "Player"){
          
             

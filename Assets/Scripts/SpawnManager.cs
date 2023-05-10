@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
 
     public void SpawnEnemy(int randomEnemy)
     {
-        Debug.Log(spawnPoints[randomEnemy].position);
+
 
         GameObject _character = Instantiate(enemy, spawnPoints[randomEnemy]);
         _character.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = true;
