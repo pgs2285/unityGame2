@@ -50,4 +50,6 @@ public class AW_obstacle1 : MonoBehaviour
             Destroy(bullet, 2f);  // 총알이 화면 밖으로 나가면 자동으로 삭제
         }
     }
+
+    
 }

@@ -124,7 +124,6 @@ public class MainCharacter : MonoBehaviour
     SpriteRenderer spriteRenderer;
     RuntimeAnimatorController newController;
     public GameObject switcingEffect;
-
     public float cooldownTime = 5.0f;
     public float filledTime = 0.0f;
 

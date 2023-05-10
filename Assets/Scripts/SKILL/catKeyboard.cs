@@ -183,29 +183,9 @@ public class catKeyboard : MonoBehaviour
         {
             catkFilledTime += Time.deltaTime;
         }else{
-            if (Input.GetKeyDown(KeyCode.K))
+            if (Input.GetMouseButtonDown(1))
             {
-                if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
-                else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
-                else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
-                else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
-                else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
-                else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
-                else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
-                else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
-
-
-
-                Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
-
-                if (CharacterData.Instance.FoxSkillStack < 2)
-                {
-                    GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-                }else if(CharacterData.Instance.FoxSkillStack >= 2)
-                {
-                    animator.SetBool("Dash", true);
-                    StartCoroutine(Dash(direction, 3.0f, 0.8f));
-                }
+                animator.SetTrigger("Skill1");                
                 catkFilledTime = 0;
         
             }
