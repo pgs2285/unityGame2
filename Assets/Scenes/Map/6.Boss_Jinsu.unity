@@ -20745,7 +20745,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b525938bb3fb304e9f58e3ab6aa9272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nav: {fileID: 0}
   target: {fileID: 2128850717}
   targetform: {fileID: 2128850715}
   distanceValue: 3
@@ -20770,7 +20769,6 @@ MonoBehaviour:
   prfHPBar: {fileID: 84043448}
   canvas: {fileID: 0}
   prfHpBar: {fileID: 84043448}
-  spawnManager: {fileID: 0}
   height: 0
 --- !u!95 &1275569673
 Animator:
