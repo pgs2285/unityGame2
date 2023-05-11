@@ -77,7 +77,6 @@ public class catKeyboard : MonoBehaviour
         yield return null;
         while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
             time += Time.deltaTime * speed;
-            Debug.Log(time);
             yield return null;
         }
         if(isAttackEnd){
@@ -176,6 +175,7 @@ public class catKeyboard : MonoBehaviour
 
     public int stack;
     bool isDashing = true;
+    public GameObject bulletPrefab;
     public void CatKAttack()
     {
 
@@ -183,32 +183,29 @@ public class catKeyboard : MonoBehaviour
         {
             catkFilledTime += Time.deltaTime;
         }else{
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                if (mainCharacter.X == 1 && mainCharacter.Y == 0) direction = Vector3.right;
-                else if (mainCharacter.X == -1 && mainCharacter.Y == 0) direction = Vector3.left;
-                else if (mainCharacter.X == 0 && mainCharacter.Y == 1) direction = Vector3.up;
-                else if (mainCharacter.X == 0 && mainCharacter.Y == -1) direction = Vector3.down;
-                else if (mainCharacter.X == 1 && mainCharacter.Y == 1) direction = new Vector3(1, 1, 0);
-                else if (mainCharacter.X == -1 && mainCharacter.Y == 1) direction = new Vector3(-1, 1, 0);
-                else if (mainCharacter.X == 1 && mainCharacter.Y == -1) direction = new Vector3(1, -1, 0);
-                else if (mainCharacter.X == -1 && mainCharacter.Y == -1) direction = new Vector3(-1, -1, 0);
+        if (Input.GetMouseButtonDown(1))
+        {
+            
+            animator.SetTrigger("Skill1");
+            catkFilledTime = 0;
+            Vector3 mousePos = Input.mousePosition;
+            mousePos.z = -mainCamera.transform.position.z;
+            Vector3 targetPos = mainCamera.ScreenToWorldPoint(mousePos);
+            Debug.Log(targetPos);
+            targetPos.z = 0f;
 
+            Vector3 fireDirection = targetPos - transform.position;
+            fireDirection.z = 0f;
 
+            // 발사 방향을 계산하는 부분 수정
+            float angle = Mathf.Atan2(fireDirection.y, fireDirection.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, angle - 90));
 
-                Quaternion rotation = Quaternion.LookRotation(Vector3.forward, direction.normalized);
+            GameObject bullet = Instantiate(bulletPrefab, transform.position, rotation);
+            bullet.GetComponent<Rigidbody2D>().velocity = fireDirection.normalized * 10f;
 
-                if (CharacterData.Instance.FoxSkillStack < 2)
-                {
-                    GameObject Skill = Instantiate(foxLSkill, transform.position, rotation);
-                }else if(CharacterData.Instance.FoxSkillStack >= 2)
-                {
-                    animator.SetBool("Dash", true);
-                    StartCoroutine(Dash(direction, 3.0f, 0.8f));
-                }
-                catkFilledTime = 0;
-        
-            }
+            Destroy(bullet, 2f);
+        }
 
                 
         }
