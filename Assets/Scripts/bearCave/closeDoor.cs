@@ -4,8 +4,19 @@ using UnityEngine;
 
 public class closeDoor : MonoBehaviour
 {
-    void Update()
-    {
+    Talk talk;
 
+
+    void Start(){
+        talk = GameObject.Find("etcController").GetComponent<Talk>();
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "Player")
+        StartCoroutine(talk.talk(new string[]{"이봐!"}));        
+    }
+    private void OnTriggerExit2D(Collider2D other) {
+        Destroy(gameObject);
     }
 }

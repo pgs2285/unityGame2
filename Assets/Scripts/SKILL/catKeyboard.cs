@@ -14,11 +14,12 @@ public class catKeyboard : MonoBehaviour
     float dashTimer = 0.0f;
 
     private MainCharacter mainCharacter;
-
+    UIManager uiManager;
     private void Start()
     {    SetAttack();
         animator = GetComponent<Animator>();
         mainCharacter = GetComponent<MainCharacter>();
+        uiManager= GameObject.Find("UI").GetComponent<UIManager>();
     }
     
     public float catJCoolTime = 0;
@@ -46,8 +47,8 @@ public class catKeyboard : MonoBehaviour
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
                 
-
-                CatKAttack(); // 고양이 k  스킬
+                if(!uiManager.isAction)
+                    CatKAttack(); // 고양이 k  스킬
                 
             break;
 
@@ -74,34 +75,38 @@ public class catKeyboard : MonoBehaviour
     int AtkNum = 0;
     bool isAtk = false;
     IEnumerator ComboAtk(){
-        yield return null;
-        while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
-            time += Time.deltaTime * speed;
+        
             yield return null;
-        }
-        if(isAttackEnd){
-            if(time <= maxTime){
-                    animator.SetFloat("Blend", AtkNum++);
-                    animator.SetTrigger("Attack");
-                    if(AtkNum < 2){
-                        SetAttack();
-                    }else{
-                        AtkNum = 0;
-                        isAtk = false;
-                        coroutine = StartCoroutine(ComboAtk());
-                    }
-                }
-            else{
-                coroutine = StartCoroutine(ComboAtk());
-                animator.SetFloat("Blend", 0);
-                animator.SetTrigger("Attack");
-                isAtk = false;
-                AtkNum = 0;
+            while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
+                time += Time.deltaTime * speed;
+                yield return null;
             }
-        }else{
-            coroutine = StartCoroutine(ComboAtk());
+            if(!uiManager.isAction) {
+                if(isAttackEnd){
+                    if(time <= maxTime){
+                            animator.SetFloat("Blend", AtkNum++);
+                            animator.SetTrigger("Attack");
+                            if(AtkNum < 2){
+                                SetAttack();
+                            }else{
+                                AtkNum = 0;
+                                isAtk = false;
+                                coroutine = StartCoroutine(ComboAtk());
+                            }
+                        }
+                    else{
+                        coroutine = StartCoroutine(ComboAtk());
+                        animator.SetFloat("Blend", 0);
+                        animator.SetTrigger("Attack");
+                        isAtk = false;
+                        AtkNum = 0;
+                    }
+                }else{
+                    coroutine = StartCoroutine(ComboAtk());
+                }
+                time = 0;
         }
-        time = 0;
+        
 
     }
     

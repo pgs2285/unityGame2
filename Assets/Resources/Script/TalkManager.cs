@@ -83,6 +83,7 @@ public class TalkManager : MonoBehaviour
 
                     case 1020:
                         Tutorial.SetActive(true);
+                        TutorialMessage.text = "I키를 누르면 아이템을 볼 수 있습니다.  \n주변 지형지물들과 상호작용 하면 숨겨진 음식을 얻을 수 있습니다. \n음식이 없더라도 절망하지 마세요! 음식은 가끔 자라기도한답니다.";
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);
                         Destroy(GameObject.Find("TutorialApple"));
