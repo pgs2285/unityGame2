@@ -281,6 +281,8 @@ MonoBehaviour:
   foxLSkill: {fileID: 8332450376822563010, guid: ebc6c2a4263ab0245bb988448b212606,
     type: 3}
   stack: 0
+  bulletPrefab: {fileID: 3200997041167007589, guid: d98c003195b8b0b4e9aabe4e5de9e032,
+    type: 3}
 --- !u!1 &4477843072642696816
 GameObject:
   m_ObjectHideFlags: 0
