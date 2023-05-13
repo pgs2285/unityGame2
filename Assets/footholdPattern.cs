@@ -14,31 +14,39 @@ public class footholdPattern : MonoBehaviour
     }
     bool isActive = false;
     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag == "AttackRegion") return;
         isActive = false;
         isTriggered = true;
         cam.player = Target.transform;
         StartCoroutine(returnCamera());
     }
     private void OnTriggerStay2D(Collider2D other) {
+
         isActive=false;
         isTriggered = true;
-        Target.SetActive(isActive);
+     
     }
     private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.tag == "AttackRegion") return;
         isActive = true;
-        Target.SetActive(isActive);
+        Target.transform.GetChild(0).gameObject.SetActive(isActive);
+        Target.transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("trigger",false);
         if(isTriggered && GameObject.Find("AnotherWorldAssets") != null)
         {
-            Target.SetActive(false);
+            Target.transform.GetChild(0).gameObject.SetActive(false);
         }
     }
 
     IEnumerator returnCamera(){
+        CharacterData.Instance.IsMove = false;
         yield return new WaitForSeconds(2f);
-        Target.SetActive(isActive);
-  
+        
+        Target.transform.GetChild(0).gameObject.GetComponent<Animator>().SetBool("trigger",true);
+
         yield return new WaitForSeconds(1f);
+        CharacterData.Instance.IsMove = true;
         cam.player = player.gameObject.transform;
+
         // camera return
     }
 }
