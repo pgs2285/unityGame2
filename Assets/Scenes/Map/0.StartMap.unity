@@ -7373,7 +7373,7 @@ PrefabInstance:
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
       propertyPath: mvInfo.Array.data[1].speed
-      value: 0.01
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
@@ -7403,7 +7403,7 @@ PrefabInstance:
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}
       propertyPath: mvInfo.Array.data[3].speed
-      value: 0.005
+      value: 0.001
       objectReference: {fileID: 0}
     - target: {fileID: 2354762051704382783, guid: 964a0cc3510c71641ad3494e3250b153,
         type: 3}

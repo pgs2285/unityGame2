@@ -9,7 +9,7 @@ public class handlight : MonoBehaviour
     void Update()
     {
 
-
+        float z = Input.mousePosition.z - Camera.main.transform.position.z;
         if(Input.GetKey(KeyCode.M)){
             light_z--;
         }

@@ -14,7 +14,7 @@ public class closeDoor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.tag == "Player")
-        StartCoroutine(talk.talk(new string[]{"이봐!"}));        
+        StartCoroutine(talk.talk(new string[]{"이봐!","여기로 와봐!"}));        
     }
     private void OnTriggerExit2D(Collider2D other) {
         Destroy(gameObject);

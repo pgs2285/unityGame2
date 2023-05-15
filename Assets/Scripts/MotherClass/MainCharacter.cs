@@ -89,6 +89,7 @@ public class MainCharacter : MonoBehaviour
             }catch{
                 scanObject = saveTalkObject;
             }
+            Debug.Log(scanObject.name);
             uiManager.Action(scanObject);
         }
         rayHit = Physics2D.Raycast(transform.position, dirVec, 0.7f, LayerMask.GetMask("Portal")); //원점좌표, 발사 방향벡터, 도달거리, 검출할 레이어
