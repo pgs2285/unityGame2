@@ -7,6 +7,7 @@ public class footholdPattern : MonoBehaviour
     public CameraFollow cam;
     public GameObject player;
     public GameObject Target;
+    public bool oneTimeZoom = true; 
     bool isTriggered = false;
     public void Awake(){
         cam = GameObject.FindWithTag("MainCamera").GetComponent<CameraFollow>();
@@ -17,7 +18,8 @@ public class footholdPattern : MonoBehaviour
         if(other.gameObject.tag == "AttackRegion") return;
         isActive = false;
         isTriggered = true;
-        cam.player = Target.transform;
+        if(oneTimeZoom)
+            cam.player = Target.transform;
         StartCoroutine(returnCamera());
     }
     private void OnTriggerStay2D(Collider2D other) {
@@ -45,8 +47,10 @@ public class footholdPattern : MonoBehaviour
 
         yield return new WaitForSeconds(1f);
         CharacterData.Instance.IsMove = true;
-        cam.player = player.gameObject.transform;
-
+        if(oneTimeZoom){
+            cam.player = player.gameObject.transform;
+            oneTimeZoom = false;
+        }
         // camera return
     }
 }

@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
     public void Action(GameObject scanObj){ //대사 띄워줌
 
             scanObject = scanObj;
+            Debug.Log("UIMANAGER+SCANOBJECT" + scanObject.name);
             ObjData objData = scanObject.GetComponent<ObjData>();
 
             if(endTalk && !isInteration){

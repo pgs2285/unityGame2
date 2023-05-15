@@ -19,14 +19,18 @@ public class RecipeSystem : Singleton<RecipeSystem>
     {
         recipeList.Add(bakedApple);
 
+        try{
         
-        scene = SceneManager.GetActiveScene();
-        normalWorldGround = GameObject.Find("normalWorld");
-        normalWorldObject = GameObject.Find("normalWorldObject");
-        anotherWorldGround = GameObject.Find("anotherWorld");
-        anotherWorldObject = GameObject.Find("anotherWorldObject");
-        anotherWorldGround.SetActive(false);
-        anotherWorldObject.SetActive(false);
+            scene = SceneManager.GetActiveScene();
+            normalWorldGround = GameObject.Find("normalWorld");
+            normalWorldObject = GameObject.Find("normalWorldObject");
+            anotherWorldGround = GameObject.Find("anotherWorld");
+            anotherWorldObject = GameObject.Find("anotherWorldObject");
+            anotherWorldGround.SetActive(false);
+            anotherWorldObject.SetActive(false);
+        }catch(System.Exception e){
+            Debug.Log(e);
+        }
     }
 
 

@@ -15,23 +15,25 @@ public class Talk : MonoBehaviour
         
     }
 
+
+
     public IEnumerator talk(string[] conversation){
         int textIndex = 0;
+        chatPanel.GetComponent<Animator>().SetBool("isShow",true);
         uiManager.GetComponent<UIManager>().isAction = true;
+        CharacterData.Instance.IsMove = false;
+        yield return null;
         while(conversation.Length > textIndex){
-
-            CharacterData.Instance.IsMove = false;
-            yield return new WaitForSeconds(0.001f);
-            // chatPanel.SetActive(true);
-            chatPanel.GetComponent<Animator>().SetBool("isShow",true);
+            yield return null;
+ 
             text.text = conversation[textIndex];
             if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
-
         }
+        CharacterData.Instance.IsMove = true;
         uiManager.GetComponent<UIManager>().isAction = false;
         // chatPanel.SetActive(false);
         chatPanel.GetComponent<Animator>().SetBool("isShow",false);
-        CharacterData.Instance.IsMove = true;
+        
         player.GetComponent<MainCharacter>().OneTime =0;
     }
 }

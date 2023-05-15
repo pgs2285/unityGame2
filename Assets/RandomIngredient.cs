@@ -11,7 +11,7 @@ public class RandomIngredient : MonoBehaviour
     GameObject etcController;
     public string[] getConversation;
     public string[] noGetConversation;
-    void Awake()
+    void Start()
     {
         SetItemObtain();
         etcController = GameObject.Find("etcController");

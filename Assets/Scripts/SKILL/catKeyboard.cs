@@ -37,9 +37,7 @@ public class catKeyboard : MonoBehaviour
 
     private void Update()
     {
-        if(coroutine == null){
-            coroutine = StartCoroutine(ComboAtk());
-        }
+
         if(Input.GetKeyDown(KeyCode.LeftShift)){
             animator.SetBool("Dash", true);
         }
@@ -66,6 +64,7 @@ public class catKeyboard : MonoBehaviour
     }
     public void SetAttack(){
         time = 0f;
+ 
         coroutine = StartCoroutine(ComboAtk());
     }
     float speed = 0.5f;
@@ -75,10 +74,10 @@ public class catKeyboard : MonoBehaviour
     int AtkNum = 0;
     bool isAtk = false;
     IEnumerator ComboAtk(){
-        
             yield return null;
             while(!(Input.GetMouseButtonDown(0) || !isAttackEnd)){
                 time += Time.deltaTime * speed;
+                // Debug.Log(time);
                 yield return null;
             }
             if(!uiManager.isAction) {
@@ -105,7 +104,9 @@ public class catKeyboard : MonoBehaviour
                     coroutine = StartCoroutine(ComboAtk());
                 }
                 time = 0;
-        }
+            }else{
+                coroutine = StartCoroutine(ComboAtk());
+            }
         
 
     }
