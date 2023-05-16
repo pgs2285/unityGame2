@@ -1,34 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Phase2_BossBear : MonoBehaviour
 {
+    public float Hp = 100;
+    public float currentHp=100;
     Coroutine coroutine;
     Rigidbody2D rgd2D;
     Animator animator;
     private int random;
     int dir1;
     bool istrigger;
+    public GameObject prfHPBar;
+    public GameObject canvas;
+    RectTransform hpBar;
     // Start is called before the first frame update
     void Start()
     {
+        currentHp = Hp;
+        // prfHpBar = Instantiate(prfHPBar, canvas.transform);
+        hpBar = prfHPBar.GetComponent<RectTransform>();
         animator=GetComponent<Animator>();
         rgd2D=GetComponent<Rigidbody2D>();
         StartCoroutine(Phasetwo_bossbear());
     }
-
+    public float height;
+    private void Awake() {
+        canvas = GameObject.Find("UI");
+    }
+    public GameObject secondHpBar;
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentHp <= 0)
+        {
+            Destroy(prfHPBar.gameObject);
+            Destroy(gameObject);
+
+        }
     }
     private IEnumerator Phasetwo_bossbear()
     {
         while(true)
         {
             // random=Random.Range(0,4);
-            random=2;
+            random=Random.Range(0,4);
             if(random==0){//idle상태
                 animator.SetBool("isattack",false);
                 animator.SetBool("iswalk",false);
@@ -53,20 +70,24 @@ public class Phase2_BossBear : MonoBehaviour
     }
     void OnCollisionStay2D(Collision2D collider)
     {
-        animator.SetBool("iswalk",false);
-        int tmp = dir1;
-        istrigger=true;
-        if (collider.gameObject.CompareTag("Wall"))
-        {
-            
-            dir1 = Random.Range(0, 4);
-            while (dir1 == tmp)
+        int tmp;
+        if(random==2){
+            animator.SetBool("iswalk",false);
+            tmp = dir1;
+            istrigger=true;
+            if (collider.gameObject.CompareTag("Wall"))
             {
                 
-                phase2_boss_walk();
+                dir1 = Random.Range(0, 4);
+                while (dir1 == tmp)
+                {
+                    
+                    phase2_boss_walk();
+                }
+                Debug.Log("벽에 부딪혔습니다.");
             }
-            Debug.Log("벽에 부딪혔습니다.");
         }
+        
         
     }
     IEnumerator phasetwo_boss_walk(Vector2 dir)
@@ -110,4 +131,23 @@ public class Phase2_BossBear : MonoBehaviour
                     coroutine=StartCoroutine(phasetwo_boss_walk(pos));
                 }
     }
+    public void phase_two_idle_attack(){
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        gameObject.transform.GetChild(1).gameObject.SetActive(true);
+    }
+    public void phase_two_idle_attack_end(){
+        gameObject.transform.GetChild(0).gameObject.SetActive(false);
+        gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
+    public void TakeDamage(float damage)
+    {
+        currentHp = currentHp - damage;
+        Debug.Log(currentHp/Hp);
+        hpBar.GetChild(0).GetComponent<Image>().fillAmount = currentHp / Hp;
+
+        this.GetComponent<Animator>().SetBool("hit",true);
+        
+        
+    }
+
 }
