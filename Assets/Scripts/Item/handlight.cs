@@ -9,14 +9,28 @@ public class handlight : MonoBehaviour
     void Update()
     {
 
-        float z = Input.mousePosition.z - Camera.main.transform.position.z;
-        if(Input.GetKey(KeyCode.M)){
-            light_z--;
-        }
-        if(Input.GetKey(KeyCode.N)){
-            light_z++;
-        }
-        transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, light_z);
+        
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition.z = -10f;
+        // 마우스 위치를 월드 좌표계로 변환
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        
+        Debug.Log(worldPosition);
+        float zRotation = Mathf.Atan2(worldPosition.y - transform.position.y, worldPosition.x - transform.position.x) * Mathf.Rad2Deg; 
+        // mathf -> 각도 단위를 라디안에서 도로 변환하기
+        // atan2 = 두점사이의 탄젠트값을 받아 절대각을 라디안으로 반환함(-180 ~ 180)
+        // atan - 동일하지만 각도 범위가 -90~90
+
+        transform.rotation = Quaternion.Euler(0, 0, zRotation);
+
+
+        // if(Input.GetKey(KeyCode.M)){
+        //     light_z--;
+        // }
+        // if(Input.GetKey(KeyCode.N)){
+        //     light_z++;
+        // }
+        // transform.eulerAngles = new Vector3(transform.rotation.x, transform.rotation.y, light_z);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {

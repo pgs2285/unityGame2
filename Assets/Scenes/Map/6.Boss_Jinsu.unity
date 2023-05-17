@@ -893,7 +893,7 @@ GameObject:
   - component: {fileID: 925971949}
   - component: {fileID: 925971948}
   - component: {fileID: 925971950}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: strucutre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1456,7 +1456,7 @@ GameObject:
   - component: {fileID: 958580847}
   - component: {fileID: 958580846}
   - component: {fileID: 958580848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15923,6 +15923,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -50
       objectReference: {fileID: 0}
+    - target: {fileID: 3499481637140289088, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3870168509296174317, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -21327,7 +21332,7 @@ GameObject:
   - component: {fileID: 1515419578}
   - component: {fileID: 1515419579}
   - component: {fileID: 1515419580}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bearBoss
   m_TagString: Boss
   m_Icon: {fileID: 0}
