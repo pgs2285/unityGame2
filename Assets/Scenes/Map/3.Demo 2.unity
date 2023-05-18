@@ -611,6 +611,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &353504393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 353504395}
+  - component: {fileID: 353504394}
+  m_Layer: 0
+  m_Name: FadeOut
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &353504394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353504393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a97827fe959044c9959b6d9165197b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FadeInPanel: {fileID: 375400639}
+--- !u!4 &353504395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 353504393}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.956673, y: 13.452497, z: -0.15216579}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &359426029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -700,6 +745,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4343237485913699985, guid: 5af8917699b7ac24c817e70d385dc0f1,
     type: 3}
   m_PrefabInstance: {fileID: 359426029}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &375400639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9175860766193726373, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+    type: 3}
+  m_PrefabInstance: {fileID: 1014799136}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &390896625 stripped
 GameObject:
@@ -16203,7 +16254,7 @@ GameObject:
   - component: {fileID: 677523587}
   - component: {fileID: 677523586}
   - component: {fileID: 677523585}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41046,6 +41097,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pot
       objectReference: {fileID: 0}
+    - target: {fileID: 5364972845696577505, guid: d49ceb1e26a95439d9538deba6f2dfd9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 6176071429360248556, guid: d49ceb1e26a95439d9538deba6f2dfd9,
         type: 3}
       propertyPath: m_RootOrder
@@ -41692,7 +41748,7 @@ GameObject:
   - component: {fileID: 925971948}
   - component: {fileID: 925971951}
   - component: {fileID: 925971950}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: strucutre
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42942,7 +42998,7 @@ GameObject:
   - component: {fileID: 958580846}
   - component: {fileID: 958580849}
   - component: {fileID: 958580848}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71981,6 +72037,11 @@ PrefabInstance:
       propertyPath: inventoryQuantityList.Array.data[3]
       value: 
       objectReference: {fileID: 335054229}
+    - target: {fileID: 9175860766193726373, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4311361079028016226, guid: cc8a3a5d5796c4460b231acfaf0ee170, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cc8a3a5d5796c4460b231acfaf0ee170, type: 3}
@@ -89799,7 +89860,7 @@ GameObject:
   - component: {fileID: 1996282307}
   - component: {fileID: 1996282306}
   - component: {fileID: 1996282305}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: strucutre
   m_TagString: Untagged
   m_Icon: {fileID: 0}

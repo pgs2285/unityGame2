@@ -6,8 +6,10 @@ public class Pot : MonoBehaviour
 {
     bool isActive = false;
     UIManager uiManager;
+
     void Awake(){
         uiManager = GameObject.Find("UI").GetComponent<UIManager>();
+
     }
     void Update()
     {

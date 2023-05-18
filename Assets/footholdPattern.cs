@@ -26,6 +26,7 @@ public class footholdPattern : MonoBehaviour
 
         isActive=false;
         isTriggered = true;
+        Target.transform.GetChild(0).gameObject.SetActive(false);
      
     }
     private void OnTriggerExit2D(Collider2D other) {

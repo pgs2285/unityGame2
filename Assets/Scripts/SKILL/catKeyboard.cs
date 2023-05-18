@@ -41,6 +41,7 @@ public class catKeyboard : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.LeftShift)){
             animator.SetBool("Dash", true);
         }
+        isFrontObstacle();
 
         switch(CharacterData.Instance.mainCh){
             case 0: // 고양이
@@ -197,7 +198,6 @@ public class catKeyboard : MonoBehaviour
             Vector3 mousePos = Input.mousePosition;
             mousePos.z = -mainCamera.transform.position.z;
             Vector3 targetPos = mainCamera.ScreenToWorldPoint(mousePos);
-            Debug.Log(targetPos);
             targetPos.z = 0f;
 
             Vector3 fireDirection = targetPos - transform.position;
@@ -237,19 +237,33 @@ public class catKeyboard : MonoBehaviour
         float elapsedTime = 0f;
         Vector2 startPosition = transform.position;
         Vector2 targetPosition = startPosition + direction * distance;
-
+        isCollider = false;
         while (elapsedTime < time && animator.GetBool("Dash"))
         {
             float t = elapsedTime / time;
             transform.position = Vector2.Lerp(startPosition, targetPosition, t * 8);
             elapsedTime += Time.deltaTime;
+            
+            if(isCollider) {
+                targetPosition = transform.position;
+                break;
+            }
+
             yield return null;
         }
-
+        isCollider = false;
         transform.position = targetPosition;
 
     }
 
+    bool isCollider = false;
+
+    private void isFrontObstacle(){
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, 1.5f, LayerMask.GetMask("Obstacle"));
+        if(hit.collider != null){
+            isCollider = true;
+        }
+    }
 
 
 }
