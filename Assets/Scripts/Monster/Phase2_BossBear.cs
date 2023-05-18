@@ -21,6 +21,7 @@ public class Phase2_BossBear : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rush_key=0;
         currentHp = Hp;
         // prfHpBar = Instantiate(prfHPBar, canvas.transform);
         hpBar = prfHPBar.GetComponent<RectTransform>();
@@ -65,6 +66,7 @@ public class Phase2_BossBear : MonoBehaviour
             }
             else if(random==3){//돌진상태
                 phase2_boss_rush();
+                yield return new WaitForSeconds(9f);
             }
             yield return new WaitForSeconds(1.5f);
         }
@@ -120,7 +122,17 @@ public class Phase2_BossBear : MonoBehaviour
         
         
     }
-    
+    IEnumerator phasetwo_boss_rush_repeat(Vector2 dir)//돌진 이동 코루틴
+    {
+        while(Vector2.Distance(dir,transform.position)>0.1f)
+        {           
+            this.transform.position=Vector2.MoveTowards(this.transform.position,dir,1f*Time.deltaTime);
+            yield return new WaitForFixedUpdate();
+            animator.SetBool("isrush",true);
+        }
+        animator.SetBool("isrush",false);
+        
+    }
     void phase2_boss_walk(){//걷기함수
         animator.SetBool("isattack",false);
         animator.SetBool("iswalk",false);
@@ -152,44 +164,147 @@ public class Phase2_BossBear : MonoBehaviour
                 }
                 collidercheck=false;
     }
-    IEnumerator phasetwo_boss_rush(Vector2 dir)
+IEnumerator phasetwo_boss_rush()//돌진 4번돌진 코루틴
     {
-        while(Vector2.Distance(dir,transform.position)>0.1f)
+        rush_key=0;
+        while(rush_key<4)
         {
-            Debug.Log("돌진");
-            animator.SetBool("isrush",true);
-            this.transform.position=Vector2.MoveTowards(this.transform.position,dir,3f*Time.deltaTime);
+            if(this.transform.position.x>0&&this.transform.position.y>6)
+            {
+                if(rush_key==0){                   
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    rush_key++;
+                    Debug.Log("1차돌진");
+                }
+                else if(rush_key==1){                    
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("2차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==2){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("3차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==3){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("4차돌진");
+                    rush_key++;
+                }
+            }
+            else if(this.transform.position.x<0&&this.transform.position.y>6)
+            {
+                if(rush_key==0){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("1차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==1){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("2차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==2){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("3차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==3){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("4차돌진");
+                    rush_key++;
+                }
+            }
+            else if(this.transform.position.x<0&&this.transform.position.y<6)
+            {
+                if(rush_key==0){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("1차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==1){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("2차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==2){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("3차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==3){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("4차돌진");
+                    rush_key++;
+                }
+            }
+            else if(this.transform.position.x>0&&this.transform.position.y<6)
+            {
+                if(rush_key==0){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("1차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==1){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y+1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("2차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==2){
+                    Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("3차돌진");
+                    rush_key++;
+                }
+                else if(rush_key==3){
+                    Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
+                    coroutine2=StartCoroutine(phasetwo_boss_rush_repeat(pos));
+                    yield return new WaitForSeconds(2f);
+                    Debug.Log("4차돌진");
+                    rush_key++;
+                }
+            }
+            
+            Debug.Log("돌진");           
             yield return new WaitForSeconds(2f);
         }
-        StopCoroutine(coroutine2);
+        
     }
     void phase2_boss_rush(){//돌진함수
+        rush_key=0;
         animator.SetBool("isattack",false);
         animator.SetBool("iswalk",false);
         animator.SetBool("isrush",false);
-       if(this.transform.position.x>0&&this.transform.position.y>6)
-       {
-              Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
-              
-         }
-         else if(this.transform.position.x<0&&this.transform.position.y>6)
-         {
-              Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
-                coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
-              
-         }
-         else if(this.transform.position.x>0&&this.transform.position.y<6)
-         {
-              Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
-              coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
-                
-       }
-       else if(this.transform.position.x<0&&this.transform.position.y<6)
-       {
-            Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
-            coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
-            
-       }
+        coroutine2=StartCoroutine(phasetwo_boss_rush());
     }
     public void phase_two_idle_attack(){//기본공격 콜리더 활성화
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
