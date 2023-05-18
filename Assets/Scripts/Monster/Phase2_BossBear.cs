@@ -7,14 +7,17 @@ public class Phase2_BossBear : MonoBehaviour
     public float Hp = 100;
     public float currentHp=100;
     Coroutine coroutine;
+    Coroutine coroutine2;
     Rigidbody2D rgd2D;
     Animator animator;
     private int random;
     int dir1;
+    bool collidercheck=false;
     bool istrigger;
     public GameObject prfHPBar;
     public GameObject canvas;
     RectTransform hpBar;
+    public int rush_key=0;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +43,7 @@ public class Phase2_BossBear : MonoBehaviour
 
         }
     }
-    private IEnumerator Phasetwo_bossbear()
+    private IEnumerator Phasetwo_bossbear()//보스곰 상태 머신
     {
         while(true)
         {
@@ -61,36 +64,41 @@ public class Phase2_BossBear : MonoBehaviour
                 phase2_boss_walk();
             }
             else if(random==3){//돌진상태
-                animator.SetBool("isattack",false);
-                animator.SetBool("iswalk",false);
-                animator.SetBool("isrush",true);
+                phase2_boss_rush();
             }
-            yield return new WaitForSeconds(3.0f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
-    void OnCollisionStay2D(Collision2D collider)
+    void OnCollisionEnter2D(Collision2D collider)//벽 충돌시 이동 방향전환
     {
         int tmp;
+        
         if(random==2){
             animator.SetBool("iswalk",false);
             tmp = dir1;
             istrigger=true;
             if (collider.gameObject.CompareTag("Wall"))
             {
-                
-                dir1 = Random.Range(0, 4);
-                while (dir1 == tmp)
+                try
+                {
+                    StopCoroutine(coroutine);
+                }
+                catch (System.Exception)
                 {
                     
-                    phase2_boss_walk();
+                    Debug.Log("코루틴이 없습니다.");
                 }
-                Debug.Log("벽에 부딪혔습니다.");
+                
             }
         }
-        
-        
+        else if(random==3)
+        {
+            rush_key++;
+
+        }        
     }
-    IEnumerator phasetwo_boss_walk(Vector2 dir)
+    
+    IEnumerator phasetwo_boss_walk(Vector2 dir)//기본걷기 코루틴
     {
         while(Vector2.Distance(dir,transform.position)>0.1f&&istrigger==false)
         {           
@@ -100,14 +108,26 @@ public class Phase2_BossBear : MonoBehaviour
         }
         istrigger=false;
         animator.SetBool("iswalk",false);
-        StopCoroutine(coroutine);
+        try
+        {
+            StopCoroutine(coroutine);
+        }
+        catch (System.Exception)
+        {
+            
+            Debug.Log("코루틴이 없습니다.");
+        }
+        
         
     }
-    void phase2_boss_walk(){
+    
+    void phase2_boss_walk(){//걷기함수
         animator.SetBool("isattack",false);
         animator.SetBool("iswalk",false);
         animator.SetBool("isrush",false);
-        dir1=Random.Range(0,4);
+        if(collidercheck==false){
+            dir1=Random.Range(0,4);
+        }        
         Debug.Log(dir1);
         if (dir1 == 0)
                 {
@@ -130,14 +150,60 @@ public class Phase2_BossBear : MonoBehaviour
                     Vector2 pos = new Vector2(this.transform.position.x, this.transform.position.y - 1f);
                     coroutine=StartCoroutine(phasetwo_boss_walk(pos));
                 }
+                collidercheck=false;
     }
-    public void phase_two_idle_attack(){
+    IEnumerator phasetwo_boss_rush(Vector2 dir)
+    {
+        while(Vector2.Distance(dir,transform.position)>0.1f)
+        {
+            Debug.Log("돌진");
+            animator.SetBool("isrush",true);
+            this.transform.position=Vector2.MoveTowards(this.transform.position,dir,3f*Time.deltaTime);
+            yield return new WaitForSeconds(2f);
+        }
+        StopCoroutine(coroutine2);
+    }
+    void phase2_boss_rush(){//돌진함수
+        animator.SetBool("isattack",false);
+        animator.SetBool("iswalk",false);
+        animator.SetBool("isrush",false);
+       if(this.transform.position.x>0&&this.transform.position.y>6)
+       {
+              Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
+              
+         }
+         else if(this.transform.position.x<0&&this.transform.position.y>6)
+         {
+              Vector2 pos=new Vector2(this.transform.position.x+1f,this.transform.position.y-1f);
+                coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
+              
+         }
+         else if(this.transform.position.x>0&&this.transform.position.y<6)
+         {
+              Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y+1f);
+              coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
+                
+       }
+       else if(this.transform.position.x<0&&this.transform.position.y<6)
+       {
+            Vector2 pos=new Vector2(this.transform.position.x-1f,this.transform.position.y-1f);
+            coroutine2=StartCoroutine(phasetwo_boss_rush(pos));
+            
+       }
+    }
+    public void phase_two_idle_attack(){//기본공격 콜리더 활성화
         gameObject.transform.GetChild(0).gameObject.SetActive(true);
         gameObject.transform.GetChild(1).gameObject.SetActive(true);
     }
-    public void phase_two_idle_attack_end(){
+    public void phase_two_idle_attack_end(){//기본공격 콜리더 비활성화
         gameObject.transform.GetChild(0).gameObject.SetActive(false);
         gameObject.transform.GetChild(1).gameObject.SetActive(false);
+    }
+    public void phase_two_rush_attack(){//돌진공격 콜리더 활성화
+        gameObject.transform.GetChild(2).gameObject.SetActive(true);
+    }
+    public void phase_two_rush_attack_end(){//돌진공격 콜리더 비활성화
+        gameObject.transform.GetChild(2).gameObject.SetActive(false);
     }
     public void TakeDamage(float damage)
     {
@@ -149,5 +215,5 @@ public class Phase2_BossBear : MonoBehaviour
         
         
     }
-
+    
 }
