@@ -77,7 +77,7 @@ public class UIManager : MonoBehaviour
     public void Action(GameObject scanObj){ //대사 띄워줌
 
             scanObject = scanObj;
-            Debug.Log("UIMANAGER+SCANOBJECT" + scanObject.name);
+            // Debug.Log("UIMANAGER+SCANOBJECT" + scanObject.name);
             ObjData objData = scanObject.GetComponent<ObjData>();
 
             if(endTalk && !isInteration){
@@ -135,11 +135,28 @@ public class UIManager : MonoBehaviour
     IEnumerator ShowText(string talkData, float delayTime)
     {
         for(int i = 0; i <= talkData.Length; i++){
-            chatText.text = talkData.Substring(0, i);
-            yield return new WaitForSeconds(delayTime);
-
+            try{       
+                if(talkData[i].Equals('<')){
+                    if(talkData.Substring(i, 7).Equals("<color>")){
+                        i += 7;
+                        while(!talkData[i].Equals('>')){
+                            i++;
+                        }
+                        i++; // 해당 태그의 길이만큼 건너뛰기
+                    }
+                    else{
+                        while(!talkData[i].Equals('>')){
+                            i++;
+                        }
+                        i++; // 해당 태그의 길이만큼 건너뛰기
+                    }
+                }
+        }catch{
+            Debug.Log("대화 끝");
         }
-
+        chatText.text = talkData.Substring(0, i);
+        yield return new WaitForSeconds(delayTime);
+    }
         endTalk = true;
     }
 
