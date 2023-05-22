@@ -34125,7 +34125,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723607322}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2907b91bd8628246b875e3e2ed8ea4e, type: 3}
   m_Name: 
@@ -34226,7 +34226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 723607322}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.37, y: 12.3, z: -10}
+  m_LocalPosition: {x: -40.88, y: 11.77, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69441,6 +69441,41 @@ MonoBehaviour:
     - "\uC77C\uB2E8 \uC774 \uB3D9\uAD74\uC5D0\uC11C \uCC3E\uC544\uBD10\uC57C\uACA0\uC544."
     animation: {fileID: 0}
     LoadScene: 
+  - isMove: 1
+    loadScene: 0
+    npcID: {fileID: 723607322}
+    direction: RIGHT
+    figure: 21
+    speed: 0.05
+    Delay: 3
+    context:
+    - "\uC5EC\uAE30\uAD6C\uB098.."
+    - "\uC77C\uB2E8 \uC774 \uB3D9\uAD74\uC5D0\uC11C \uCC3E\uC544\uBD10\uC57C\uACA0\uC544."
+    animation: {fileID: 0}
+    LoadScene: 2.Demo 1
+  - isMove: 1
+    loadScene: 0
+    npcID: {fileID: 723607322}
+    direction: DOWN
+    figure: 5
+    speed: 0.05
+    Delay: 0
+    context:
+    - "\uC5EC\uAE30\uAD6C\uB098.."
+    - "\uC77C\uB2E8 \uC774 \uB3D9\uAD74\uC5D0\uC11C \uCC3E\uC544\uBD10\uC57C\uACA0\uC544."
+    animation: {fileID: 0}
+    LoadScene: 2.Demo 1
+  - isMove: 0
+    loadScene: 0
+    npcID: {fileID: 2128850717}
+    direction: DOWN
+    figure: -2
+    speed: 0.05
+    Delay: 3
+    context:
+    - "\uC800\uAE30 \uB3CC\uBD80\uD130 \uCE58\uC6B8 \uBC29\uBC95\uC744 \uCC3E\uC544\uBCF4\uC790"
+    animation: {fileID: 0}
+    LoadScene: 2.Demo 1
   - isMove: 0
     loadScene: 1
     npcID: {fileID: 2128850717}

@@ -21,7 +21,7 @@ public class TalkManager : MonoBehaviour
         // 500 세계수
         //600 세계수 포탈(맵 전체이동 포탈)
         /////////////////////////////////캐릭터들의 기본대사 (퀘스트와 관련이 없으면 출력)/////////////////////////////////////
-        talkData.Add(2000 + 10, new string[] {"??? : 드디어 왔구나.", "??? : 많이 기다렸어.", "??? : 배가 고픈가보구나?", "??? : 오른쪽으로 가면 길이있어. 오른쪽에 가면 사과가 있을거야", "??? : 누군가가 다리 건너편에 방해요소를 두었어. 조심히 건너도록해."});
+        talkData.Add(2000 + 10, new string[] {"??? : 드디어 왔구나.", "??? : 많이 기다렸어.", "??? : 배가 고픈가보구나?", "??? : 그래. <color=red>오른쪽에있는 통나무를 타고 넘어가면 나무</color>가 있을거야. 거기에 사과가 하니 있을거니 먹고와봐", "??? : 누군가가 다리 건너편에 방해요소를 두었어. 조심히 건너도록해."});
         talkData.Add(1000 + 20, new string[] { "나무에 잘익은 열매가 하나 보인다." });
         ////////////////////////// 1번퀘스트 종료 ////////////////////////////
         talkData.Add(2000 + 30, new string[]{"??? : 사과를 가져왔니?", "??? : 사과를 한번 먹어봐.", "??? : 배고픔이 어느정도 완화될거야."});
@@ -60,7 +60,7 @@ public class TalkManager : MonoBehaviour
         cat = GameObject.FindWithTag("Player");
     }
     int[] count = {0,0,0,0,0,0,0,0,0};
-   
+    public GameObject spaceClick_Tree;
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
         try
@@ -73,6 +73,7 @@ public class TalkManager : MonoBehaviour
                     case 2010:
                         effect.SetActive(true);
                         StartCoroutine(Effect(0));
+                        spaceClick_Tree.SetActive(true);
                         break;
 
                     case 1020:
@@ -116,7 +117,7 @@ public class TalkManager : MonoBehaviour
                         CharacterData.Instance.QuestID = 50;  // 퀘스트아이디를 80으로 고정
                         GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
                         mouseClickTutorial.SetActive(true);
-                        Destroy(mouseClickTutorial, 10f);
+
                         return "";
 
                         break;

@@ -79,11 +79,11 @@ public class RecipeSystem : Singleton<RecipeSystem>
                     normalWorldObject.SetActive(true);
                     anotherWorldGround.SetActive(false);
                     anotherWorldObject.SetActive(false);
-                    anotherWorldEffect.SetActive(false);
+                    // anotherWorldEffect.SetActive(false);
                 }else{
                     anotherWorldGround.SetActive(true);
                     anotherWorldObject.SetActive(true);
-                    anotherWorldEffect.SetActive(true);
+                    // anotherWorldEffect.SetActive(true);
                     normalWorldGround.SetActive(false);
                     normalWorldObject.SetActive(false);
                 }
