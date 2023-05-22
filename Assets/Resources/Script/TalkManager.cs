@@ -36,12 +36,7 @@ public class TalkManager : MonoBehaviour
 
         talkData.Add(4000+80 , new string[]{"도굴꾼 : 나랑 거래하나 할래?", "도굴꾼 : 여기 옆에 있는 문을 넘어가려면 신기한 돌이 필요해.","도굴꾼 : 황금을 찾으러 왔지만 나한테 쓸모없는 이 돌만 주웠지 뭐야." ,"도굴꾼 : 황금을 가져오면 내가 가지고 있는 돌을 하나 줄게! 싫으면 직접 구하던가~"});
         talkData.Add(4000 + 90, new string[]{"도굴꾼 : 가져왔구나! 그럼 이제 돌을 하나 줄게.", "도굴꾼 : 황금이랑 돌이랑 바꾸다니 너 취향이 특이하구나?"});
-        talkData.Add(2000 + 100, new string[]{"세계수에 말걸면 뜨는 대사"}); //2000번 여우 대사
-        talkData.Add(5000 + 110, new string[]{"세계수에 말걸면 뜨는 대사"}); // 4000번 세계수 대사
-        // talkData.Add(2000 + 80 , new string[]{"재료를 모아왔구나.", "이제 옆에 음식대를 설치해줄게" , "레시피는 일단 내가 하나 알려줄게! 나머지 레시피는 앞으로 나아가다보면 얻을 수 있을거야.","재료는 그때그때 수급하며 음식을 만들어봐!", "이제 한번 사과스프를 만들어보렴"});
-        // talkData.Add(2000 + 90, new string[] {"음식을 만들었구나.", "이제 한번 먹어보렴", "아까보다 맛도 좋고 포만감도 많이 오를거야.", "이제 기본적인것 설명은 끝난거 같고 한번 나를 따라와봐"});
-        // talkData.Add(2000+100, new string[]{"여기 울타리로 막혀있어서 더 지나갈 수가 없네...", "앞에있는 울타리 보이니?","앞으로의 편한 통행을 위해 모두 부시고 다시한번 말을걸어줘."});
-        
+   
   
 
 
@@ -52,8 +47,9 @@ public class TalkManager : MonoBehaviour
     Item TutorialFruit;
     
     public TextMeshProUGUI TutorialMessage;
+    public GameObject[] spaceClick;
 
-
+    public GameObject mouseClickTutorial;
     
     void Awake()
     {
@@ -62,8 +58,6 @@ public class TalkManager : MonoBehaviour
         TutorialFruit = Resources.Load<Item>("Item/TutorialFruit");
         fox = GameObject.Find("FOX");
         cat = GameObject.FindWithTag("Player");
-        
-        lifeTreePortal = GameObject.Find("movePortal");
     }
     int[] count = {0,0,0,0,0,0,0,0,0};
    
@@ -104,6 +98,10 @@ public class TalkManager : MonoBehaviour
                         }if((!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup")))){ // 만약 사과스프가 없으면 (만들지 않았다면.)
                             CharacterData.Instance.QuestID = 40;  // 퀘스트아이디를 40으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                            foreach(GameObject obj in spaceClick){
+                                obj.SetActive(true);
+                                Destroy(obj, 10f);
+                            }
                             return "";
                         }
 
@@ -117,6 +115,8 @@ public class TalkManager : MonoBehaviour
                         }
                         CharacterData.Instance.QuestID = 50;  // 퀘스트아이디를 80으로 고정
                         GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                        mouseClickTutorial.SetActive(true);
+                        Destroy(mouseClickTutorial, 10f);
                         return "";
 
                         break;
@@ -134,28 +134,12 @@ public class TalkManager : MonoBehaviour
                             return "";
                         }
                         break;
-                    case 4090: //여우를 따라가서 울타리를 부수기. 대충 y = 5로 이동시키면 될듯.
+                    case 4090: 
                         Inventory.instance.AddItem(Resources.Load<Item>("Item/beautifulStone"), 1);
                         Inventory.instance.RemoveItem(Resources.Load<Item>("Item/goldRecipe"), 1);
                     break;
-                    case 2100:
-                            CharacterData.Instance.QuestID = 100;  // 퀘스트아이디를 80으로 고정
-                            GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
-                            return "";
-                    case 2110:
-                        StartCoroutine(walkingToLifeTree("y", 27)); 
-                        break;
-                    case 2120:
-                        Tutorial.SetActive(true);
-                        TutorialMessage.text = "Q를 누르면 다른 동물로 변신 할 수 있습니다. 후드는 진행하며 얻어가세요. 또한 Tab을 누르면 각 후드를 강화할 수 있습니다.";
-                        StartCoroutine(Tutorial1Time());
-                        lifeTreePortal.SetActive(true);
-                        break;
-                    case 6080:
-                        
-                        break;
-                    default:
-                        break;
+
+    
                 }
             }
         } catch (Exception e)
@@ -217,7 +201,6 @@ public class TalkManager : MonoBehaviour
 
     GameObject fox;
     GameObject cat;
-    public GameObject lifeTreePortal;
     IEnumerator walkingToLifeTree(string xory,float increase, int id = 0)
     {
         Vector3 targetVector = fox.transform.position;
