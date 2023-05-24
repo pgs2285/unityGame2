@@ -115,19 +115,19 @@ public class secondCutScene : MonoBehaviour
         yield return new WaitForSeconds(mvInfo[index].Delay);
         transform.eulerAngles = new Vector3(0, 0, 0);
     }
-
+    Animator chatAnime;
     IEnumerator talk(int index){
         yield return new WaitForSeconds(mvInfo[index].Delay);
         int textIndex = 0;
         while(mvInfo[index].context.Length > textIndex){
-
+            chatAnime = chatPanel.GetComponent<Animator>();
+            chatAnime.SetBool("isShow",true);
             chatPanel.SetActive(true);
             text.text = mvInfo[index].context[textIndex];
             if(Input.GetKeyDown(KeyCode.Space)) textIndex++;
             yield return new WaitForSeconds(0.001f);
         }
-
-        chatPanel.SetActive(false);
+        chatAnime.SetBool("isShow",false);
 
         index += 1;
         if(index < mvInfo.Length)
@@ -146,11 +146,6 @@ public class secondCutScene : MonoBehaviour
 
 
 /*
-
-
-
-
-
 1.  using UnityEngine;
 2.  using UnityEngine.UI;
 3.  

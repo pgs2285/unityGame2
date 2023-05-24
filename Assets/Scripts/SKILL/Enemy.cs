@@ -14,6 +14,10 @@ public class Enemy : MonoBehaviour
     Enermy_Ai enermy_Ai;
     public void TakeDamage(float damage)
     {
+        if(gameObject.name == "Fences"){
+            if(CharacterData.Instance.QuestID != 50) return;
+        
+        }
         this.GetComponent<Animator>().SetTrigger("hit");
         currentHp = currentHp - damage;
         // HpbarFilled.fillAmount = (float)currentHp / Hp;

@@ -68380,7 +68380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 1
-  sceneName: 3.Demo 2
+  sceneName: 3.DemoScene
 --- !u!61 &1200589951
 BoxCollider2D:
   m_ObjectHideFlags: 0
