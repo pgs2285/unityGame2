@@ -14,8 +14,12 @@ public class QuestManager : MonoBehaviour
         questList = new Dictionary<int, QuestData>();
         GenerateData();
         QuestName.text = questList[CharacterData.Instance.QuestID].questName;
+
     }
     public TextMeshProUGUI QuestName;
+    void Update(){
+        QuestOngoing();
+    }
 
     void GenerateData(){
         questList.Add(10, new QuestData("빛을 따라가보자", new int[] {2000}));
@@ -29,7 +33,7 @@ public class QuestManager : MonoBehaviour
         questList.Add(80, new QuestData(("동굴 탐험"), new int[] { 4000}));
         questList.Add(90, new QuestData(("동굴 탐험"), new int[] { 4000}));
         questList.Add(100, new QuestData(("동굴 탐험"), new int[] { 2000}));
-        questList.Add(100, new QuestData(("동굴 탐험"), new int[] { 5000}));
+        // questList.Add(100, new QuestData(("동굴 탐험"), new int[] { 5000}));
 
       
 
@@ -55,5 +59,10 @@ public class QuestManager : MonoBehaviour
 
         questActionIndex = 0;
     }
-
+    enum NPCID{
+        FOX = 1000,
+    }
+    void QuestOngoing(){
+        Debug.Log(questList[CharacterData.Instance.QuestID].npcId[0]);
+    }
 }

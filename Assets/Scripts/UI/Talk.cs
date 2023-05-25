@@ -36,4 +36,7 @@ public class Talk : MonoBehaviour
         
         player.GetComponent<MainCharacter>().OneTime =0;
     }
+
+
+
 }

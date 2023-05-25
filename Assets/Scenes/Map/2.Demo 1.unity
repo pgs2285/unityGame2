@@ -68380,7 +68380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stage: 1
-  sceneName: 3.Demo 2
+  sceneName: 3.DemoScene
 --- !u!61 &1200589951
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -74000,12 +74000,12 @@ PrefabInstance:
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.09
+      value: -40.49
       objectReference: {fileID: 0}
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.84
+      value: 10.38
       objectReference: {fileID: 0}
     - target: {fileID: 173694346958265929, guid: be60cf386df903646ab58716b0290f77,
         type: 3}

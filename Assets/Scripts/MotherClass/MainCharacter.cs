@@ -37,7 +37,7 @@ public class MainCharacter : MonoBehaviour
         if (CharacterData.Instance.CurrentHP <= 0 || CharacterData.Instance.Hungry <= 0) { //currentHP가  0보다 작으면
             Debug.Log("GameOver");
             if (isCreated_GameOverPanel) {
-                Instantiate(gameoverPanel);
+                // Instantiate(gameoverPanel);
                 isCreated_GameOverPanel = false; //추후 버튼에서 다시시작, 종료를 누르면 다시 true로 바꿔줘야함
             }
         }
