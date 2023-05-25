@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 55ff0943701761840863df823793095e
+guid: 38a3800afdae20f44ad26a222ebae495
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -67,7 +67,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boss_bear 1_0
+      name: boss_bear0523-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 064e44a8f8527a242ba5dfe563166db4
-      internalID: 1632420587
+      spriteID: 74a2567976d55dd4c96c7871f60658d3
+      internalID: -1528429057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_1
+      name: boss_bear0523-Sheet_1
       rect:
         serializedVersion: 2
         x: 190
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 18b1fa2deabb0f84ab72a4d89b78639e
-      internalID: 768131936
+      spriteID: e80b6ed54d6ee8b4b8ad408592f421e3
+      internalID: -484554604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_2
+      name: boss_bear0523-Sheet_2
       rect:
         serializedVersion: 2
         x: 380
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f0efb8d1e2c26048aaee99b32f22375
-      internalID: -2069592054
+      spriteID: 03e31db9859da3a43afc6fe9da092cce
+      internalID: 211772802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_3
+      name: boss_bear0523-Sheet_3
       rect:
         serializedVersion: 2
         x: 570
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5d4a841af688f14685813df30c48b0e
-      internalID: 1987031284
+      spriteID: 31b4221dc3635ec46929fbdc8d4c8ebf
+      internalID: 93458525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_4
+      name: boss_bear0523-Sheet_4
       rect:
         serializedVersion: 2
         x: 760
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4c4cb506ba47024fa83944a0ecc73ea
-      internalID: -932420948
+      spriteID: 5e3e7ae0d9524b84ab518162cbbb9433
+      internalID: 561860866
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_5
+      name: boss_bear0523-Sheet_5
       rect:
         serializedVersion: 2
         x: 950
@@ -224,14 +224,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e641f297e0c1a9b4481d7b18b34565b8
-      internalID: 295789879
+      spriteID: a4492113a28fdf449bbd1779ea358b37
+      internalID: -746852717
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_6
+      name: boss_bear0523-Sheet_6
       rect:
         serializedVersion: 2
         x: 1140
@@ -245,14 +245,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 442acb9c41742d7468037fa936895264
-      internalID: -885240243
+      spriteID: 830b0d1c72057a046b8a489e46a48317
+      internalID: 1523315941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_7
+      name: boss_bear0523-Sheet_7
       rect:
         serializedVersion: 2
         x: 1330
@@ -266,14 +266,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6edf86ea07c44cc4d8c5efee7a8c9311
-      internalID: -1798723736
+      spriteID: d048ce8ebee86224baffbefa5cea8396
+      internalID: 982195960
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_8
+      name: boss_bear0523-Sheet_8
       rect:
         serializedVersion: 2
         x: 1520
@@ -287,14 +287,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0f06cd7c723ce14885b2e2aee0f00c0
-      internalID: -1241327043
+      spriteID: fac37a46606376c49879abe3271fa059
+      internalID: -1889568390
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_9
+      name: boss_bear0523-Sheet_9
       rect:
         serializedVersion: 2
         x: 1710
@@ -308,14 +308,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0489475ae365a8945a91dd68c0ab72b5
-      internalID: 681174379
+      spriteID: 17ec1d4ebc226ef43854ade67e91d71f
+      internalID: -348743490
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_10
+      name: boss_bear0523-Sheet_10
       rect:
         serializedVersion: 2
         x: 1900
@@ -329,14 +329,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 23a92264340e18b42a30e520d8c0601d
-      internalID: 1246639142
+      spriteID: 843c8cab6e48d2a4f8ab8edba54d6c1c
+      internalID: -893048833
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: boss_bear 1_11
+      name: boss_bear0523-Sheet_11
       rect:
         serializedVersion: 2
         x: 2090
@@ -350,8 +350,197 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e214f44835fba9448ec494a2aea82dc
-      internalID: 1256657904
+      spriteID: 301a92bb45afea846bceee75f98b7bc8
+      internalID: -348783118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 2280
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6111a1828b7829478e544551d9e8696
+      internalID: -470202905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 2470
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f07fcc57ff91c9c40a8879b4ad58f6ef
+      internalID: -590421018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61e86c445a2ab4e4a9d8c882e1e3acb9
+      internalID: -1503568705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 2850
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09312f3d981478947bda83496026c1be
+      internalID: 467978636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_16
+      rect:
+        serializedVersion: 2
+        x: 3040
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32cd940cd15524842a2d43ebfd135cd7
+      internalID: 855527343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_17
+      rect:
+        serializedVersion: 2
+        x: 3230
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c162575de2f182246aa09b99f8d629c0
+      internalID: -2133966525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_18
+      rect:
+        serializedVersion: 2
+        x: 3420
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b56098c51e2ece443978a8c79173a3d9
+      internalID: -1897743000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_19
+      rect:
+        serializedVersion: 2
+        x: 3610
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbec7907c40525440a205a41564fd5a1
+      internalID: 711996549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: boss_bear0523-Sheet_20
+      rect:
+        serializedVersion: 2
+        x: 3800
+        y: 0
+        width: 190
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 639814f2941ede84294fc06ae60ae6bd
+      internalID: 1893199147
       vertices: []
       indices: 
       edges: []
@@ -359,7 +548,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 92af58961e5efa341a05df60b653bfb8
+    spriteID: bb413a83ac5b8fe4c9b59a15afc4eb3f
     internalID: 0
     vertices: []
     indices: 
@@ -367,18 +556,27 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      boss_bear 1_2: -2069592054
-      boss_bear 1_4: -932420948
-      boss_bear 1_1: 768131936
-      boss_bear 1_3: 1987031284
-      boss_bear 1_7: -1798723736
-      boss_bear 1_9: 681174379
-      boss_bear 1_6: -885240243
-      boss_bear 1_11: 1256657904
-      boss_bear 1_8: -1241327043
-      boss_bear 1_5: 295789879
-      boss_bear 1_10: 1246639142
-      boss_bear 1_0: 1632420587
+      boss_bear0523-Sheet_10: -893048833
+      boss_bear0523-Sheet_8: -1889568390
+      boss_bear0523-Sheet_12: -470202905
+      boss_bear0523-Sheet_4: 561860866
+      boss_bear0523-Sheet_3: 93458525
+      boss_bear0523-Sheet_15: 467978636
+      boss_bear0523-Sheet_2: 211772802
+      boss_bear0523-Sheet_1: -484554604
+      boss_bear0523-Sheet_20: 1893199147
+      boss_bear0523-Sheet_6: 1523315941
+      boss_bear0523-Sheet_9: -348743490
+      boss_bear0523-Sheet_14: -1503568705
+      boss_bear0523-Sheet_7: 982195960
+      boss_bear0523-Sheet_11: -348783118
+      boss_bear0523-Sheet_19: 711996549
+      boss_bear0523-Sheet_5: -746852717
+      boss_bear0523-Sheet_13: -590421018
+      boss_bear0523-Sheet_0: -1528429057
+      boss_bear0523-Sheet_17: -2133966525
+      boss_bear0523-Sheet_18: -1897743000
+      boss_bear0523-Sheet_16: 855527343
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
