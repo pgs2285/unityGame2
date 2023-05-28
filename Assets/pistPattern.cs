@@ -11,9 +11,13 @@ public class pistPattern : MonoBehaviour
     Coroutine pistMovement;
     void Start(){
         anim = GetComponent<Animator>();
+        try{
         player = GameObject.FindWithTag("Player");
         cam.GetComponent<CameraFollow>().player = gameObject.transform;
-  
+        }
+        catch(System.Exception e){
+            Debug.Log(e);
+        }
 
 
     }
