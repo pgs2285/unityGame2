@@ -8,18 +8,15 @@ public class QuestManager : MonoBehaviour
     public int questId;
     public int questActionIndex;
     public Dictionary<int, QuestData> questList;
-    
+    GameObject FOX;
     public void Awake(){
 
         questList = new Dictionary<int, QuestData>();
         GenerateData();
         QuestName.text = questList[CharacterData.Instance.QuestID].questName;
-
+        FOX = GameObject.Find("FOX");
     }
     public TextMeshProUGUI QuestName;
-    void Update(){
-        QuestOngoing();
-    }
 
     void GenerateData(){
         questList.Add(10, new QuestData("빛을 따라가보자", new int[] {2000}));
@@ -59,8 +56,21 @@ public class QuestManager : MonoBehaviour
 
         questActionIndex = 0;
     }
-    enum NPCID{
-        FOX = 1000,
+    public GameObject[] questState;
+    bool OneTime = true;
+    void Update(){
+        Debug.Log(questList[CharacterData.Instance.QuestID].npcId[0]);
+        if(OneTime){
+            switch(questList[CharacterData.Instance.QuestID].npcId[0]){
+                case 2000:
+                    GameObject questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(FOX.transform.position.x + 0.5f, FOX.transform.position.y +0.8f), Quaternion.identity);  
+                    Debug.Log(questState);
+                    OneTime = false;
+                break;
+
+
+            }
+        }
     }
     void QuestOngoing(){
         Debug.Log(questList[CharacterData.Instance.QuestID].npcId[0]);
