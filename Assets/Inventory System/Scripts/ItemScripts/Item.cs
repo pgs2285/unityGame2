@@ -5,6 +5,10 @@ using UnityEngine;
 // BASE ITEM
 public class Item : ScriptableObject
 {
+    private GameObject fox;
+    private QuestManager questManager;
+
+    
     public string itemName;
 
     // The ID of every Item needs to be different in order to be saved and loaded 
@@ -33,7 +37,11 @@ public class Item : ScriptableObject
             case 10: // TutorialApple
                 CharacterData.Instance.Hungry += 5;
                 if(CharacterData.Instance.QuestID == 30){
+                    fox = GameObject.Find("FOX");
+                    questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
                     CharacterData.Instance.QuestID += 10;
+                    Destroy(questManager.questState);
+                    questManager.questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
                 }
                 break;
             case 30:

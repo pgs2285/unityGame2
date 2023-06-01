@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -56,14 +56,15 @@ public class QuestManager : MonoBehaviour
 
         questActionIndex = 0;
     }
-    public GameObject[] questState;
+    
+    public GameObject questState;
     bool OneTime = true;
     void Update(){
         Debug.Log(questList[CharacterData.Instance.QuestID].npcId[0]);
         if(OneTime){
             switch(questList[CharacterData.Instance.QuestID].npcId[0]){
                 case 2000:
-                    GameObject questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(FOX.transform.position.x + 0.5f, FOX.transform.position.y +0.8f), Quaternion.identity);  
+                    questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(FOX.transform.position.x + 0.5f, FOX.transform.position.y +0.8f), Quaternion.identity);  
                     Debug.Log(questState);
                     OneTime = false;
                 break;

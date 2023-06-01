@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using System;
 public class RecipeSystem : Singleton<RecipeSystem>
 {
     // 레시피 리스트
@@ -31,8 +31,11 @@ public class RecipeSystem : Singleton<RecipeSystem>
         }catch(System.Exception e){
             Debug.Log(e);
         }
+        fox = GameObject.Find("FOX");
+        questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
     }
-
+    private GameObject fox;
+    QuestManager questManager;
 
     public GameObject RecipePanel;
     bool isRecipePanelActive = false;
@@ -54,6 +57,12 @@ public class RecipeSystem : Singleton<RecipeSystem>
             case 40:
                 if(Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup"))){
                     CharacterData.Instance.QuestID += 10;
+                    try{
+                        Destroy(questManager.questState);
+                        questManager.questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
+                    }catch(Exception e){
+
+                    }
                 }
                 break;
             
@@ -61,6 +70,9 @@ public class RecipeSystem : Singleton<RecipeSystem>
                 if(GameObject.Find("Fence").transform.childCount == 0){ //모두 부서져 있으면
                     CharacterData.Instance.QuestID += 10;
                     Debug.Log("퀘스트 60으로 변경");
+                    Destroy(questManager.questState);
+                    questManager.questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
+
                 }
             break;
             case 80:

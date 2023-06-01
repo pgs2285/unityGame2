@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -7,7 +7,7 @@ using UnityEngine;
 public class TalkManager : MonoBehaviour
 {
     public Dictionary<int,string[]> talkData;
-
+    
 
     void GenerateData(){ //데이터 등록하기~
         
@@ -61,19 +61,25 @@ public class TalkManager : MonoBehaviour
     }
     int[] count = {0,0,0,0,0,0,0,0,0};
     public GameObject spaceClick_Tree;
+    QuestManager questManager;
     public string getTalk(int id, int talkIndex){ //GenerateData에서 데이터 가져옴
 
+        questManager = GameObject.Find("QuestManager").GetComponent<QuestManager>();
         try
         {
             if (talkIndex == talkData[id - id % 10].Length)
             {
                 switch (id) // 특정대사가 끝나고 컷신 or 스킬을 넣어주고 싶으면 여기서
                 {
-
+                    
                     case 2010:
                         effect.SetActive(true);
                         StartCoroutine(Effect(0));
                         spaceClick_Tree.SetActive(true);
+                        Destroy(questManager.questState);
+                        questManager.questState = Instantiate(Resources.Load("QuestState/questOngoing_0") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
+                        
+
                         break;
 
                     case 1020:
@@ -82,19 +88,25 @@ public class TalkManager : MonoBehaviour
                         StartCoroutine(Tutorial1Time());
                         Inventory.instance.AddItem(TutorialFruit, 1);
                         Destroy(GameObject.Find("TutorialApple"));
+                        Destroy(questManager.questState);
+                        questManager.questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
 
                         break;
                     case 2030:
                         if((Inventory.instance.itemList.Contains(TutorialFruit))){
                             CharacterData.Instance.QuestID = 30;  // 퀘스트아이디를 30으로 고정
                             GameObject.Find("QuestManager").GetComponent<QuestManager>().questActionIndex = 0;
+                            Destroy(questManager.questState);
+                            questManager.questState = Instantiate(Resources.Load("QuestState/questOngoing_0") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
                             return "";
                         }
                         break;
 
                     case 2040:
                         if(count[1] == 0){ // 한번만 실행되야하는요소.
+                            Destroy(questManager.questState);
                             StartCoroutine(walkingToLifeTree("y", 3, 2040)); //y로 3만큼 이동.
+                            
                             count[1]++;
                         }if((!Inventory.instance.itemList.Contains(Resources.Load<Item>("Item/AppleSoup")))){ // 만약 사과스프가 없으면 (만들지 않았다면.)
                             CharacterData.Instance.QuestID = 40;  // 퀘스트아이디를 40으로 고정
@@ -111,6 +123,7 @@ public class TalkManager : MonoBehaviour
 
                     case 2050:
                         if(count[0] == 0){
+                            Destroy(questManager.questState);
                             StartCoroutine(walkingToLifeTree("y", 3)); //y로 3만큼 이동.
                             count[0]++;
                         }
@@ -124,6 +137,7 @@ public class TalkManager : MonoBehaviour
 ////////////////////////////////////여기부터 4 bearCave//////////////////////////////////////////
                     case 2060:
                         // 1.5,8 -> 9,8 -> 9,10,  -> 16,10 (x,y 좌표값)
+                        Destroy(questManager.questState);
                         StartCoroutine(walkingToLifeTree("x", 7.5f, 2060)); //x로 9만큼 이동.
                         break;
 
@@ -228,6 +242,10 @@ public class TalkManager : MonoBehaviour
             Vector3 pos = GameObject.Find("FOX").transform.position;
             pos.x+=2;
             Instantiate(Resources.Load<GameObject>("Prefab/Pot"), pos, Quaternion.identity);
+            questManager.questState = Instantiate(Resources.Load("QuestState/questOngoing_0") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
+        }
+        else if(id == 2050){
+            questManager.questState = Instantiate(Resources.Load("QuestState/questOngoing_0") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
         }
         else if(id == 2060) { // 9,8 -> 9,10,  -> 16,10 
             if(step == 0){
@@ -239,9 +257,15 @@ public class TalkManager : MonoBehaviour
                 StartCoroutine(walkingToLifeTree("x", 7, 2060));
                 
             }else if(step == 2){
+                step = 3;
                 StartCoroutine(walkingToLifeTree("y", 2));
+
+                
+            }else if(step == 3){
+                questManager.questState = Instantiate(Resources.Load("QuestState/QuestStartOrEnd") as GameObject, new Vector2(fox.transform.position.x + 0.5f, fox.transform.position.y +0.8f), Quaternion.identity);
             }
         }
+
     }
     int step = 0;
 

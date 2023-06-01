@@ -81,6 +81,7 @@ public class secondCutScene : MonoBehaviour
             mvInfo[index].npcID.transform.position = Vector3.MoveTowards(mvInfo[index].npcID.transform.position, targetVector, mvInfo[index].speed);
             try{     
                 Animator anime = mvInfo[index].npcID.GetComponent<Animator>();
+                anime.applyRootMotion = true;
                 anime.SetBool("move",true);
             }catch(System.Exception e){
                 Debug.Log(e);
