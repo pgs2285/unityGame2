@@ -18,7 +18,7 @@ public class RandomIngredient : MonoBehaviour
     }
     public void SetItemObtain(){
         random = Random.Range(0, 3); //25%의 확률로 재로가 있음
-        if(random == 0){
+        if(random == 0 || isItemObtained){
             isItemObtained = true;
         }else isItemObtained = false;
     }
