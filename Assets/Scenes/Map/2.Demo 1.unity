@@ -52745,7 +52745,7 @@ PrefabInstance:
     - target: {fileID: 1144341576137991055, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1459893181996044814, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
@@ -53191,6 +53191,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138138195647974844, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3215145668176044534, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
@@ -74096,6 +74101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: comboResetTime
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1337402226267634806, guid: be60cf386df903646ab58716b0290f77,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6369772151397990852, guid: be60cf386df903646ab58716b0290f77,
         type: 3}

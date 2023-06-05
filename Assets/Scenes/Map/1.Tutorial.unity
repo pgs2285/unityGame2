@@ -34637,6 +34637,26 @@ PrefabInstance:
       propertyPath: decreaseInterval
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4710011764111054259, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 44.9455
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710011764111054259, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 22.2238
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710011764111054259, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -531.20496
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710011764111054259, guid: cc8a3a5d5796c4460b231acfaf0ee170,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 278.04578
+      objectReference: {fileID: 0}
     - target: {fileID: 4720312732253900026, guid: cc8a3a5d5796c4460b231acfaf0ee170,
         type: 3}
       propertyPath: m_AnchorMax.y
